@@ -1,0 +1,35 @@
+///////////////////////////////////////////////////////////////////
+//
+// Project RENOIR
+// Release Notes Instant Reporter
+//
+// Reference application presented in
+// Clean Architecture with .NET (MS Press) 2024
+// Author: Dino Esposito
+// 
+//
+
+{
+  "DevMode": false,
+
+  "Project": {
+    "Name": "Project Renoir",
+    "Version": "1.0.1",
+    "Description": "Clean Architecture for .NET",
+    "Copyright": "Dino Esposito",
+    "Attribution": "Fork and love"
+  },
+
+  "Secrets": {
+    "RenoirDatabase": {
+      "Selector": "local",
+      "Live": "live-db",
+      "Local": "Data Source=(local); Integrated Security=True; Initial Catalog=ybq_Renoir; TrustServerCertificate=true;"
+    },
+    "RenoirBlob": {
+      "Selector": "live",
+      "Live": "blob-storage-connection"
+    } 
+  }
+  
+}

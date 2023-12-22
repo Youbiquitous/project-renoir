@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.Infrastructure\Youbiquitous.Renoir.Infrastructure.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

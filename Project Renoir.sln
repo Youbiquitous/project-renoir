@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Resources", "Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj", "{DF2F49E9-950D-403C-A167-A090EBB110A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Application", "Youbiquitous.Renoir.Application\Youbiquitous.Renoir.Application.csproj", "{6439EF80-6E11-4E99-AF4C-D6A99E01B28D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.DomainModel", "Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj", "{90CB8221-ED6A-4480-975F-0733B9FC8476}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Persistence", "Youbiquitous.Renoir.Persistence\Youbiquitous.Renoir.Persistence.csproj", "{4CB901C5-8475-4ACD-A48C-688DF5A612AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Infrastructure", "Youbiquitous.Renoir.Infrastructure\Youbiquitous.Renoir.Infrastructure.csproj", "{2AA93810-E8DC-4B32-9023-C55A5F70B422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youbiquitous.Renoir.AppBlazor", "Youbiquitous.Renoir.AppBlazor\Youbiquitous.Renoir.AppBlazor.csproj", "{BF691527-0883-4988-B091-1436DC65E183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF2F49E9-950D-403C-A167-A090EBB110A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2F49E9-950D-403C-A167-A090EBB110A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2F49E9-950D-403C-A167-A090EBB110A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2F49E9-950D-403C-A167-A090EBB110A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6439EF80-6E11-4E99-AF4C-D6A99E01B28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6439EF80-6E11-4E99-AF4C-D6A99E01B28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6439EF80-6E11-4E99-AF4C-D6A99E01B28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6439EF80-6E11-4E99-AF4C-D6A99E01B28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CB8221-ED6A-4480-975F-0733B9FC8476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CB8221-ED6A-4480-975F-0733B9FC8476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CB8221-ED6A-4480-975F-0733B9FC8476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CB8221-ED6A-4480-975F-0733B9FC8476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CB901C5-8475-4ACD-A48C-688DF5A612AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB901C5-8475-4ACD-A48C-688DF5A612AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB901C5-8475-4ACD-A48C-688DF5A612AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB901C5-8475-4ACD-A48C-688DF5A612AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA93810-E8DC-4B32-9023-C55A5F70B422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA93810-E8DC-4B32-9023-C55A5F70B422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA93810-E8DC-4B32-9023-C55A5F70B422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA93810-E8DC-4B32-9023-C55A5F70B422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF691527-0883-4988-B091-1436DC65E183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF691527-0883-4988-B091-1436DC65E183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF691527-0883-4988-B091-1436DC65E183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF691527-0883-4988-B091-1436DC65E183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49849FCF-ED52-44AE-8BEE-E678D0099361}
+	EndGlobalSection
+EndGlobal

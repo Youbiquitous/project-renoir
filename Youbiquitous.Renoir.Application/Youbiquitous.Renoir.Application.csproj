@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Youbiquitous.Martlet.Core" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.Persistence\Youbiquitous.Renoir.Persistence.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

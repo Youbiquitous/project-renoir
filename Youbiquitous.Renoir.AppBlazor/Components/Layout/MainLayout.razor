@@ -1,0 +1,43 @@
+﻿@inherits Youbiquitous.Renoir.AppBlazor.Models.ViewModelBase
+@inject IWebHostEnvironment Environment
+
+@using Youbiquitous.Renoir.AppBlazor.Common.UI
+@using Youbiquitous.Renoir.Resources
+
+
+<PageTitle>@Settings.Project.Name</PageTitle>
+
+<div class="app-page-container">
+    <div class="app-sidebar">
+        <NavMenu Header="@Settings.Project.Name"
+                 Items="@MenuFactory.Default()" />
+
+        <CopyrightNote 
+            FirstLine="@Settings.Project.Copyright"
+            SecondLine="@Settings.Project.Attribution" />
+    </div>
+
+    <div class="app-content-container">
+        <TitleBar Left="@Environment.EnvironmentName"
+                  LeftClass="small opacity-50"
+                  Right="@Settings.Project.Version" 
+                  RightClass="fw-bold" />
+
+        <div class="app-content">
+            <ErrorBoundary>
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <ErrorReport Icon="fa fa-exclamation-triangle" 
+                                 Exception="@ex"
+                                 ShowInternals="@(Environment.IsDevelopment())" />
+                    <button class="btn btn-warning"
+                            @onclick="Recover">
+                        @AppMenu.Resume
+                    </button>
+                </ErrorContent>
+            </ErrorBoundary>
+        </div>
+    </div>
+</div>

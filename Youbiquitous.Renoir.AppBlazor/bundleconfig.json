@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "wwwroot/css/renoir-app.min.css",
+    "inputFiles": [
+      "wwwroot/css/renoir-app.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/app-assets/renoir-login.min.css",
+    "inputFiles": [
+      "wwwroot/css/app-assets/renoir-login.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/renoir-utils.min.js",
+    "inputFiles": [
+      "wwwroot/js/renoir-utils.js"
+    ]
+  }
+]

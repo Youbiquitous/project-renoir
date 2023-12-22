@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Youbiquitous.Renoir.Resources
+@inherits TitleBarComponent
+
+
+<CascadingAuthenticationState>
+    <div class="d-flex justify-content-between align-items-center app-titlebar">
+        <div class="@LeftClass">@((MarkupString)Left)</div>
+
+        <div>
+            <AuthorizeView>
+                <Authorized>
+                    <UserBox />
+                </Authorized>
+                <NotAuthorized>
+                    <a class="btn btn-primary" href="/login">@AppMenu.Login</a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+
+    </div>
+</CascadingAuthenticationState>
+

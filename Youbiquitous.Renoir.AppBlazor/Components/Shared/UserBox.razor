@@ -1,0 +1,21 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.Application.Settings
+@inherits UserBoxComponent
+@inject RenoirSettings Settings
+
+<Dropdown Class="app-userbox">
+    <DropdownToggleButton Color="ButtonColor.Dark">
+        <div class="fw-bold">@CurrentUser</div>
+        <div class="opacity-50 text-xs">@CurrentUser.Role</div>
+    </DropdownToggleButton>
+
+    <DropdownMenu Class="app-userbox p-0 m-0">
+        <DropdownHeader>
+            <div class="app-userbox-header">@Settings.Project.Version</div>
+        </DropdownHeader>
+        <DropdownItem To="/logout" Type="ButtonType.Link">
+            <i class="fa fa-fw fa-sign-out me-1 opacity-50"></i>
+            <span>@AppMenu.Logout</span>
+        </DropdownItem>
+    </DropdownMenu>
+</Dropdown>

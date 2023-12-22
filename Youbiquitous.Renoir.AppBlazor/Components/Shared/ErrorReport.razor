@@ -1,0 +1,20 @@
+﻿@inherits ErrorReportComponent
+
+<div class="d-flex alert alert-danger align-items-center">
+    <div class="p-3">
+        <span class="fa-2x @Icon"></span>
+    </div>
+    <div class="flex-grow-1">
+        <div class="fw-bold">@GetTitle()</div>
+        @if (ShowInternals)
+        {
+            <textarea class="form-control bg-transparent" readonly rows="5">@GetText()</textarea>
+        }
+        else
+        {
+            <div>@GetText()</div>
+        }
+    </div>
+</div>
+
+
