@@ -117,23 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Additional" xml:space="preserve">
-    <value>Additional page</value>
-  </data>
   <data name="Approve" xml:space="preserve">
     <value>Approve</value>
-  </data>
-  <data name="BeginJourney" xml:space="preserve">
-    <value>Begin your journey with us</value>
-  </data>
-  <data name="Clicker" xml:space="preserve">
-    <value>Clicker</value>
-  </data>
-  <data name="DoSomething" xml:space="preserve">
-    <value>Do something</value>
-  </data>
-  <data name="FetchData" xml:space="preserve">
-    <value>Fetch</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -144,23 +129,23 @@
   <data name="Logout" xml:space="preserve">
     <value>Sign Out</value>
   </data>
-  <data name="MyDays" xml:space="preserve">
-    <value>My days</value>
+  <data name="MyProducts" xml:space="preserve">
+    <value>My products</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
     <value>My profile</value>
+  </data>
+  <data name="MyWork" xml:space="preserve">
+    <value>My work</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Resume</value>
   </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Save changes</value>
-  </data>
-  <data name="Signup" xml:space="preserve">
-    <value>Sign up</value>
-  </data>
-  <data name="Throw" xml:space="preserve">
-    <value>Throw</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Persist
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.Infrastructure", "Youbiquitous.Renoir.Infrastructure\Youbiquitous.Renoir.Infrastructure.csproj", "{2AA93810-E8DC-4B32-9023-C55A5F70B422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youbiquitous.Renoir.AppBlazor", "Youbiquitous.Renoir.AppBlazor\Youbiquitous.Renoir.AppBlazor.csproj", "{BF691527-0883-4988-B091-1436DC65E183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Youbiquitous.Renoir.AppBlazor", "Youbiquitous.Renoir.AppBlazor\Youbiquitous.Renoir.AppBlazor.csproj", "{BF691527-0883-4988-B091-1436DC65E183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

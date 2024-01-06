@@ -10,7 +10,6 @@
 //
 
 
-using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Renoir.DomainModel.Management;
 using Youbiquitous.Renoir.Resources;
 
@@ -22,44 +21,68 @@ namespace Youbiquitous.Renoir.AppBlazor.Common.UI;
 public static class MenuFactory
 {
     /// <summary>
-    /// Returns the default menu
+    /// Returns the menu for a given role
+    /// </summary>
+    /// <param name="role"></param>
+    /// <returns></returns>
+    public static IList<NavMenuItem> ForRole(string role = null)
+    {
+        return role switch
+        {
+            Roles.Contributor => ContributorMenu(),
+            Roles.Owner => OwnerMenu(),
+            Roles.System => SystemMenu(),
+            _ => AnonymousMenu()
+        };
+    }
+
+    /// <summary>
+    /// Reserved to anonymous users
     /// </summary>
     /// <returns></returns>
-    public static IList<NavMenuItem> Default(string role = null)
+    private static IList<NavMenuItem> AnonymousMenu()
     {
-        if (role.IsNullOrWhitespace())
+        return new List<NavMenuItem>
         {
-            return new List<NavMenuItem>
-            {
-                new NavMenuItem(AppMenu.Login, "/login", "fa fa-sign-in") 
-            };
-        }
-            
-
-        var items = new List<NavMenuItem>
-        {
-            new NavMenuItem(AppMenu.Home, "/", "fa fa-home").Section("APP"),
+            new(AppMenu.Login, "/login", "fa fa-sign-in")
         };
+    }
 
-        if (role == Roles.Contributor)
+    /// <summary>
+    /// Reserved to users with the role of Contributor 
+    /// </summary>
+    /// <returns></returns>
+    private static IList<NavMenuItem> ContributorMenu()
+    {
+        return new List<NavMenuItem>
         {
-            items.Add(new NavMenuItem("My days", "/days", "fa fa-calendar"));
-        }
-        else if (role == Roles.System)
-        {
-            items.Add(new NavMenuItem("Users", "/users", "fa fa-cloud-download"));
-        }
-
-        var group2 = new List<NavMenuItem>
-        {
-            NavMenuItem.Sep(),
-            new NavMenuItem(AppMenu.Welcome, "/welcome", null).Section("PUBLIC LINKS"),
-            new(AppMenu.Clicker, "/clicker", "fa fa-plus"),
-            new(AppMenu.FetchData, "/fetchdata", "fa fa-cloud-download"),
-            new(AppMenu.Additional, "/misc", "fa fa-bomb")
+            new(AppMenu.MyWork, "/mywork", "fa fa-sign-in")
         };
-        items.AddRange(group2);
+    }
 
-        return items;
+    /// <summary>
+    /// Reserved to users with the role of Owner 
+    /// </summary>
+    /// <returns></returns>
+    private static IList<NavMenuItem> OwnerMenu()
+    {
+        return new List<NavMenuItem>
+        {
+            new(AppMenu.MyProducts, "/myproducts", "fa fa-sign-in")
+        };
+    }
+
+    
+    /// <summary>
+    /// Reserved to users with the role of System 
+    /// </summary>
+    /// <returns></returns>
+    private static IList<NavMenuItem> SystemMenu()
+    {
+        return new List<NavMenuItem>
+        {
+            new(AppMenu.Products, "/products", "fa fa-sign-in"),
+            new(AppMenu.Users, "/users", "fa fa-user")
+        };
     }
 }

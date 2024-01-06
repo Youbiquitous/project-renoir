@@ -61,56 +61,11 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Additional page.
-        /// </summary>
-        public static string Additional {
-            get {
-                return ResourceManager.GetString("Additional", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
         public static string Approve {
             get {
                 return ResourceManager.GetString("Approve", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Begin your journey with us.
-        /// </summary>
-        public static string BeginJourney {
-            get {
-                return ResourceManager.GetString("BeginJourney", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clicker.
-        /// </summary>
-        public static string Clicker {
-            get {
-                return ResourceManager.GetString("Clicker", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do something.
-        /// </summary>
-        public static string DoSomething {
-            get {
-                return ResourceManager.GetString("DoSomething", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fetch.
-        /// </summary>
-        public static string FetchData {
-            get {
-                return ResourceManager.GetString("FetchData", resourceCulture);
             }
         }
         
@@ -142,11 +97,11 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My days.
+        ///   Looks up a localized string similar to My products.
         /// </summary>
-        public static string MyDays {
+        public static string MyProducts {
             get {
-                return ResourceManager.GetString("MyDays", resourceCulture);
+                return ResourceManager.GetString("MyProducts", resourceCulture);
             }
         }
         
@@ -156,6 +111,24 @@ namespace Youbiquitous.Renoir.Resources {
         public static string MyProfile {
             get {
                 return ResourceManager.GetString("MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My work.
+        /// </summary>
+        public static string MyWork {
+            get {
+                return ResourceManager.GetString("MyWork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products.
+        /// </summary>
+        public static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
             }
         }
         
@@ -174,24 +147,6 @@ namespace Youbiquitous.Renoir.Resources {
         public static string SaveChanges {
             get {
                 return ResourceManager.GetString("SaveChanges", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sign up.
-        /// </summary>
-        public static string Signup {
-            get {
-                return ResourceManager.GetString("Signup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Throw.
-        /// </summary>
-        public static string Throw {
-            get {
-                return ResourceManager.GetString("Throw", resourceCulture);
             }
         }
         
