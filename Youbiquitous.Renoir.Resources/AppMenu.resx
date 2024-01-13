@@ -138,6 +138,9 @@
   <data name="MyWork" xml:space="preserve">
     <value>My work</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Products</value>
   </data>

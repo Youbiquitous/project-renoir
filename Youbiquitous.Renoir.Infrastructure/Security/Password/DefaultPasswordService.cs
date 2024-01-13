@@ -109,7 +109,7 @@ public sealed class DefaultPasswordService : IPasswordService
     /// </summary>
     /// <param name="minimumLength"></param>
     /// <returns></returns>
-    public string Generate(int minimumLength)
+    public static string Generate(int minimumLength)
     {
         var pswd = "";
         var possible = "ABCDEFGHI3456JKLMNO$PQRSTUVWXYZabcdefghijklmnopqrstu£vwxyz12789";

@@ -12,7 +12,7 @@
 
 using Youbiquitous.Renoir.AppBlazor.Components;
 using Youbiquitous.Renoir.Application.Settings;
-using Youbiquitous.Renoir.Persistence;
+using Youbiquitous.Renoir.Application.System;
 
 namespace Youbiquitous.Renoir.AppBlazor.Common.Extensions.Startup;
 
@@ -112,12 +112,14 @@ public static class WebApplicationExtensions
     /// <returns></returns>
     public static WebApplication SetupControllerEndpoints(this WebApplication app)
     {
+#pragma warning disable ASP0014 // Suggest using top level route registrations
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=home}/{action=index}/{id?}");
         });
+#pragma warning restore ASP0014 // Suggest using top level route registrations
 
         return app;
     }
@@ -134,11 +136,7 @@ public static class WebApplicationExtensions
         if (settings == null)
             return app;
 
-        RenoirDatabase.ConnectionString = settings.Secrets.RenoirDatabase.Get();
-        var db = new RenoirDatabase();
-        db.Database.EnsureCreated();
-        RenoirDatabase.Seed(db);
-        
+        SystemService.ConfigureDatabases(settings);
         return app;
     }
 }

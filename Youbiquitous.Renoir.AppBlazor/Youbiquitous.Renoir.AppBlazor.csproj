@@ -11,15 +11,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Components\Pages\renoir-grid.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="bundleconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazor.Bootstrap" Version="1.10.4" />
+    <PackageReference Include="Blazor.Bootstrap" Version="1.10.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Youbiquitous.Renoir.Application\Youbiquitous.Renoir.Application.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj" />
     <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" />
   </ItemGroup>
 

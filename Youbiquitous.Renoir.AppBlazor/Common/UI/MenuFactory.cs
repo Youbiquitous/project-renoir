@@ -56,7 +56,7 @@ public static class MenuFactory
     {
         return new List<NavMenuItem>
         {
-            new(AppMenu.MyWork, "/mywork", "fa fa-sign-in")
+            new(AppMenu.MyWork, "/mywork", "fa fa-briefcase")
         };
     }
 
@@ -68,7 +68,7 @@ public static class MenuFactory
     {
         return new List<NavMenuItem>
         {
-            new(AppMenu.MyProducts, "/myproducts", "fa fa-sign-in")
+            new(AppMenu.MyProducts, "/myproducts", "fa fa-hand-holding-box")
         };
     }
 
@@ -81,7 +81,7 @@ public static class MenuFactory
     {
         return new List<NavMenuItem>
         {
-            new(AppMenu.Products, "/products", "fa fa-sign-in"),
+            new(AppMenu.Products, "/products", "fa fa-hand-holding-box"),
             new(AppMenu.Users, "/users", "fa fa-user")
         };
     }

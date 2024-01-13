@@ -4,13 +4,13 @@
 // Source code
 //
 // Dino Esposito 
-// 2023
+// 2024
 // 
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Youbiquitous.Renoir.Application;
 using Youbiquitous.Renoir.DomainModel.Management;
-using Youbiquitous.Renoir.Persistence.Repositories;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Shared;
 
@@ -41,6 +41,6 @@ public class UserBoxComponent : ComponentBase
 
     protected override void OnInitialized()
     {
-        CurrentUser = UserRepository.FindById(GetState().User.Identity?.Name);
+        CurrentUser = AccountService.Find(GetState().User.Identity?.Name);
     }
 }

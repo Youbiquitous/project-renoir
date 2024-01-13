@@ -47,6 +47,6 @@ namespace Youbiquitous.Renoir.Infrastructure.Security
         /// </summary>
         /// <param name="minimumLength"></param>
         /// <returns></returns>
-        string Generate(int minimumLength);
+        //string Generate(int minimumLength);
     }
 }

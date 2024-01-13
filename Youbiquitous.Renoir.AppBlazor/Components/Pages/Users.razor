@@ -1,0 +1,58 @@
+﻿@page "/users"
+@rendermode InteractiveServer
+@using Youbiquitous.Renoir.Resources
+@inherits UsersPage
+
+<link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
+
+<PageTitle>@AppMenu.Users</PageTitle>
+
+<button class="btn btn-primary" @onclick="ShowNewUserModal">
+    <i class="fa fa-plus opacity-50 me-2"></i>
+    <span>@AppMenu.New</span>
+</button>
+
+<table class="table table-sm mt-4">
+    <thead>
+    <tr>
+        <th class="col-index">Id</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var a in Accounts)
+    {
+        <tr>
+            <td class="col-index">@a.UserId</td>
+            <td>@a.DisplayName</td>
+            <td>@a.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+<Modal @ref="NewUserModal" Title="New User" IsVerticallyCentered="true">
+    <BodyTemplate>
+        <EditForm Model="@NewUser" OnSubmit="@CreateNewUser" FormName="NewUser">
+            <div class="">
+                <label>Display Name</label>
+                <InputText class="form-control" @bind-Value="NewUser.DisplayName" />
+            </div>
+            <div class="mt-2">
+                <label>Email</label>
+                <InputText class="form-control" @bind-Value="NewUser.Email" />
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-primary px-5" type="submit">
+                    Save
+                </button>
+            </div>
+        </EditForm>
+        
+    </BodyTemplate>
+     <FooterTemplate>
+         <div class="text-danger fw-bold">@NewUserStatusMessage</div>
+    </FooterTemplate>  
+</Modal>

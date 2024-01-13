@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Youbiquitous.Martlet.Core" Version="1.2.0" />
+    <PackageReference Include="Youbiquitous.Martlet.Core" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.DomainModel\Youbiquitous.Renoir.DomainModel.csproj" PrivateAssets="All" />
     <ProjectReference Include="..\Youbiquitous.Renoir.Persistence\Youbiquitous.Renoir.Persistence.csproj" />
-    <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" />
+    <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
