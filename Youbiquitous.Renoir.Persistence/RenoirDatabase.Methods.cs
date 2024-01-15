@@ -41,12 +41,12 @@ public partial class RenoirDatabase
         try
         {
             SaveChanges();
-            return CommandResponse.Ok().AddMessage(AppStrings.Msg_Done);
+            return CommandResponse.Ok().AddMessage(AppMessages.Msg_Done);
         }
         catch (Exception ex)
         {
             return CommandResponse.Ok()
-                .AddMessage(AppStrings.Err_OperationFailed)
+                .AddMessage(AppMessages.Err_OperationFailed)
                 .AddExtra(ex.Message);
         }
     }

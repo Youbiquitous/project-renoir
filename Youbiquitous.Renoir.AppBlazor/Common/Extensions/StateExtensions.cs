@@ -28,4 +28,9 @@ public static class StateExtensions
     {
         return state?.User.FindFirst(c => c.Type == ClaimTypes.Role)?.Value;
     }
+
+    public static string GetEmail(this AuthenticationState state)
+    {
+        return state?.User.FindFirst(c => c.Type == ClaimTypes.Name)?.Value;
+    }
 }

@@ -1,0 +1,78 @@
+﻿@using Youbiquitous.Renoir.DomainModel.Management
+
+<!-- List users -->
+<table class="table table-sm table-hover mt-4">
+    <thead>
+    <tr>
+        <th class="col-button"></th>
+        <th class="col-index">Id</th>
+        <th>Role</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody class="pointer-cursor">
+    @foreach (var a in Accounts)
+    {
+        <tr @onclick="() => Edit(a)">
+            <td>
+                @if (a.UserId == 1)
+                {
+                    <span></span>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-danger"
+                            @onclick="() => Delete(a)">
+                        <span class="fa fa-times"></span>
+                    </button>
+                }
+            </td>
+            <td class="col-index">@a.UserId</td>
+            <td class="col-role">@a.Role</td>
+            <td>@a.DisplayName</td>
+            <td>@a.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+@code
+{
+    /// <summary>
+    /// Current list of users
+    /// </summary>
+    [Parameter]
+    public IEnumerable<User> Accounts { get; set; }
+
+    [Parameter]
+    public EventCallback<User> UserDeleted { get; set; }
+
+    /// <summary>
+    /// Used to trigger the UserDeleted custom event
+    /// </summary>
+    /// <param name="a"></param>
+    private void Delete(User a)
+    {
+        if (!UserDeleted.HasDelegate)
+            return;
+
+        UserDeleted.InvokeAsync(a);
+    }
+
+    [Parameter]
+    public EventCallback<User> UserEdited { get; set; }
+
+    /// <summary>
+    /// Used to trigger the UserEdited custom event
+    /// </summary>
+    /// <param name="a"></param>
+    private void Edit(User a)
+    {
+        if (!UserDeleted.HasDelegate)
+            return;
+
+        UserEdited.InvokeAsync(a);
+    }
+}

@@ -51,7 +51,7 @@ public class ErrorReportComponent : ComponentBase
     {
         return Exception == null 
             ? Title 
-            : ShowInternals ? Exception.Message : (Title ?? AppStrings.Err_Generic);
+            : ShowInternals ? Exception.Message : (Title ?? AppMessages.Err_Generic);
     }
 
     /// <summary>

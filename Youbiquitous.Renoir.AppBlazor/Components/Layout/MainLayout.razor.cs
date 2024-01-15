@@ -22,18 +22,18 @@ public class MainLayoutPage : ViewModelBase
 {
     private AuthenticationState _state;
 
-    [CascadingParameter]
-    protected Task<AuthenticationState> AuthState { get; set; }
+    //[CascadingParameter]
+    //protected Task<AuthenticationState> AuthState { get; set; }
 
     /// <summary>
     /// Direct access to authentication state
     /// </summary>
     /// <returns></returns>
-    public AuthenticationState GetState()
-    {
-        if (_state == null)
-            _state = AuthState?.Result;
+    //public AuthenticationState GetState()
+    //{
+    //    if (_state == null)
+    //        _state = AuthState?.Result;
         
-        return _state;
-    }
+    //    return _state;
+    //}
 }

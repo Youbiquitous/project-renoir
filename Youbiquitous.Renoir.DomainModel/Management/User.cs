@@ -33,11 +33,26 @@ public partial class User : BaseEntity
     /// <param name="email"></param>
     /// <param name="hashedPassword"></param>
     /// <param name="role"></param>
-    public User(string email, string hashedPassword, string role = Roles.Viewer)
+    public User(string email, string hashedPassword, string role = null)
     {
         Email = email;
-        Password = hashedPassword;
         Role = role;
+        Password = hashedPassword;
+    }
+
+    /// <summary>
+    /// Helper ctor
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="email"></param>
+    /// <param name="role"></param>
+    /// <param name="name"></param>
+    public User(long id, string email, string role = Roles.Viewer, string name = null)
+    {
+        UserId = id;
+        Email = email;
+        Role = role;
+        DisplayName = name.IsNullOrWhitespace() ? email : name;
     }
 
     /// <summary>

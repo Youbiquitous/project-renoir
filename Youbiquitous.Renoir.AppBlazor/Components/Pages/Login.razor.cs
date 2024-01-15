@@ -66,7 +66,7 @@ public class LoginPage : ViewModelBase
         // Invalid form status 
         if (!LoginRequest.IsValid())
         {
-            ErrorMessage = AppStrings.Err_IncompleteCredentials;
+            ErrorMessage = AppMessages.Err_IncompleteCredentials;
             return;
         }
 

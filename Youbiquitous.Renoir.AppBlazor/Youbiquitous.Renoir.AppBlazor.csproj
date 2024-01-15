@@ -29,4 +29,8 @@
     <ProjectReference Include="..\Youbiquitous.Renoir.Resources\Youbiquitous.Renoir.Resources.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\View\" />
+  </ItemGroup>
+
 </Project>

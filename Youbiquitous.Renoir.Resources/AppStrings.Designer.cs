@@ -61,114 +61,6 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Given email address already exists in the system.
-        /// </summary>
-        public static string Err_EmailAlreadyExists {
-            get {
-                return ResourceManager.GetString("Err_EmailAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An error occurred.
-        /// </summary>
-        public static string Err_Generic {
-            get {
-                return ResourceManager.GetString("Err_Generic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Indicate both email and password.
-        /// </summary>
-        public static string Err_IncompleteCredentials {
-            get {
-                return ResourceManager.GetString("Err_IncompleteCredentials", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid credentials.
-        /// </summary>
-        public static string Err_InvalidCredentials {
-            get {
-                return ResourceManager.GetString("Err_InvalidCredentials", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unable to finalize credentials validation.
-        /// </summary>
-        public static string Err_InvalidHttpContext {
-            get {
-                return ResourceManager.GetString("Err_InvalidHttpContext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid input.
-        /// </summary>
-        public static string Err_InvalidInput {
-            get {
-                return ResourceManager.GetString("Err_InvalidInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maximum number exceeded.
-        /// </summary>
-        public static string Err_MaxExceeded {
-            get {
-                return ResourceManager.GetString("Err_MaxExceeded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Could not complete the operation.
-        /// </summary>
-        public static string Err_OperationFailed {
-            get {
-                return ResourceManager.GetString("Err_OperationFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Exception thrown just for test purposes.
-        /// </summary>
-        public static string Err_TestException {
-            get {
-                return ResourceManager.GetString("Err_TestException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Operation not authorized.
-        /// </summary>
-        public static string Err_UnauthorizedOperation {
-            get {
-                return ResourceManager.GetString("Err_UnauthorizedOperation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Weird, but no user seems to match provided identity.
-        /// </summary>
-        public static string Err_UserNotFound {
-            get {
-                return ResourceManager.GetString("Err_UserNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Counter.
-        /// </summary>
-        public static string Label_Counter {
-            get {
-                return ResourceManager.GetString("Label_Counter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Display name.
         /// </summary>
         public static string Label_DisplayName {
@@ -178,11 +70,29 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Label_Email {
+            get {
+                return ResourceManager.GetString("Label_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join the community.
         /// </summary>
         public static string Label_JoinCommunity {
             get {
                 return ResourceManager.GetString("Label_JoinCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Label_Name {
+            get {
+                return ResourceManager.GetString("Label_Name", resourceCulture);
             }
         }
         
@@ -205,6 +115,24 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New User.
+        /// </summary>
+        public static string Label_NewUser {
+            get {
+                return ResourceManager.GetString("Label_NewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No role assigned.
+        /// </summary>
+        public static string Label_NoRole {
+            get {
+                return ResourceManager.GetString("Label_NoRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current password.
         /// </summary>
         public static string Label_OldPassword {
@@ -219,6 +147,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_Password {
             get {
                 return ResourceManager.GetString("Label_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string Label_Role {
+            get {
+                return ResourceManager.GetString("Label_Role", resourceCulture);
             }
         }
         
@@ -250,6 +187,24 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit [{0}].
+        /// </summary>
+        public static string Label_TitleEditUser {
+            get {
+                return ResourceManager.GetString("Label_TitleEditUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new user.
+        /// </summary>
+        public static string Label_TitleNewUser {
+            get {
+                return ResourceManager.GetString("Label_TitleNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Label_UserName {
@@ -264,15 +219,6 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_Users {
             get {
                 return ResourceManager.GetString("Label_Users", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Successfully done!.
-        /// </summary>
-        public static string Msg_Done {
-            get {
-                return ResourceManager.GetString("Msg_Done", resourceCulture);
             }
         }
         

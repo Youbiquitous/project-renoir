@@ -1,0 +1,112 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel.Management
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Renoir.AppBlazor.Models.Input
+
+<!-- Popup Editor -->
+<Modal @ref="Window" Title="@Title" IsVerticallyCentered="true">
+    <BodyTemplate>
+        <span>@RelatedUser.Email</span>
+        <EditForm Model="@RelatedUser" OnSubmit="@Submitted">
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Role</label>
+                <select class="form-select"
+                        @bind="RelatedUser.Role">
+                    <option value="">@AppStrings.Label_NoRole</option>
+                    @foreach (var role in Roles.All())
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Email</label>
+                <InputText class="form-control" 
+                           autofocus
+                           @bind-Value="RelatedUser.Email"/>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Password</label>
+                <InputText class="form-control" 
+                           password
+                           @bind-Value="RelatedUser.Password"/>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_DisplayName</label>
+                <InputText class="form-control"
+                           @bind-Value="RelatedUser.DisplayName"/>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-primary px-5" type="submit">
+                    @AppMenu.SaveChanges
+                </button>
+            </div>
+        </EditForm>
+
+    </BodyTemplate>
+    <FooterTemplate>
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClass="text-danger fw-bold" />
+    </FooterTemplate>  
+</Modal>
+
+            
+@code{
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public UserRef RelatedUser { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; }
+
+    [Parameter]
+    public EventCallback<UserRef> OnFormPosted { get; set; }
+
+    /// <summary>
+    /// Component references
+    /// </summary>
+    public Modal Window { get; set; }
+    public StatusMessage Statusbar { get; set; }
+
+    /// <summary>
+    /// Internal trigger of the form-post event
+    /// </summary>
+    private async Task Submitted()
+    {
+        // Validate
+        var valid = RelatedUser.Validate();
+        if (!valid.Success)
+        {
+            await Statusbar.ShowAsync(valid.Message);
+            return;
+        }
+
+        if (!OnFormPosted.HasDelegate)
+            return;
+
+        await OnFormPosted.InvokeAsync(RelatedUser);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="user"></param>
+    public void SetUserData(UserRef user)
+    {
+        RelatedUser = user ?? new UserRef();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="title"></param>
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
+}

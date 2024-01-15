@@ -11,7 +11,7 @@
 using Youbiquitous.Renoir.AppBlazor.Models;
 using Youbiquitous.Renoir.DomainModel;
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.ProductArea;
 
 public class ProductsPage : ViewModelBase
 {

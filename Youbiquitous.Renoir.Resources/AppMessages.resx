@@ -117,80 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label_DisplayName" xml:space="preserve">
-    <value>Display name</value>
+  <data name="Err_EmailAlreadyExists" xml:space="preserve">
+    <value>Given email address already exists in the system</value>
   </data>
-  <data name="Label_Email" xml:space="preserve">
-    <value>Email</value>
+  <data name="Err_Generic" xml:space="preserve">
+    <value>An error occurred</value>
   </data>
-  <data name="Label_JoinCommunity" xml:space="preserve">
-    <value>Join the community</value>
+  <data name="Err_IncompleteCredentials" xml:space="preserve">
+    <value>Indicate both email and password</value>
   </data>
-  <data name="Label_Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="Err_InvalidCredentials" xml:space="preserve">
+    <value>Invalid credentials</value>
   </data>
-  <data name="Label_NewPassword" xml:space="preserve">
-    <value>New password</value>
+  <data name="Err_InvalidEmail" xml:space="preserve">
+    <value>Invalid email address</value>
   </data>
-  <data name="Label_NewPasswordRepeat" xml:space="preserve">
-    <value>New password (Repeat)</value>
+  <data name="Err_InvalidHttpContext" xml:space="preserve">
+    <value>Unable to finalize credentials validation</value>
   </data>
-  <data name="Label_NewUser" xml:space="preserve">
-    <value>New User</value>
+  <data name="Err_InvalidInput" xml:space="preserve">
+    <value>Invalid input</value>
   </data>
-  <data name="Label_NoRole" xml:space="preserve">
-    <value>No role assigned</value>
+  <data name="Err_MaxExceeded" xml:space="preserve">
+    <value>Maximum number exceeded</value>
   </data>
-  <data name="Label_OldPassword" xml:space="preserve">
-    <value>Current password</value>
+  <data name="Err_MissingName" xml:space="preserve">
+    <value>MIssing user name</value>
   </data>
-  <data name="Label_Password" xml:space="preserve">
-    <value>Password</value>
+  <data name="Err_MissingPassword" xml:space="preserve">
+    <value>Missing password</value>
   </data>
-  <data name="Label_Role" xml:space="preserve">
-    <value>Role</value>
+  <data name="Err_MissingRole" xml:space="preserve">
+    <value>Missing user role</value>
   </data>
-  <data name="Label_SamplePage" xml:space="preserve">
-    <value>Sample Page</value>
+  <data name="Err_OperationFailed" xml:space="preserve">
+    <value>Could not complete the operation</value>
   </data>
-  <data name="Label_Since" xml:space="preserve">
-    <value>Since</value>
+  <data name="Err_TestException" xml:space="preserve">
+    <value>Exception thrown just for test purposes</value>
   </data>
-  <data name="Label_StayConnected" xml:space="preserve">
-    <value>Stay connected</value>
+  <data name="Err_UnauthorizedOperation" xml:space="preserve">
+    <value>Operation not authorized</value>
   </data>
-  <data name="Label_TitleEditUser" xml:space="preserve">
-    <value>Edit [{0}]</value>
-    <comment>User name</comment>
+  <data name="Err_UserNotFound" xml:space="preserve">
+    <value>Weird, but no user seems to match provided identity</value>
   </data>
-  <data name="Label_TitleNewUser" xml:space="preserve">
-    <value>Add a new user</value>
-  </data>
-  <data name="Label_UserName" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="Label_Users" xml:space="preserve">
-    <value>Registered users</value>
-  </data>
-  <data name="Placeholder_DisplayName" xml:space="preserve">
-    <value>Public name</value>
-  </data>
-  <data name="Placeholder_NewPassword" xml:space="preserve">
-    <value>Password you want to use now</value>
-  </data>
-  <data name="Placeholder_OldPassword" xml:space="preserve">
-    <value>Password currently in use</value>
-  </data>
-  <data name="Placeholder_Password" xml:space="preserve">
-    <value>Type your password</value>
-  </data>
-  <data name="Placeholder_RepeatNewPassword" xml:space="preserve">
-    <value>Retype the new password</value>
-  </data>
-  <data name="Placeholder_UserName" xml:space="preserve">
-    <value>Email address or user name</value>
-  </data>
-  <data name="Text_NA" xml:space="preserve">
-    <value>N/A</value>
+  <data name="Msg_Done" xml:space="preserve">
+    <value>Successfully done!</value>
   </data>
 </root>

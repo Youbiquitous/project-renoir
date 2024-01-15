@@ -172,9 +172,16 @@ h1:focus {
     font-size: .65rem;
 }
 
+.pointer-cursor {
+    cursor: pointer;
+}
+
+input[password] {
+    -webkit-text-security: square;
+}
+
 /* *************************************** */
 /* MEDIA queries */
-
 @media (max-width: 641px) {
     .app-sidebar {
         width: var(--app-sidebar-width-min);

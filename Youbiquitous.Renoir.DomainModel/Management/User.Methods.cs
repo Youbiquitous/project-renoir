@@ -38,6 +38,16 @@ public partial class User
     }
 
     /// <summary>
+    /// Mark the record as initialized
+    /// </summary>
+    /// <param name="author"></param>
+    public override void Init(string author)
+    {
+        SignedUp = DateTime.UtcNow;
+        base.Init(author);
+    }
+
+    /// <summary>
     /// Official display method
     /// </summary>
     /// <returns></returns>

@@ -18,7 +18,7 @@ namespace Youbiquitous.Renoir.Persistence.Repositories;
 /// <summary>
 /// Repository for User entity
 /// </summary>
-public static partial class UserRepository
+public partial class UserRepository
 {
     /// <summary>
     /// Retrieves the (single) user matching the email provided

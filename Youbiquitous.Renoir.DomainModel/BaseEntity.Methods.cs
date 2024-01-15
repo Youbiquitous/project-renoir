@@ -20,9 +20,10 @@ public partial class BaseEntity
     /// Set the created timestamp
     /// </summary>
     /// <param name="author"></param>
-    public void Init(string author)
+    public virtual void Init(string author)
     {
         Created.Mark(author);
+        LastUpdated.Mark(author);
     }
 
     /// <summary>

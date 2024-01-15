@@ -13,7 +13,7 @@
     <div class="app-page-container">
         <div class="app-sidebar">
             <NavMenu Header="@Settings.Project.Name"
-                     Items="@MenuFactory.ForRole(GetState().GetRole())" />
+                     Items="@MenuFactory.ForRole(Logged.GetRole())" />
 
             <CopyrightNote 
                 FirstLine="@Settings.Project.Copyright"

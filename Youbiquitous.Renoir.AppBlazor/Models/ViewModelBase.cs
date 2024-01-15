@@ -10,6 +10,7 @@
 //
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Youbiquitous.Renoir.AppBlazor.Common.Exceptions;
 using Youbiquitous.Renoir.Application.Settings;
 
@@ -27,17 +28,49 @@ public class ViewModelBase : LayoutComponentBase
     public RenoirSettings Settings { get; set; }
 
     /// <summary>
+    /// Brings in authentication details (set up in OnInitialized)
+    /// </summary>
+    [CascadingParameter]
+    protected Task<AuthenticationState> AuthState { get; private set; }
+
+    /// <summary>
     /// Error object in case of exceptions
     /// </summary>
     private AppErrorBoundary ErrorBoundary;
+
+    
+    /// <summary>
+    /// Exposes authentication details
+    /// </summary>
+    public AuthenticationState Logged { get; private set; }
+
+    /// <summary>
+    /// Initialization steps
+    /// </summary>
+    protected override void OnInitialized()
+    {
+        Logged = AuthState.Result;
+    }
 
     /// <summary>
     /// Page title
     /// </summary>
     public string Title { get; set; }
 
+    /// <summary>
+    /// Attempt to recover from exceptions
+    /// </summary>
     public void Recover()
     {
         ErrorBoundary?.Recover();
+    }
+
+    /// <summary>
+    /// Trigger re-rendering (with new data)
+    /// </summary>
+    protected virtual void Refresh()
+    {
+        OnInitialized();
+        StateHasChanged();
     }
 }

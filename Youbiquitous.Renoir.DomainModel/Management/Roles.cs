@@ -12,14 +12,14 @@
 namespace Youbiquitous.Renoir.DomainModel.Management;
 
 /// <summary>
-/// User entity (properties)
+/// Roles wrapper class 
 /// </summary>
-public class Roles
+public static class Roles
 {
-    public const string System = "System";
-    public const string Owner = "Owner";
     public const string Contributor = "Contributor";     
     public const string Viewer = "Viewer";     
+    public const string Owner = "Owner";
+    public const string System = "System";
 
     /// <summary>
     /// All roles supported by the app
@@ -27,6 +27,6 @@ public class Roles
     /// <returns></returns>
     public static IList<string> All()
     {
-        return new List<string> { System, Owner, Contributor, Viewer };
+        return new List<string> { Contributor, Viewer, Owner, System };
     } 
 }

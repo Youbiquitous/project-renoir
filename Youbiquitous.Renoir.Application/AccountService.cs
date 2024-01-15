@@ -45,20 +45,36 @@ public class AccountService : ApplicationServiceBase
     }
 
     /// <summary>
-    /// Create a new account
+    /// Edit/create a new account
     /// </summary>
+    /// <param name="id"></param>
     /// <param name="email"></param>
     /// <param name="role"></param>
     /// <param name="name"></param>
+    /// <param name="password"></param>
+    /// <param name="author"></param>
     /// <returns></returns>
-    public static CommandResponse CreateNew(string email, string role, string name)
+    public static CommandResponse SaveUser(long id, string name, string email, string role, string password, string author)
     {
-        var password = DefaultPasswordService.Generate(8);
-        var response = UserRepository.CreateNew(email, password, role, name);
+        var user = new User(id, email, role, name)
+        {
+            Password = password
+        };
+        var response = UserRepository.Upsert(user, author);
 
         // Send email with auto-generated password
         // ...
 
         return response;
+    }
+
+    /// <summary>
+    /// Delete an existing account
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    public static CommandResponse Delete(string email)
+    {
+        return UserRepository.Delete(email); 
     }
 }

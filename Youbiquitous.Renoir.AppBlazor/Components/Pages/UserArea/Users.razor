@@ -1,0 +1,24 @@
+﻿@page "/users"
+@rendermode InteractiveServer
+@using Youbiquitous.Renoir.Resources
+@inherits UsersPage
+
+<link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
+
+<PageTitle>@AppMenu.Users</PageTitle>
+
+<button class="btn btn-primary" @onclick="NewUserEditor">
+    <i class="fa fa-plus opacity-50 me-2"></i>
+    <span>@AppMenu.New</span>
+</button>
+
+<!-- List users -->
+<UsersTable @ref="ListOfUsers" 
+            Accounts="Accounts"
+            UserDeleted="DeleteExistingUser"
+            UserEdited="EditExistingUser" />
+
+<!-- Popup Editor -->
+<UserEditorPopup @ref="UserEditor" 
+                 OnFormPosted="SaveNewOrExistingUser" />
+

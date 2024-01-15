@@ -12,6 +12,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppMenu.resx</DependentUpon>
     </Compile>
+    <Compile Update="AppMessages.Designer.cs">
+      <DependentUpon>AppMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="AppStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -23,6 +28,10 @@
     <EmbeddedResource Update="AppMenu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppMenu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="AppMessages.resx">
+      <LastGenOutput>AppMessages.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="AppStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
