@@ -7,10 +7,17 @@
 
 <PageTitle>@AppMenu.Users</PageTitle>
 
-<button class="btn btn-primary" @onclick="NewUserEditor">
-    <i class="fa fa-plus opacity-50 me-2"></i>
-    <span>@AppMenu.New</span>
-</button>
+<div class="d-flex justify-content-between">
+    <div>
+        <button class="btn btn-primary" @onclick="NewUserEditor">
+            <i class="fa fa-plus opacity-50 me-2"></i>
+            <span>@AppMenu.New</span>
+        </button>
+    </div>
+    <div class="fs-4 me-3">
+        @AppMenu.Users
+    </div>
+</div>
 
 <!-- List users -->
 <UsersTable @ref="ListOfUsers" 

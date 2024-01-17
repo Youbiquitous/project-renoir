@@ -138,6 +138,9 @@
   <data name="Err_InvalidInput" xml:space="preserve">
     <value>Invalid input</value>
   </data>
+  <data name="Err_InvalidProductNameVersion" xml:space="preserve">
+    <value>Name and version must both be specified</value>
+  </data>
   <data name="Err_MaxExceeded" xml:space="preserve">
     <value>Maximum number exceeded</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Err_OperationFailed" xml:space="preserve">
     <value>Could not complete the operation</value>
+  </data>
+  <data name="Err_ProductAlreadyExists" xml:space="preserve">
+    <value>A product with same name and version already exists</value>
   </data>
   <data name="Err_TestException" xml:space="preserve">
     <value>Exception thrown just for test purposes</value>

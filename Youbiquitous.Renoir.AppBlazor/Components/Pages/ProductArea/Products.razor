@@ -3,7 +3,30 @@
 @using Youbiquitous.Renoir.Resources
 @inherits ProductsPage
 
+<link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
+
 <PageTitle>@AppMenu.Products</PageTitle>
 
-<h1>PRODUCTS</h1>
+
+<div class="d-flex justify-content-between">
+    <div>
+        <button class="btn btn-primary" @onclick="NewProductEditor">
+            <i class="fa fa-plus opacity-50 me-2"></i>
+            <span>@AppMenu.New</span>
+        </button>
+    </div>
+    <div class="fs-4 me-3">
+        @AppMenu.Products
+    </div>
+</div>
+
+
+<!-- List users -->
+<ProductsTable @ref="ListOfProducts" 
+               Products="Products"
+               ProductEdited="EditExistingProduct" />
+
+<!-- Popup Editor -->
+<ProductEditorPopup @ref="ProductEditor" 
+                    OnFormPosted="SaveNewOrExistingProduct" />
 

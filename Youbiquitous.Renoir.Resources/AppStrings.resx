@@ -147,6 +147,9 @@
   <data name="Label_OldPassword" xml:space="preserve">
     <value>Current password</value>
   </data>
+  <data name="Label_Owners" xml:space="preserve">
+    <value>Owner(s)</value>
+  </data>
   <data name="Label_Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -166,6 +169,9 @@
     <value>Edit [{0}]</value>
     <comment>User name</comment>
   </data>
+  <data name="Label_TitleNewProduct" xml:space="preserve">
+    <value>Add a new product</value>
+  </data>
   <data name="Label_TitleNewUser" xml:space="preserve">
     <value>Add a new user</value>
   </data>
@@ -174,6 +180,9 @@
   </data>
   <data name="Label_Users" xml:space="preserve">
     <value>Registered users</value>
+  </data>
+  <data name="Label_Version" xml:space="preserve">
+    <value>Version</value>
   </data>
   <data name="Placeholder_DisplayName" xml:space="preserve">
     <value>Public name</value>

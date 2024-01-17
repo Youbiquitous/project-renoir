@@ -7,7 +7,6 @@
 <!-- Popup Editor -->
 <Modal @ref="Window" Title="@Title" IsVerticallyCentered="true">
     <BodyTemplate>
-        <span>@RelatedUser.Email</span>
         <EditForm Model="@RelatedUser" OnSubmit="@Submitted">
             <div class="mt-2">
                 <label class="fw-bold">@AppStrings.Label_Role</label>

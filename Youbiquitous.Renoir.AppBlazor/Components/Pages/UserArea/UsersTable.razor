@@ -4,12 +4,12 @@
 <!-- List users -->
 <table class="table table-sm table-hover mt-4">
     <thead>
-    <tr>
+    <tr class="text-uppercase">
         <th class="col-button"></th>
-        <th class="col-index">Id</th>
-        <th>Role</th>
-        <th>Name</th>
-        <th>Email</th>
+        <th class="col-index"></th>
+        <th>@AppStrings.Label_Role</th>
+        <th>@AppStrings.Label_Name</th>
+        <th>@AppStrings.Label_Email</th>
     </tr>
     </thead>
     <tbody class="pointer-cursor">
@@ -87,7 +87,7 @@
     /// <param name="a"></param>
     private void Edit(User a)
     {
-        if (!UserDeleted.HasDelegate)
+        if (!UserEdited.HasDelegate)
             return;
 
         UserEdited.InvokeAsync(a);

@@ -1,0 +1,100 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Renoir.DomainModel
+
+
+<!-- Popup Editor -->
+<Modal @ref="Window" Title="@Title" IsVerticallyCentered="true">
+    <BodyTemplate>
+        <EditForm Model="@RelatedProduct" OnSubmit="@Submitted">
+
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Name</label>
+                <InputText class="form-control" 
+                           autofocus
+                           @bind-Value="RelatedProduct.Name"/>
+            </div>
+
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Version</label>
+                <InputText class="form-control"
+                           @bind-Value="RelatedProduct.Version"/>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-primary px-5" type="submit">
+                    @AppMenu.SaveChanges
+                </button>
+            </div>
+        </EditForm>
+
+    </BodyTemplate>
+    <FooterTemplate>
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClass="text-danger fw-bold" />
+    </FooterTemplate>  
+</Modal>
+
+            
+@code{
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public Product RelatedProduct { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; }
+
+    [Parameter]
+    public EventCallback<Product> OnFormPosted { get; set; }
+
+    public bool EditMode { get; set; }
+
+    /// <summary>
+    /// Component references
+    /// </summary>
+    public Modal Window { get; set; }
+    public StatusMessage Statusbar { get; set; }
+
+    /// <summary>
+    /// Internal trigger of the form-post event
+    /// </summary>
+    private async Task Submitted()
+    {
+        // Validate
+        var valid = RelatedProduct.IsValid();
+        if (!valid)
+        {
+            await Statusbar.ShowAsync(AppMessages.Err_InvalidProductNameVersion);
+            return;
+        }
+
+        // Go on
+        if (!OnFormPosted.HasDelegate)
+            return;
+
+        await OnFormPosted.InvokeAsync(RelatedProduct);
+    }
+
+    /// <summary>
+    /// Set data to show in the modal
+    /// </summary>
+    /// <param name="product"></param>
+    public void SetUserData(Product product)
+    {
+        RelatedProduct = product ?? new Product();
+    }
+
+    /// <summary>
+    /// Set modal title
+    /// </summary>
+    /// <param name="title"></param>
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
+}

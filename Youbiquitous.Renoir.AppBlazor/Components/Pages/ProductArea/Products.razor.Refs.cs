@@ -8,19 +8,20 @@
 // Author: Dino Esposito
 // 
 
+using Youbiquitous.Renoir.AppBlazor.Models;
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.UserArea;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.ProductArea;
 
-public partial class UsersPage 
+public partial class ProductsPage 
 {
     /// <summary>
     /// Reference to the User-Editor modal 
     /// </summary>
-    protected UserEditorPopup UserEditor;
+    protected ProductEditorPopup ProductEditor;
 
     /// <summary>
     /// Reference to the custom component with the table of users
     /// </summary>
-    protected UsersTable ListOfUsers;
+    protected ProductsTable ListOfProducts;
 }
 

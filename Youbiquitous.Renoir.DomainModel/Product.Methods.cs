@@ -35,7 +35,9 @@ public partial class Product
         if (other is null)
             return;
 
+        ProductId = other.ProductId;
         Name = other.Name;
+        Version = other.Version;
     }
 
     /// <summary>
@@ -53,6 +55,6 @@ public partial class Product
     /// <returns></returns>
     public override string ToString()
     {
-        return Name;
+        return $"{Name} {Version}";
     }
 }

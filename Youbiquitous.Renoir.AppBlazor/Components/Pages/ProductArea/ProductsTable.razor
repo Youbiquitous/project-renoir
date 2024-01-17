@@ -1,0 +1,57 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel
+
+<!-- List of products -->
+<table class="table table-sm table-hover mt-4">
+    <thead>
+    <tr>
+        <th class="col-index">Id</th>
+        <th>@AppStrings.Label_Name</th>
+        <th>@AppStrings.Label_Version</th>
+        <th>@AppStrings.Label_Owners</th>
+    </tr>
+    </thead>
+    <tbody class="pointer-cursor">
+    @foreach (var p in Products)
+    {
+        <tr @onclick="() => Edit(p)">
+            <td class="col-index">@p.ProductId</td>
+            <td>@p.Name</td>
+            <td>@p.Version</td>
+            <td>@AppStrings.Text_NA</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+<ConfirmDialog @ref="Confirmation" />
+
+@code
+{
+    /// <summary>
+    /// Current list of products
+    /// </summary>
+    [Parameter]
+    public IEnumerable<Product> Products { get; set; }
+
+    [Parameter]
+    public EventCallback<Product> ProductEdited { get; set; }
+
+    /// <summary>
+    /// Reference to the Confirm modal dialog
+    /// </summary>
+    private ConfirmDialog Confirmation { get; set; }
+
+    /// <summary>
+    /// Used to trigger the UserEdited custom event
+    /// </summary>
+    /// <param name="p"></param>
+    private void Edit(Product p)
+    {
+        if (!ProductEdited.HasDelegate)
+            return;
+
+        ProductEdited.InvokeAsync(p);
+    }
+}

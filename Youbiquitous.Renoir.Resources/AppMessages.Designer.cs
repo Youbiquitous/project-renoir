@@ -124,6 +124,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name and version must both be specified.
+        /// </summary>
+        public static string Err_InvalidProductNameVersion {
+            get {
+                return ResourceManager.GetString("Err_InvalidProductNameVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum number exceeded.
         /// </summary>
         public static string Err_MaxExceeded {
@@ -165,6 +174,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Err_OperationFailed {
             get {
                 return ResourceManager.GetString("Err_OperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A product with same name and version already exists.
+        /// </summary>
+        public static string Err_ProductAlreadyExists {
+            get {
+                return ResourceManager.GetString("Err_ProductAlreadyExists", resourceCulture);
             }
         }
         
