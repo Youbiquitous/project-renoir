@@ -8,10 +8,7 @@
 // Author: Dino Esposito
 // 
 
-using BlazorBootstrap;
-using Microsoft.AspNetCore.Components;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
-using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.AppBlazor.Models;
 using Youbiquitous.Renoir.AppBlazor.Models.Input;
 using Youbiquitous.Renoir.Application;
@@ -34,16 +31,9 @@ public partial class UsersPage : ViewModelBase
     {
         // Ensure ViewModelBase is initialized
         base.OnInitialized();
-
         Accounts = AccountService.Accounts();
-        //RelatedUser = new UserRef();
     }
     
-    /// <summary>
-    /// Message to go on the modal's status bar 
-    /// </summary>
-    //public string Message { get; set; }
-
     /// <summary>
     /// Display the User-Editor modal for a new user
     /// </summary>
@@ -52,6 +42,8 @@ public partial class UsersPage : ViewModelBase
     {
         UserEditor.SetUserData(new UserRef());
         UserEditor.SetTitle(AppStrings.Label_TitleNewUser);
+        UserEditor.EditMode = false;
+
         await UserEditor.Window.ShowAsync();
     }
 
@@ -70,14 +62,13 @@ public partial class UsersPage : ViewModelBase
             relatedUser.Role,
             relatedUser.Password,
             author);
-        if (response.Success)
-            Refresh();
-        else
+        if (!response.Success)
         {
             await UserEditor.Statusbar.ShowAsync(response.Message);
             return;
         }
 
+        Refresh();
         await UserEditor.Window.HideAsync();
     }
 
@@ -99,10 +90,12 @@ public partial class UsersPage : ViewModelBase
     /// <param name="user"></param>
     protected async Task EditExistingUser(User user)
     {
-        // Bring modal up
         var uref = new UserRef().Import(user);
         UserEditor.SetUserData(uref);
-        UserEditor.SetTitle($"Edit [{user.DisplayName}]");
+        var title = string.Format(AppStrings.Label_TitleEditUser, user.DisplayName);
+        UserEditor.SetTitle(title);
+        UserEditor.EditMode = true;
+
         await UserEditor.Window.ShowAsync();
     }
 }

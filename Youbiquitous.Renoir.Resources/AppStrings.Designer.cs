@@ -61,6 +61,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting.
+        /// </summary>
+        public static string Label_Deleting {
+            get {
+                return ResourceManager.GetString("Label_Deleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display name.
         /// </summary>
         public static string Label_DisplayName {

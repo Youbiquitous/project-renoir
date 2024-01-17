@@ -1,6 +1,7 @@
 ﻿@using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.DomainModel.Management
 @using Microsoft.AspNetCore.Components
+@using Youbiquitous.Martlet.Core.Extensions
 @using Youbiquitous.Renoir.AppBlazor.Models.Input
 
 <!-- Popup Editor -->
@@ -26,7 +27,10 @@
                            @bind-Value="RelatedUser.Email"/>
             </div>
             <div class="mt-2">
-                <label class="fw-bold">@AppStrings.Label_Password</label>
+                <div class="d-flex justify-content-between">
+                    <div class="fw-bold">@AppStrings.Label_Password</div>
+                    <div class="text-sm opacity-50">Type to change password</div>
+                </div>
                 <InputText class="form-control" 
                            password
                            @bind-Value="RelatedUser.Password"/>
@@ -67,6 +71,8 @@
     [Parameter]
     public EventCallback<UserRef> OnFormPosted { get; set; }
 
+    public bool EditMode { get; set; }
+
     /// <summary>
     /// Component references
     /// </summary>
@@ -86,6 +92,14 @@
             return;
         }
 
+        // Check password
+        if (!EditMode && RelatedUser.Password.IsNullOrWhitespace())
+        {
+            await Statusbar.ShowAsync(AppMessages.Err_MissingPassword);
+            return;
+        }
+
+        // Go on
         if (!OnFormPosted.HasDelegate)
             return;
 

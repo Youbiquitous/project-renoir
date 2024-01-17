@@ -162,6 +162,9 @@
   <data name="Err_UserNotFound" xml:space="preserve">
     <value>Weird, but no user seems to match provided identity</value>
   </data>
+  <data name="Info_ConfirmAction" xml:space="preserve">
+    <value>Do you want to proceed?</value>
+  </data>
   <data name="Msg_Done" xml:space="preserve">
     <value>Successfully done!</value>
   </data>

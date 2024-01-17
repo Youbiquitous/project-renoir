@@ -46,8 +46,8 @@ public class UserRef : DtoBase
     {
         if (DisplayName.IsNullOrWhitespace())
             return CommandResponse.Fail().AddMessage(AppMessages.Err_MissingName);
-        if (Password.IsNullOrWhitespace())
-            return CommandResponse.Fail().AddMessage(AppMessages.Err_MissingPassword);
+        //if (Password.IsNullOrWhitespace())
+        //    return CommandResponse.Fail().AddMessage(AppMessages.Err_MissingPassword);
         if (Role.IsNullOrWhitespace())
             return CommandResponse.Fail().AddMessage(AppMessages.Err_MissingRole);
         if (!Email.IsValidEmail())

@@ -13,7 +13,6 @@
 using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.Application.Settings;
 using Youbiquitous.Renoir.DomainModel.Management;
-using Youbiquitous.Renoir.Infrastructure.Security.Password;
 using Youbiquitous.Renoir.Persistence.Repositories;
 
 namespace Youbiquitous.Renoir.Application;

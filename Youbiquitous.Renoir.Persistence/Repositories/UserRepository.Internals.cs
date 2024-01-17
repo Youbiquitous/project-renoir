@@ -32,6 +32,10 @@ public partial class UserRepository
     /// <returns></returns>
     private static CommandResponse AddNewUserInternal(RenoirDatabase db, User user, string author)
     {
+        var found = db.Users.FirstOrDefault(u => u.Email == user.Email);
+        if (found != null)
+            return CommandResponse.Fail().AddMessage(AppMessages.Err_EmailAlreadyExists);
+
         // Hash the password
         user.Password = PasswordServiceLocator.Get().Store(user.Password);
 
@@ -45,12 +49,23 @@ public partial class UserRepository
     /// Edit of existing User records
     /// </summary>
     /// <param name="db"></param>
+    /// <param name="found"></param>
     /// <param name="user"></param>
     /// <param name="author"></param>
     /// <returns></returns>
-    private static CommandResponse UpdateExistingUserInternal(RenoirDatabase db, User user, string author)
+    private static CommandResponse UpdateExistingUserInternal(RenoirDatabase db, User found, User user, string author)
     {
-        return CommandResponse.Ok();
+        var same = db.Users.FirstOrDefault(u => u.Email == user.Email && 
+                                                u.UserId != found.UserId);
+        if (same != null)
+            return CommandResponse.Fail().AddMessage(AppMessages.Err_EmailAlreadyExists);
+
+        found.Import(user);
+        if (!user.Password.IsNullOrWhitespace())
+            found.Password = PasswordServiceLocator.Get().Store(user.Password);
+
+        found.Mark(author);
+        return db.TrySaveChanges();
     }
 
 

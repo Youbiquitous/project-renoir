@@ -32,15 +32,8 @@ public partial class UserRepository
 
         var response = found is null
             ? AddNewUserInternal(db, user, author)
-            : UpdateExistingUserInternal(db, user, author);
+            : UpdateExistingUserInternal(db, found, user, author);
 
-
-            //return CommandResponse.Fail().AddMessage(AppMessages.Err_EmailAlreadyExists);
-
-
-
-        //user.Mark(author); 
-        //var response = db.TrySaveChanges();
         return response;
     }
 

@@ -38,6 +38,18 @@ public partial class User
     }
 
     /// <summary>
+    /// Copycat
+    /// </summary>
+    /// <param name="entity"></param>
+    public override void Import(BaseEntity entity)
+    {
+        var user = (User) entity;
+        DisplayName = user.DisplayName;
+        Email = user.Email;
+        Role = user.Role;
+    }
+
+    /// <summary>
     /// Mark the record as initialized
     /// </summary>
     /// <param name="author"></param>

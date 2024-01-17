@@ -196,6 +196,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to proceed?.
+        /// </summary>
+        public static string Info_ConfirmAction {
+            get {
+                return ResourceManager.GetString("Info_ConfirmAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully done!.
         /// </summary>
         public static string Msg_Done {
