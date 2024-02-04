@@ -13,7 +13,7 @@
                 <select class="form-select"
                         @bind="RelatedUser.Role">
                     <option value="">@AppStrings.Label_NoRole</option>
-                    @foreach (var role in Roles.All())
+                    @foreach (var role in Role.All())
                     {
                         <option value="@role">@role</option>
                     }

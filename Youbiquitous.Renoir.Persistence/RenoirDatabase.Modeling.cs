@@ -11,6 +11,7 @@
 
 
 using Microsoft.EntityFrameworkCore;
+using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
 using Product = Youbiquitous.Renoir.DomainModel.Product;
 
@@ -58,5 +59,28 @@ public partial class RenoirDatabase
             p.ComplexProperty(r => r.LastUpdated).IsRequired();
         });
         #endregion
+
+        ////////////////////////////////////////////////////////
+        //  USER/PRODUCT BINDING(s)
+        // 
+        modelBuilder.Entity<UserProductBinding>()
+            .HasKey(up => up.RefId);
+        modelBuilder.Entity<UserProductBinding>(p =>
+        {
+            p.ComplexProperty(r => r.Created).IsRequired();
+            p.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
+
+        // Keys to user/product mapping
+        modelBuilder.Entity<UserProductBinding>()
+            .HasOne(up => up.RelatedUser)
+            .WithMany(u => u.Products)
+            .HasForeignKey(u => u.UserId);
+
+        // Keys to tournament/umpire mapping
+        modelBuilder.Entity<UserProductBinding>()
+            .HasOne(up => up.RelatedProduct)
+            .WithMany(p => p.Users)
+            .HasForeignKey(p => p.ProductId);
     }
 }

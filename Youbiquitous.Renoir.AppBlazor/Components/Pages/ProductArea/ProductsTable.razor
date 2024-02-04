@@ -18,7 +18,13 @@
             <td class="col-index">@p.ProductId</td>
             <td>@p.Name</td>
             <td>@p.Version</td>
-            <td>@AppStrings.Text_NA</td>
+            <td>
+                <button class="btn btn-sm btn-danger"
+                            @onclick="() => ManageOwners(p)"
+                        @onclick:stopPropagation="true">
+                    <span class="fa fa-edit"></span>
+                </button>
+            </td>
         </tr>
     }
     </tbody>
@@ -38,6 +44,9 @@
     [Parameter]
     public EventCallback<Product> ProductEdited { get; set; }
 
+    [Parameter]
+    public EventCallback<Product> OwnerEdited { get; set; }
+
     /// <summary>
     /// Reference to the Confirm modal dialog
     /// </summary>
@@ -53,5 +62,17 @@
             return;
 
         ProductEdited.InvokeAsync(p);
+    }
+
+    /// <summary>
+    /// Used to trigger the OwnerEdited custom event
+    /// </summary>
+    /// <param name="p"></param>
+    private void ManageOwners(Product p)
+    {
+        if (!OwnerEdited.HasDelegate)
+            return;
+
+        OwnerEdited.InvokeAsync(p);
     }
 }

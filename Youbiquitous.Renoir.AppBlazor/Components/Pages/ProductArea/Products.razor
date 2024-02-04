@@ -24,9 +24,14 @@
 <!-- List users -->
 <ProductsTable @ref="ListOfProducts" 
                Products="Products"
-               ProductEdited="EditExistingProduct" />
+               ProductEdited="EditExistingProduct"
+               OwnerEdited="EditProductOwners" />
 
 <!-- Popup Editor -->
 <ProductEditorPopup @ref="ProductEditor" 
                     OnFormPosted="SaveNewOrExistingProduct" />
+
+<!-- Owner Editor -->
+<ProductOwnerPopup @ref="OwnerEditor"
+                    OnFormPosted="AddUserProductBinding" />
 

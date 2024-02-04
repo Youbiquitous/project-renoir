@@ -1,0 +1,169 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Renoir.AppBlazor.Common.Extensions
+@using Youbiquitous.Renoir.Application
+@using Youbiquitous.Renoir.DomainModel
+@using Youbiquitous.Renoir.DomainModel.Management
+
+
+<!-- Popup Editor -->
+<Modal @ref="Window"
+       Size="ModalSize.Large"
+       Title="@Title"
+       IsVerticallyCentered="true">
+
+    <BodyTemplate>
+        <div class="d-flex justify-content-between">
+            <div>
+                <EnabledUsers @ref="ListOfActiveUsers"
+                              Bindings="AvailableBindings"
+                              BindingDeleted="RemoveBinding" />
+            </div>
+
+            <div class="bg-dark text-white p-3">
+                <label>@AppStrings.Label_NewBinding</label>
+                <EditForm Model="@RelatedBinding" OnSubmit="@Submitted">
+                    <div class="mt-2">
+                        <select class="form-select"
+                                @bind="RelatedBinding.UserId">
+                            <option value="0">@AppStrings.Label_NoUser</option>
+                            @foreach (var user in AvailableUsers.Bindable())
+                            {
+                                <option value="@user.UserId">@user</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mt-2">
+                        <select class="form-select"
+                                @bind="RelatedBinding.RoleId">
+                            <option value="">@AppStrings.Label_NoRole</option>
+                            @foreach (var role in AvailableRoles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-4">
+                        <button class="btn btn-primary px-3" type="submit">
+                            @AppMenu.Add
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </BodyTemplate>
+
+    <FooterTemplate>
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClass="text-danger fw-bold"/>
+    </FooterTemplate>
+</Modal>
+
+            
+@code{
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; }
+
+    [Parameter]
+    public EventCallback<UserProductBinding> OnFormPosted { get; set; }
+
+    /// <summary>
+    /// More data for the UI
+    /// </summary>
+    public IEnumerable<User> AvailableUsers { get; set; }
+    public IEnumerable<Role> AvailableRoles { get; set; }
+    public UserProductBinding RelatedBinding { get; set; }
+    public IEnumerable<UserProductBinding> AvailableBindings { get; set; }
+    public Product RelatedProduct { get; set; }
+
+
+    /// <summary>
+    /// Component references
+    /// </summary>
+    public Modal Window { get; set; }
+    public StatusMessage Statusbar { get; set; }
+    public EnabledUsers ListOfActiveUsers { get; set; }
+
+    /// <summary>
+    /// Internal trigger of the form-post event
+    /// </summary>
+    private async Task Submitted()
+    {
+        // Validate
+        var valid = RelatedBinding.IsValid();
+        if (!valid)
+        {
+            await Statusbar.ShowAsync(AppMessages.Err_InvalidBinding);
+            return;
+        }
+
+        // Go on
+        if (!OnFormPosted.HasDelegate)
+            return;
+
+        await OnFormPosted.InvokeAsync(RelatedBinding);
+    }
+
+    /// <summary>
+    /// Set data to show in the modal
+    /// </summary>
+    /// <param name="product"></param>
+    /// <param name="users"></param>
+    /// <param name="roles"></param>
+    public void SetUserData(Product product, IEnumerable<User> users, IEnumerable<Role> roles)
+    {
+        RelatedProduct = product ?? new Product();
+
+        RelatedBinding = new UserProductBinding(RelatedProduct.ProductId);
+        AvailableUsers = users ?? new List<User>();
+        AvailableRoles = roles ?? new List<Role>();
+        AvailableBindings = RelatedProduct.Users;
+
+        // Fill up bindings with user information
+        var list = AvailableUsers.ToList();
+        foreach (var binding in AvailableBindings)
+        {
+            binding.RelatedUser = list.FirstOrDefault(u => u.UserId == binding.UserId);
+        }
+    }
+
+    /// <summary>
+    /// Set modal title
+    /// </summary>
+    /// <param name="title"></param>
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
+
+    /// <summary>
+    /// Refresh bindings on demand
+    /// </summary>
+    /// <param name="users"></param>
+    public void AttachBindings(IEnumerable<UserProductBinding> users)
+    {
+        AvailableBindings = users;
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Remove given binding
+    /// </summary>
+    /// <param name="binding"></param>
+    public void RemoveBinding(UserProductBinding binding)
+    {
+        ProductService.RemoveBinding(binding);
+
+        // Refresh the list of active users
+        AttachBindings(ProductService.BindingsFor(binding.ProductId));
+
+    }
+}

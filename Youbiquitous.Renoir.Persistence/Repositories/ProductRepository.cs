@@ -28,9 +28,19 @@ public partial class ProductRepository
     /// <returns></returns>
     public static Product FindById(long id)
     {
-        using var db = new RenoirDatabase();
-        var product = db.Products.SingleOrDefault(p => p.ProductId == id && !p.Deleted);
-        return product;
+        try
+        {
+            using var db = new RenoirDatabase();
+            var product = db.Products
+                .Include(p => p.Users)
+                .SingleOrDefault(p => p.ProductId == id && !p.Deleted);
+            return product;
+        }
+        catch (Exception ex)
+        {
+            var x = ex.Message;
+            return null;
+        }
     }
 
     /// <summary>
@@ -46,5 +56,21 @@ public partial class ProductRepository
             query = query.Where(p => EF.Functions.Like(p.Name, $"%{filter}%") ||
                                      EF.Functions.Like(p.Version, $"%{filter}%"));
         return query.ToList();
+    }
+
+    /// <summary>
+    /// List of bindings
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <returns></returns>
+    public static IList<UserProductBinding> FindBindingsFor(long productId)
+    {
+        using var db = new RenoirDatabase();
+        var bindings = db.UserProductBindings
+            .Include(b => b.RelatedUser)
+            .Where(b => b.ProductId == productId)
+            .ToList();
+
+        return bindings;
     }
 }

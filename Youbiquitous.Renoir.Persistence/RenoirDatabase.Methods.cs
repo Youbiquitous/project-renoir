@@ -11,6 +11,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Martlet.Core.Types;
+using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
 using Youbiquitous.Renoir.Infrastructure.Security;
 using Youbiquitous.Renoir.Infrastructure.Security.Password;
@@ -28,8 +29,11 @@ public partial class RenoirDatabase
     /// </summary>
     public static void Seed(RenoirDatabase context)
     {
-        // Add root user 
+        // Add root and sample users
         AddSystemUser(context);
+
+        // Add sample products
+        AddSampleProducts(context);
     }
 
     /// <summary>
@@ -62,12 +66,44 @@ public partial class RenoirDatabase
         var root = new User(
             "system@renoir-app.net",
             PasswordServiceLocator.Get().Store("your-password"),
-            Roles.System)
+            Role.System.Name)
         {
             DisplayName = "Dev Team",
         };
 
-        context.Users.Add(root);
+        var own1 = new User(
+            "boss1@renoir-app.net",
+            PasswordServiceLocator.Get().Store("your-password"),
+            Role.Owner.Name)
+        {
+            DisplayName = "Top Owner #1",
+        };
+
+        var own2 = new User(
+            "boss2@renoir-app.net",
+            PasswordServiceLocator.Get().Store("your-password"),
+            Role.Owner.Name)
+        {
+            DisplayName = "Top Owner #2",
+        };
+
+        context.Users.AddRange(root, own1, own2);
+        context.SaveChanges();
+        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Users', RESEED, 1001)");
+    }
+
+    /// <summary>
+    /// Create sample products
+    /// </summary>
+    private static void AddSampleProducts(RenoirDatabase context)
+    {
+        if (context.Products.Any())
+            return;
+
+        var prod1 = new Product("APOLLO", "2.0");
+        var prod2 = new Product("MERCURY", "1.0");
+
+        context.Products.AddRange(prod1, prod2);
         context.SaveChanges();
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Products', RESEED, 1001)");
     }

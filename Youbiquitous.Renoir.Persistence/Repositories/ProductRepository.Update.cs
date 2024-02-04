@@ -11,6 +11,7 @@
 
 using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.DomainModel;
+using Youbiquitous.Renoir.DomainModel.Management;
 
 namespace Youbiquitous.Renoir.Persistence.Repositories;
 
@@ -37,6 +38,43 @@ public partial class ProductRepository
         return response;
     }
 
+    /// <summary>
+    /// Add a new binding
+    /// </summary>
+    /// <param name="binding"></param>
+    /// <param name="author"></param>
+    /// <returns></returns>
+    public static CommandResponse AddBinding(UserProductBinding binding, string author)
+    {
+        using var db = new RenoirDatabase();
+        var found = db.UserProductBindings
+            .FirstOrDefault(up => up.UserId == binding.UserId &&
+                                  up.ProductId == binding.ProductId);
+
+        // If user has already a binding => update; then, add
+        binding.Mark(author);
+        if (found is null)
+        {
+            db.UserProductBindings.Add(binding);
+        }
+        else
+        {
+            found.RoleId = binding.RoleId;
+        }
+
+        return db.TrySaveChanges();
+    }
+
+    /// <summary>
+    /// Remove binding
+    /// </summary>
+    /// <param name="binding"></param>
+    /// <returns></returns>
+    public static CommandResponse RemoveBinding(UserProductBinding binding)
+    {
+        using var db = new RenoirDatabase();
+        return DeleteExistingBindingInternal(db, binding.RefId);
+    }
 
     /// <summary>
     /// Delete a product

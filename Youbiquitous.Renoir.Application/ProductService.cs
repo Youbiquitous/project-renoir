@@ -35,13 +35,14 @@ public class ProductService : ApplicationServiceBase
     }
 
     /// <summary>
-    /// One particular account
+    /// One particular product with bindings
     /// </summary>
-    /// <param name="email"></param>
+    /// <param name="id"></param>
     /// <returns></returns>
-    public static User Find(string email)
+    public static Product Find(long id)
     {
-        return UserRepository.FindById(email);
+        var prod = ProductRepository.FindById(id);
+        return prod;
     }
 
     /// <summary>
@@ -60,6 +61,18 @@ public class ProductService : ApplicationServiceBase
     }
 
     /// <summary>
+    /// Add a new user/product binding
+    /// </summary>
+    /// <param name="binding"></param>
+    /// <param name="author"></param>
+    /// <returns></returns>
+    public static CommandResponse AddBinding(UserProductBinding binding, string author)
+    {
+        var response = ProductRepository.AddBinding(binding, author);
+        return response;
+    }
+
+    /// <summary>
     /// Delete an existing product
     /// </summary>
     /// <param name="id"></param>
@@ -67,5 +80,25 @@ public class ProductService : ApplicationServiceBase
     public static CommandResponse Delete(long id)
     {
         return ProductRepository.Delete(id); 
+    }
+
+    /// <summary>
+    /// List of users enabled on given product
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <returns></returns>
+    public static IList<UserProductBinding> BindingsFor(long productId)
+    {
+        var bindings = ProductRepository.FindBindingsFor(productId);
+        return bindings;
+    }
+
+    /// <summary>
+    /// Remove binding
+    /// </summary>
+    /// <param name="binding"></param>
+    public static void RemoveBinding(UserProductBinding binding)
+    {
+        ProductRepository.RemoveBinding(binding);
     }
 }

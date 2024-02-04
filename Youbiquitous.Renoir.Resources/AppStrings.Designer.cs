@@ -106,6 +106,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New binding.
+        /// </summary>
+        public static string Label_NewBinding {
+            get {
+                return ResourceManager.GetString("Label_NewBinding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string Label_NewPassword {
@@ -138,6 +147,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_NoRole {
             get {
                 return ResourceManager.GetString("Label_NoRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No user selected.
+        /// </summary>
+        public static string Label_NoUser {
+            get {
+                return ResourceManager.GetString("Label_NoUser", resourceCulture);
             }
         }
         

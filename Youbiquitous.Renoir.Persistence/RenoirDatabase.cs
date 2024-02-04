@@ -10,6 +10,7 @@
 //
 
 using Microsoft.EntityFrameworkCore;
+using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
 using Product = Youbiquitous.Renoir.DomainModel.Product;
 
@@ -31,4 +32,5 @@ public partial class RenoirDatabase : DbContext
     // Tables
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<UserProductBinding> UserProductBindings { get; set; }
 }

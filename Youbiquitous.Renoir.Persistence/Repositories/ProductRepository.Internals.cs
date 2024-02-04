@@ -79,4 +79,21 @@ public partial class ProductRepository
             ? CommandResponse.Ok()
             : CommandResponse.Fail();
     }
+
+    
+    /// <summary>
+    /// Physical removal of user/product binding
+    /// </summary>
+    /// <param name="db"></param>
+    /// <param name="bindingId"></param>
+    /// <returns></returns>
+    private static CommandResponse DeleteExistingBindingInternal(RenoirDatabase db, long bindingId)
+    {
+        var deleted = db.UserProductBindings
+            .Where(up => up.RefId == bindingId)
+            .ExecuteDelete();
+        return deleted > 0
+            ? CommandResponse.Ok()
+            : CommandResponse.Fail();
+    }
 }

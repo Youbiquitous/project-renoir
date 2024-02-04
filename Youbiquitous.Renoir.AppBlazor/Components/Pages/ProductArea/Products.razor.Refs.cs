@@ -15,9 +15,14 @@ namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.ProductArea;
 public partial class ProductsPage 
 {
     /// <summary>
-    /// Reference to the User-Editor modal 
+    /// Reference to the Product-Editor modal 
     /// </summary>
     protected ProductEditorPopup ProductEditor;
+
+    /// <summary>
+    /// Reference to the Owner-Editor modal 
+    /// </summary>
+    protected ProductOwnerPopup OwnerEditor;
 
     /// <summary>
     /// Reference to the custom component with the table of users

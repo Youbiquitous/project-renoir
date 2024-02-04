@@ -48,7 +48,7 @@ public class AuthService : ApplicationServiceBase
         return passwordService.Validate(login.Password, user.Password)
             ? AuthenticationResponse.Ok()
                 .AddClaimEmail(login.Email)
-                .AddClaimRole(user.Role)
+                .AddClaimRole(user.RoleId)
                 .AddClaimName(user.DisplayName)
                 .SetPersistenceFlag(login.StayConnected)
             : AuthenticationResponse.Fail().AddMessage("Credentials dont match");

@@ -172,12 +172,29 @@ h1:focus {
     font-size: .65rem;
 }
 
+.italic {
+    font-style: italic;
+}
+
 .pointer-cursor {
     cursor: pointer;
 }
 
 input[password] {
     -webkit-text-security: square;
+}
+
+
+table tbody td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+table thead th {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /* *************************************** */

@@ -132,6 +132,9 @@
   <data name="Label_Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Label_NewBinding" xml:space="preserve">
+    <value>New binding</value>
+  </data>
   <data name="Label_NewPassword" xml:space="preserve">
     <value>New password</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Label_NoRole" xml:space="preserve">
     <value>No role assigned</value>
+  </data>
+  <data name="Label_NoUser" xml:space="preserve">
+    <value>No user selected</value>
   </data>
   <data name="Label_OldPassword" xml:space="preserve">
     <value>Current password</value>

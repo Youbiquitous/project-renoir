@@ -9,13 +9,7 @@
 // 
 //
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using Youbiquitous.Martlet.Core.Extensions;
-using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Models;
-using Youbiquitous.Renoir.Application.Auth.Dto;
-using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Pages;
 

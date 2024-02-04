@@ -27,13 +27,18 @@ public static class MenuFactory
     /// <returns></returns>
     public static IList<NavMenuItem> ForRole(string role = null)
     {
-        return role switch
-        {
-            Roles.Contributor => ContributorMenu(),
-            Roles.Owner => OwnerMenu(),
-            Roles.System => SystemMenu(),
-            _ => AnonymousMenu()
-        };
+        var r = Role.Parse(role);
+        if (r == null) 
+            return AnonymousMenu();
+
+        if (r.Is(Role.Contributor))
+            return ContributorMenu();
+        if (r.Is(Role.Owner))
+            return OwnerMenu();
+        if (r.Is(Role.System))
+            return SystemMenu();
+
+        return AnonymousMenu();
     }
 
     /// <summary>

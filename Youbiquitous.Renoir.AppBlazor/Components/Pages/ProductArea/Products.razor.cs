@@ -10,7 +10,6 @@
 
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Models;
-using Youbiquitous.Renoir.AppBlazor.Models.Input;
 using Youbiquitous.Renoir.Application;
 using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
@@ -47,8 +46,7 @@ public partial class ProductsPage : ViewModelBase
 
         await ProductEditor.Window.ShowAsync();
     }
-
-
+    
     /// <summary>
     /// Finalize the modal and create a new product
     /// (Controller-level method with direct impact on UI)
@@ -72,6 +70,25 @@ public partial class ProductsPage : ViewModelBase
 
         Refresh();
         await ProductEditor.Window.HideAsync();
+    }
+
+    /// <summary>
+    /// Add a new user/product binding
+    /// </summary>
+    /// <param name="binding"></param>
+    /// <returns></returns>
+    protected async Task AddUserProductBinding(UserProductBinding binding)
+    {
+        var author = Logged.GetEmail();
+        var response = ProductService.AddBinding(binding, author);
+        if (!response.Success)
+        {
+            await ProductEditor.Statusbar.ShowAsync(response.Message);
+            return;
+        }
+
+        // Refresh the list of active users
+        OwnerEditor.AttachBindings(ProductService.BindingsFor(binding.ProductId));
     }
 
     /// <summary>
@@ -101,5 +118,20 @@ public partial class ProductsPage : ViewModelBase
         ProductEditor.EditMode = true;
 
         await ProductEditor.Window.ShowAsync();
+    }
+    
+    /// <summary>
+    /// Handler of the OwnerEdited event on the table
+    /// (to add owners to the product)
+    /// </summary>
+    /// <param name="product"></param>
+    protected async Task EditProductOwners(Product product)
+    {
+        var prod = ProductService.Find(product.ProductId);
+
+        OwnerEditor.SetTitle(product.ToString());
+        OwnerEditor.SetUserData(prod, AccountService.Accounts(), Role.All());
+
+        await OwnerEditor.Window.ShowAsync();
     }
 }

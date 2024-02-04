@@ -1,0 +1,70 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel
+@using Youbiquitous.Renoir.DomainModel.Management
+@using Microsoft.IdentityModel.Tokens
+
+<!-- List of user/product binding for given product -->
+
+@if (Bindings.IsNullOrEmpty())
+{
+    <div class="opacity-50 italic small">
+        @AppMessages.Msg_NoBindingsFound
+    </div>
+    return;
+}
+
+<table>
+    @foreach (var up in Bindings)
+    {
+        <tr>
+            <td>
+                <button class="btn btn-sm btn-danger"
+                        @onclick="() => Delete(up)"
+                        @onclick:stopPropagation="true">
+                    <span class="fa fa-times"></span>
+                </button>
+            </td>
+            <td style="min-width: 160px;">
+                <span class="fw-bold">@up.RelatedUser</span>
+            </td>
+            <td>@up.RoleId</td>
+        </tr>
+    }
+</table>
+
+<ConfirmDialog @ref="Confirmation" />
+
+
+@code
+{
+    [Parameter]
+    public IEnumerable<UserProductBinding> Bindings { get; set; }
+
+    [Parameter]
+    public EventCallback<UserProductBinding> BindingDeleted { get; set; }
+
+    /// <summary>
+    /// Reference to the Confirm modal dialog
+    /// </summary>
+    private ConfirmDialog Confirmation { get; set; }
+
+    /// <summary>
+    /// Used to trigger the BindingDeleted custom event
+    /// </summary>
+    /// <param name="up"></param>
+    private async Task Delete(UserProductBinding up)
+    {
+        if (!BindingDeleted.HasDelegate)
+            return;
+
+        // Ask confirmation
+        var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
+        var shouldProceed = await Confirmation.ShowAsync(
+            title: $"{AppStrings.Label_Deleting}  {up}",
+            message1: AppMessages.Info_ConfirmAction,
+            confirmDialogOptions: options);
+
+        if (shouldProceed)
+            await BindingDeleted.InvokeAsync(up);
+    }
+}

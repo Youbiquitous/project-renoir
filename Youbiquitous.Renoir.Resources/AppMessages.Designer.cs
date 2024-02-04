@@ -88,6 +88,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid binding.
+        /// </summary>
+        public static string Err_InvalidBinding {
+            get {
+                return ResourceManager.GetString("Err_InvalidBinding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid credentials.
         /// </summary>
         public static string Err_InvalidCredentials {
@@ -223,11 +232,29 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New binding.
+        /// </summary>
+        public static string Label_NewBinding {
+            get {
+                return ResourceManager.GetString("Label_NewBinding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully done!.
         /// </summary>
         public static string Msg_Done {
             get {
                 return ResourceManager.GetString("Msg_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No bindings found.
+        /// </summary>
+        public static string Msg_NoBindingsFound {
+            get {
+                return ResourceManager.GetString("Msg_NoBindingsFound", resourceCulture);
             }
         }
     }

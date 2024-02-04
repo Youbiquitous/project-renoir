@@ -65,7 +65,7 @@ public class UserRef : DtoBase
         UserId = user?.UserId ?? 0;
         Email = user?.Email;
         DisplayName = user?.DisplayName;
-        Role = user?.Role;
+        Role = user?.RoleId;
         return this;
     }
 

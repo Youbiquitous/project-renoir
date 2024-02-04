@@ -126,6 +126,9 @@
   <data name="Err_IncompleteCredentials" xml:space="preserve">
     <value>Indicate both email and password</value>
   </data>
+  <data name="Err_InvalidBinding" xml:space="preserve">
+    <value>Invalid binding</value>
+  </data>
   <data name="Err_InvalidCredentials" xml:space="preserve">
     <value>Invalid credentials</value>
   </data>
@@ -171,7 +174,13 @@
   <data name="Info_ConfirmAction" xml:space="preserve">
     <value>Do you want to proceed?</value>
   </data>
+  <data name="Label_NewBinding" xml:space="preserve">
+    <value>New binding</value>
+  </data>
   <data name="Msg_Done" xml:space="preserve">
     <value>Successfully done!</value>
+  </data>
+  <data name="Msg_NoBindingsFound" xml:space="preserve">
+    <value>No bindings found</value>
   </data>
 </root>

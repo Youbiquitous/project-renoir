@@ -20,6 +20,26 @@ namespace Youbiquitous.Renoir.DomainModel.Management;
 public partial class User
 {
     /// <summary>
+    /// Whether it is a System Admin
+    /// </summary>
+    /// <returns></returns>
+    public bool IsSystem()
+    {
+        return RoleId != null && 
+               Role.IsRole(RoleId, Role.System);
+    }
+
+    /// <summary>
+    /// Whether it is an Owner
+    /// </summary>
+    /// <returns></returns>
+    public bool IsOwner()
+    {
+        return RoleId != null && 
+               Role.IsRole(RoleId, Role.Owner);
+    }
+
+    /// <summary>
     /// Ensure consistency within property values
     /// </summary>
     public override void Normalize()
@@ -46,7 +66,7 @@ public partial class User
         var user = (User) entity;
         DisplayName = user.DisplayName;
         Email = user.Email;
-        Role = user.Role;
+        RoleId = user.RoleId;
     }
 
     /// <summary>

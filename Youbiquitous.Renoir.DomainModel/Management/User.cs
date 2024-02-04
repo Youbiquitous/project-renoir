@@ -24,7 +24,7 @@ public partial class User : BaseEntity
     /// </summary>
     public User()
     {
-        Role = Roles.Viewer;
+        RoleId = Role.Viewer.Name;
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public partial class User : BaseEntity
     public User(string email, string hashedPassword, string role = null)
     {
         Email = email;
-        Role = role;
+        RoleId = role;
         Password = hashedPassword;
     }
 
@@ -47,11 +47,11 @@ public partial class User : BaseEntity
     /// <param name="email"></param>
     /// <param name="role"></param>
     /// <param name="name"></param>
-    public User(long id, string email, string role = Roles.Viewer, string name = null)
+    public User(long id, string email, string role = Role.NameOf_Viewer, string name = null)
     {
         UserId = id;
         Email = email;
-        Role = role;
+        RoleId = role;
         DisplayName = name.IsNullOrWhitespace() ? email : name;
     }
 
@@ -76,7 +76,7 @@ public partial class User : BaseEntity
     /// Role of the account (expressed as a constant string)
     /// </summary>
     [MaxLength(50)]
-    public string Role { get; set; }
+    public string RoleId { get; set; }
 
     /// <summary>
     /// Personal display name (overriding email for display)
@@ -105,20 +105,7 @@ public partial class User : BaseEntity
     public byte[] Photo { get; set; }
 
     /// <summary>
-    /// Whether it is a System Admin
+    /// Products the user can work on 
     /// </summary>
-    /// <returns></returns>
-    public bool IsSystem()
-    {
-        return Role != null && Role.EqualsAny(Roles.System);
-    }
-
-    /// <summary>
-    /// Whether it is an Owner
-    /// </summary>
-    /// <returns></returns>
-    public bool IsOwner()
-    {
-        return Role != null && Role.EqualsAny(Roles.Owner);
-    }
+    public virtual IEnumerable<UserProductBinding> Products { get; set; }
 }
