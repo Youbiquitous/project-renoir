@@ -24,11 +24,18 @@ public partial class UserRepository
     /// Retrieves the (single) user matching the email provided
     /// </summary>
     /// <param name="email"></param>
+    /// <param name="includeProducts"></param>
     /// <returns></returns>
-    public static User FindById(string email)
+    public static User FindById(string email, bool includeProducts = false)
     {
         using var db = new RenoirDatabase();
-        var user = db.Users.SingleOrDefault(u => u.Email == email && !u.Deleted);
+        var query = includeProducts
+            ? db.Users
+                .Include(u => u.Products)
+                .ThenInclude(p => p.RelatedProduct)
+            : db.Users.AsQueryable();
+
+        var user = query.SingleOrDefault(u => u.Email == email && !u.Deleted);
         return user;
     }
 

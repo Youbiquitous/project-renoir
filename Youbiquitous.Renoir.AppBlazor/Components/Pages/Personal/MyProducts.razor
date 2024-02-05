@@ -1,0 +1,58 @@
+﻿@page "/myproducts"
+@page "/myproducts/{SelectedProductId:long}"
+
+@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.Application
+@rendermode InteractiveServer
+@inherits MyProductsPage
+
+
+<PageTitle>@AppStrings.Label_MyProducts</PageTitle>
+
+@{
+    var documents = DocumentService.For(Current.UserId, SelectedProductId);
+
+    var visibleMenu = documents is null ? "" : "d-none";
+    var visibleDetails = documents is not null ? "" : "d-none";
+}
+
+<div class="@visibleMenu">
+    <div class="h4 mb-5">
+        @AppStrings.Text_AuthorizedToWork
+    </div>
+
+
+    <div class="d-flex">
+        @foreach (var p in Current.Products)
+        {
+            var product = p.RelatedProduct;
+            var url = $"/myproducts/{product.ProductId}";
+
+            <ClickableCard 
+                Url="@url"
+                BodyClass="me-4 shadow" 
+                Header="@product.Name"
+                HeaderClass="fw-bold fs-3"
+                Subheader="@p.RoleId"
+                SubheaderClass="opacity-50"
+                BadgeText="@product.Version" />
+        }
+    </div>
+</div>
+
+<div id="ProductDetails" class="@visibleDetails">
+    <h1>PRODUCT DETAILS</h1>
+    @SelectedProductId
+    
+    @if (documents is not null)
+    {
+        <ul>
+            @foreach (var d in documents)
+            {
+                <li>@d.Version</li>
+            }
+        </ul>
+    }
+
+</div>
+

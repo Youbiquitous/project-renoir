@@ -146,6 +146,24 @@ h1:focus {
     text-align: center;
 }
 
+.app-card {
+    border: solid 1px #eee;
+    border-left: solid 5px var(--app-sidebar-bkgnd);
+    background-color: #eee;
+    color: var(--app-sidebar-bkgnd);
+    padding: 5px;
+    padding-left: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+    .app-card:hover {
+        background-color: #fef;
+    }
+
+    .app-card a {
+        color: var(--app-sidebar-bkgnd);
+    }
+
 
 /* *************************************** */
 /* HELPER styles */

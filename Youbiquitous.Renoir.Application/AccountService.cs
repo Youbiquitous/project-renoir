@@ -37,10 +37,11 @@ public class AccountService : ApplicationServiceBase
     /// One particular account
     /// </summary>
     /// <param name="email"></param>
+    /// <param name="includeProducts"></param>
     /// <returns></returns>
-    public static User Find(string email)
+    public static User Find(string email, bool includeProducts = false)
     {
-        return UserRepository.FindById(email);
+        return UserRepository.FindById(email, includeProducts);
     }
 
     /// <summary>

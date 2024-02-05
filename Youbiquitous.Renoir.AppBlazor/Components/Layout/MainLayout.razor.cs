@@ -9,8 +9,6 @@
 // 
 //
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 using Youbiquitous.Renoir.AppBlazor.Models;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;
@@ -20,20 +18,5 @@ namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;
 /// </summary>
 public class MainLayoutPage : ViewModelBase
 {
-    private AuthenticationState _state;
 
-    //[CascadingParameter]
-    //protected Task<AuthenticationState> AuthState { get; set; }
-
-    /// <summary>
-    /// Direct access to authentication state
-    /// </summary>
-    /// <returns></returns>
-    //public AuthenticationState GetState()
-    //{
-    //    if (_state == null)
-    //        _state = AuthState?.Result;
-        
-    //    return _state;
-    //}
 }

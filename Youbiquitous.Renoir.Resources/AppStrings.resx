@@ -129,6 +129,9 @@
   <data name="Label_JoinCommunity" xml:space="preserve">
     <value>Join the community</value>
   </data>
+  <data name="Label_MyProducts" xml:space="preserve">
+    <value>My Products</value>
+  </data>
   <data name="Label_Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -207,6 +210,9 @@
   </data>
   <data name="Placeholder_UserName" xml:space="preserve">
     <value>Email address or user name</value>
+  </data>
+  <data name="Text_AuthorizedToWork" xml:space="preserve">
+    <value>You're authorized to work on the following products</value>
   </data>
   <data name="Text_NA" xml:space="preserve">
     <value>N/A</value>

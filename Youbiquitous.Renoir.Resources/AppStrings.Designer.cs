@@ -97,6 +97,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Products.
+        /// </summary>
+        public static string Label_MyProducts {
+            get {
+                return ResourceManager.GetString("Label_MyProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Label_Name {
@@ -327,6 +336,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Placeholder_UserName {
             get {
                 return ResourceManager.GetString("Placeholder_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re authorized to work on the following products.
+        /// </summary>
+        public static string Text_AuthorizedToWork {
+            get {
+                return ResourceManager.GetString("Text_AuthorizedToWork", resourceCulture);
             }
         }
         
