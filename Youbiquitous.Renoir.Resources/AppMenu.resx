@@ -144,8 +144,14 @@
   <data name="New" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="NewReleaseNote" xml:space="preserve">
+    <value>New Release Note</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Products</value>
+  </data>
+  <data name="ReleaseNotes" xml:space="preserve">
+    <value>Release Notes</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Resume</value>

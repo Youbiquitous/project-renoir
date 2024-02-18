@@ -87,7 +87,8 @@ public static class MenuFactory
         return new List<NavMenuItem>
         {
             new(AppMenu.Products, "/products", "fa fa-hand-holding-box"),
-            new(AppMenu.Users, "/users", "fa fa-user")
+            new(AppMenu.Users, "/users", "fa fa-user"),
+            new(AppMenu.ReleaseNotes, "/myproducts", "fa fa-file"),
         };
     }
 }

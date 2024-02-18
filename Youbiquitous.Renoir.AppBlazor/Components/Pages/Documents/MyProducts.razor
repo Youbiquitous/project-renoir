@@ -1,0 +1,42 @@
+﻿@page "/myproducts"
+
+@using Youbiquitous.Renoir.Resources
+@rendermode InteractiveServer
+@inherits MyProductsPage
+
+
+<PageTitle>@AppStrings.Label_MyProducts</PageTitle>
+
+<!-- List of products -->
+<div>
+    <div class="fs-4 mb-5">
+        @if (Current.Products.Any())
+        {
+            <span>@AppStrings.Text_AuthorizedToWork</span>
+        }
+        else
+        {
+            <div class="opacity-50 italic">@AppStrings.Text_NoProductsToWork</div>
+        }
+    </div>
+
+
+    <div class="d-flex">
+        @foreach (var p in Current.Products)
+        {
+            var product = p.RelatedProduct;
+            var url = $"/docs?rn={product.ProductId}";
+
+            <ClickableCard
+                Url="@url"
+                BodyClass="me-4 shadow"
+                Header="@product.Name"
+                HeaderClass="fw-bold fs-3"
+                Subheader="@p.RoleId"
+                SubheaderClass="opacity-50"
+                BadgeText="@product.Version"/>
+        }
+    </div>
+</div>
+
+

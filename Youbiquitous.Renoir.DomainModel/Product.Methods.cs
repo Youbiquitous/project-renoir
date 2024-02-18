@@ -57,4 +57,14 @@ public partial class Product
     {
         return $"{Name} {Version}";
     }
+
+    /// <summary>
+    /// Whether the product is accessible by user to create/read notes
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    public bool AccessibleBy(long userId)
+    {
+        return Users.Any(u => u.UserId == userId);
+    }
 }

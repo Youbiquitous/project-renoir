@@ -1,0 +1,56 @@
+﻿@page "/docs"
+@rendermode InteractiveServer
+@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.Application
+@using Youbiquitous.Renoir.DomainModel.Documents
+@inherits ReleaseNotesPage
+
+@{
+    var productId = SelectedProductId;
+    var container = DocumentService.For(Current.UserId, productId, Current.IsSystem());
+    var documents = container?.Documents.ToList() ?? new List<ReleaseNote>();
+    if (container?.Product is null || productId <= 0)
+    { 
+        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownProduct</div>
+        return;
+    }
+}
+
+<PageTitle>
+    @container.Product [@AppStrings.Label_ReleaseNotes]
+</PageTitle>
+
+
+<!-- List of documents per product -->
+<div>
+    <div class="d-flex justify-content-between bg-primary text-white p-2">
+        <div class="fs-4">
+            <span>@container.Product.Name</span>
+            <span class="ms-2 opacity-50">@container.Product.Version</span>
+        </div>
+        <div>
+            <button class="btn btn-primary" @onclick="OpenDocumentEditor">
+                <i class="fa fa-plus"></i>
+                @AppMenu.NewReleaseNote
+            </button>
+        </div>
+    </div>
+    
+    <!-- List users -->
+    @if (!documents.Any())
+    {
+        <div class="fs-5 mt-4 opacity-50 italic text-center">
+            @AppMessages.Msg_NoDocumentsFound
+        </div>
+    }
+    else
+    {
+        <DocumentsTable @ref="ListOfDocuments" 
+                        Documents="documents"
+                        DocumentDeleted="DeleteExistingDocument" />
+    }
+</div>
+
+<!-- Popup Editor -->
+<ReleaseNoteEditorPopup @ref="DocumentEditor" 
+                        OnFormPosted="NewDocument" />

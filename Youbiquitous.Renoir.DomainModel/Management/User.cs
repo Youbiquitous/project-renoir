@@ -25,6 +25,7 @@ public partial class User : BaseEntity
     public User()
     {
         RoleId = Role.Viewer.Name;
+        Products = new List<UserProductBinding>();
     }
 
     /// <summary>
@@ -107,5 +108,5 @@ public partial class User : BaseEntity
     /// <summary>
     /// Products the user can work on 
     /// </summary>
-    public virtual IEnumerable<UserProductBinding> Products { get; set; }
+    public IEnumerable<UserProductBinding> Products { get; set; }
 }

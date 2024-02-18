@@ -144,6 +144,9 @@
   <data name="Label_NewPasswordRepeat" xml:space="preserve">
     <value>New password (Repeat)</value>
   </data>
+  <data name="Label_NewReleaseNote" xml:space="preserve">
+    <value>New Release Note</value>
+  </data>
   <data name="Label_NewUser" xml:space="preserve">
     <value>New User</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Label_Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Label_ReleaseNotes" xml:space="preserve">
+    <value>Release Notes</value>
   </data>
   <data name="Label_Role" xml:space="preserve">
     <value>Role</value>
@@ -216,5 +222,8 @@
   </data>
   <data name="Text_NA" xml:space="preserve">
     <value>N/A</value>
+  </data>
+  <data name="Text_NoProductsToWork" xml:space="preserve">
+    <value>You're not enabled to work on any products</value>
   </data>
 </root>

@@ -10,6 +10,7 @@
 //
 
 using System.ComponentModel.DataAnnotations;
+using Youbiquitous.Renoir.DomainModel.Documents;
 
 namespace Youbiquitous.Renoir.DomainModel;
 
@@ -59,4 +60,9 @@ public partial class Product : BaseEntity
     /// Users active on the product
     /// </summary>
     public virtual IEnumerable<UserProductBinding> Users { get; set; }
+
+    /// <summary>
+    /// Pending release notes for the product
+    /// </summary>
+    public virtual IEnumerable<ReleaseNote> ReleaseNotes { get; set; }
 }

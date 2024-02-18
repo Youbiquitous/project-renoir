@@ -38,7 +38,7 @@ public partial class UsersPage : ViewModelBase
     /// Display the User-Editor modal for a new user
     /// </summary>
     /// <returns></returns>
-    protected async Task NewUserEditor()
+    protected async Task OpenUserEditor()
     {
         UserEditor.SetUserData(new UserRef());
         UserEditor.SetTitle(AppStrings.Label_TitleNewUser);

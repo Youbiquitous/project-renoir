@@ -142,6 +142,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Release Note.
+        /// </summary>
+        public static string Label_NewReleaseNote {
+            get {
+                return ResourceManager.GetString("Label_NewReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New User.
         /// </summary>
         public static string Label_NewUser {
@@ -192,6 +201,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_Password {
             get {
                 return ResourceManager.GetString("Label_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Notes.
+        /// </summary>
+        public static string Label_ReleaseNotes {
+            get {
+                return ResourceManager.GetString("Label_ReleaseNotes", resourceCulture);
             }
         }
         
@@ -354,6 +372,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Text_NA {
             get {
                 return ResourceManager.GetString("Text_NA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re not enabled to work on any products.
+        /// </summary>
+        public static string Text_NoProductsToWork {
+            get {
+                return ResourceManager.GetString("Text_NoProductsToWork", resourceCulture);
             }
         }
     }

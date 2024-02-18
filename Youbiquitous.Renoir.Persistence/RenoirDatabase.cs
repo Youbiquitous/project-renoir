@@ -11,8 +11,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Renoir.DomainModel;
+using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
-using Product = Youbiquitous.Renoir.DomainModel.Product;
 
 namespace Youbiquitous.Renoir.Persistence;
 
@@ -33,4 +33,6 @@ public partial class RenoirDatabase : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<UserProductBinding> UserProductBindings { get; set; }
+    public DbSet<ReleaseNote> ReleaseNotes { get; set; }
+    public DbSet<ReleaseNoteItem> ReleaseNoteItems { get; set; }
 }

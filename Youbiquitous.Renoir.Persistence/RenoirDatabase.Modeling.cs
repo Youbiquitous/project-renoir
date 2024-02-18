@@ -12,8 +12,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Renoir.DomainModel;
+using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
-using Product = Youbiquitous.Renoir.DomainModel.Product;
 
 namespace Youbiquitous.Renoir.Persistence;
 
@@ -63,6 +63,7 @@ public partial class RenoirDatabase
         ////////////////////////////////////////////////////////
         //  USER/PRODUCT BINDING(s)
         // 
+        #region BINDINGS
         modelBuilder.Entity<UserProductBinding>()
             .HasKey(up => up.RefId);
         modelBuilder.Entity<UserProductBinding>(p =>
@@ -82,5 +83,47 @@ public partial class RenoirDatabase
             .HasOne(up => up.RelatedProduct)
             .WithMany(p => p.Users)
             .HasForeignKey(p => p.ProductId);
+        #endregion
+
+        ////////////////////////////////////////////////////////
+        //  DOCUMENT(s)
+        // 
+        #region DOCUMENTS
+        // Release Note
+        modelBuilder.Entity<ReleaseNote>()
+            .Property(p => p.RefId)
+            .ValueGeneratedOnAdd();
+        modelBuilder.Entity<ReleaseNote>()
+            .HasKey(rn => rn.RefId);
+        modelBuilder.Entity<ReleaseNote>(p =>
+        {
+            p.ComplexProperty(r => r.Created).IsRequired();
+            p.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
+
+        modelBuilder.Entity<ReleaseNote>()
+            .HasOne(rn => rn.RelatedProduct)
+            .WithMany(p => p.ReleaseNotes)
+            .HasForeignKey(rn => new {rn.ProductId})
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Release Note items
+        modelBuilder.Entity<ReleaseNoteItem>()
+            .Property(p => p.RefId)
+            .ValueGeneratedOnAdd();
+        modelBuilder.Entity<ReleaseNoteItem>()
+            .HasKey(rn => rn.RefId);
+        modelBuilder.Entity<ReleaseNoteItem>(p =>
+        {
+            p.ComplexProperty(r => r.Created).IsRequired();
+            p.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
+
+        modelBuilder.Entity<ReleaseNoteItem>()
+            .HasOne(rni => rni.RelatedDocument)
+            .WithMany(rn => rn.Items)
+            .HasForeignKey(rn => new {rn.RefId})
+            .OnDelete(DeleteBehavior.Cascade);
+        #endregion
     }
 }

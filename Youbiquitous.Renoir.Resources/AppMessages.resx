@@ -156,6 +156,9 @@
   <data name="Err_MissingRole" xml:space="preserve">
     <value>Missing user role</value>
   </data>
+  <data name="Err_MissingVersion" xml:space="preserve">
+    <value>Missing version number</value>
+  </data>
   <data name="Err_OperationFailed" xml:space="preserve">
     <value>Could not complete the operation</value>
   </data>
@@ -168,8 +171,14 @@
   <data name="Err_UnauthorizedOperation" xml:space="preserve">
     <value>Operation not authorized</value>
   </data>
+  <data name="Err_UnknownProduct" xml:space="preserve">
+    <value>Product not found</value>
+  </data>
   <data name="Err_UserNotFound" xml:space="preserve">
     <value>Weird, but no user seems to match provided identity</value>
+  </data>
+  <data name="Err_VersionAlreadyFound" xml:space="preserve">
+    <value>Found another release note with the same version number </value>
   </data>
   <data name="Info_ConfirmAction" xml:space="preserve">
     <value>Do you want to proceed?</value>
@@ -182,5 +191,8 @@
   </data>
   <data name="Msg_NoBindingsFound" xml:space="preserve">
     <value>No bindings found</value>
+  </data>
+  <data name="Msg_NoDocumentsFound" xml:space="preserve">
+    <value>No documents found</value>
   </data>
 </root>

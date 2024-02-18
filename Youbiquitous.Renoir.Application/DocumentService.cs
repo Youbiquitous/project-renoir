@@ -11,7 +11,7 @@
 
 
 using Youbiquitous.Renoir.Application.Settings;
-using Youbiquitous.Renoir.DomainModel;
+using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.Persistence.Repositories;
 
 namespace Youbiquitous.Renoir.Application;
@@ -28,18 +28,19 @@ public partial class DocumentService : ApplicationServiceBase
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="productId"></param>
+    /// <param name="isSystem"></param>
     /// <returns></returns>
-    public static IEnumerable<ReleaseNote> For(long userId, long productId)
+    public static DocumentContainer For(long userId, long productId, bool isSystem = false)
     {
         if (productId <= 0)
             return null;
 
-        var rnd = new Random();
-        return new List<ReleaseNote>()
+        return new DocumentContainer
         {
-            new() {Version=$"{productId} v{rnd.Next(1, 10)}.{rnd.Next(1, 100)}"},
-            new() {Version=$"{productId} v{rnd.Next(1, 10)}.{rnd.Next(1, 100)}"},
-            new() {Version=$"{productId} v{rnd.Next(1, 10)}.{rnd.Next(1, 100)}"},
+            Product = ProductRepository.FindById(productId),
+            Documents = isSystem
+                ? DocumentRepository.FindAll(productId)
+                : DocumentRepository.FindAll(userId, productId)
         };
     }
 }

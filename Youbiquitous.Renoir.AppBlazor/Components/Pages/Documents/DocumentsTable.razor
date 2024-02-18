@@ -1,0 +1,75 @@
+﻿@using Youbiquitous.Renoir.DomainModel.Management
+@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel.Documents
+
+<!-- List documents -->
+<table class="table table-sm table-hover mt-4">
+    <thead>
+    <tr class="text-uppercase">
+        <th class="col-button"></th>
+        <th>@AppStrings.Label_Version</th>
+        <th>Last Update</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody class="pointer-cursor">
+    @foreach (var d in Documents)
+    {
+        <tr>
+            <td>
+                <button class="btn btn-sm btn-danger"
+                        @onclick="() => Delete(d)"
+                        @onclick:stopPropagation="true">
+                    <span class="fa fa-times"></span>
+                </button>
+            </td>
+            <td>@d.Version</td>
+            <td>@d.ReleaseDate.ToString("d MMM yyyy")</td>
+            <td>@d.LastUpdated.By</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+<ConfirmDialog @ref="Confirmation" />
+
+@code
+{
+    /// <summary>
+    /// Current list of documents
+    /// </summary>
+    [Parameter]
+    public IEnumerable<ReleaseNote> Documents { get; set; }
+
+    [Parameter]
+    public EventCallback<ReleaseNote> DocumentDeleted { get; set; }
+
+    // [Parameter]
+    // public EventCallback<User> UserEdited { get; set; }
+
+    /// <summary>
+    /// Reference to the Confirm modal dialog
+    /// </summary>
+    private ConfirmDialog Confirmation { get; set; }
+
+    /// <summary>
+    /// Used to trigger the UserDeleted custom event
+    /// </summary>
+    /// <param name="rn"></param>
+    private async Task Delete(ReleaseNote rn)
+    {
+        if (!DocumentDeleted.HasDelegate)
+            return;
+
+        // Ask confirmation
+        var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
+        var shouldProceed = await Confirmation.ShowAsync(
+            title: $"{AppStrings.Label_Deleting} [{rn.Version}]",
+            message1: AppMessages.Info_ConfirmAction,
+            confirmDialogOptions: options);
+
+        if (shouldProceed)
+            await DocumentDeleted.InvokeAsync(rn);
+    }
+}

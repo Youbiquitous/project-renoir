@@ -33,4 +33,10 @@
     <Folder Include="Models\View\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\Documents\Documents.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

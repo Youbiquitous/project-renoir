@@ -9,17 +9,13 @@
 // 
 //
 
-using System.ComponentModel.DataAnnotations;
 
-namespace Youbiquitous.Renoir.DomainModel;
+namespace Youbiquitous.Renoir.DomainModel.Documents;
 
 /// <summary>
-/// Categories for release-note items
+/// RELEASE-NOTE entity (properties)
 /// </summary>
-public enum ItemCategory
+public partial class ReleaseNote : BaseEntity
 {
-    None = 0,
-    Bug = 1,
-    Feature = 2,
-    Internal = 3
+
 }

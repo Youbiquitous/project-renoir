@@ -14,7 +14,7 @@
 
   "Project": {
     "Name": "Project Renoir",
-    "Version": "1.0.2",
+    "Version": "1.0.5",
     "Description": "Clean Architecture for .NET",
     "Copyright": "Dino Esposito",
     "Attribution": "Fork and love"

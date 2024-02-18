@@ -11,6 +11,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Martlet.Core.Extensions;
+using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
 
 namespace Youbiquitous.Renoir.Persistence.Repositories;
@@ -36,6 +37,24 @@ public partial class UserRepository
             : db.Users.AsQueryable();
 
         var user = query.SingleOrDefault(u => u.Email == email && !u.Deleted);
+
+        // System user?
+        if (user != null && user.IsSystem())
+        {
+            var products = db.Products.ToList();
+            var bindings = new List<UserProductBinding>();
+            foreach (var product in products)
+            {
+                var b = new UserProductBinding(product.ProductId, user.UserId, Role.NameOf_Owner)
+                {
+                    RelatedProduct = product,
+                    RelatedUser = user
+                };
+                bindings.Add(b);
+            }
+            user.Products = bindings;
+        }
+
         return user;
     }
 

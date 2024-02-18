@@ -178,6 +178,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Missing version number.
+        /// </summary>
+        public static string Err_MissingVersion {
+            get {
+                return ResourceManager.GetString("Err_MissingVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not complete the operation.
         /// </summary>
         public static string Err_OperationFailed {
@@ -214,11 +223,29 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product not found.
+        /// </summary>
+        public static string Err_UnknownProduct {
+            get {
+                return ResourceManager.GetString("Err_UnknownProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weird, but no user seems to match provided identity.
         /// </summary>
         public static string Err_UserNotFound {
             get {
                 return ResourceManager.GetString("Err_UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found another release note with the same version number .
+        /// </summary>
+        public static string Err_VersionAlreadyFound {
+            get {
+                return ResourceManager.GetString("Err_VersionAlreadyFound", resourceCulture);
             }
         }
         
@@ -255,6 +282,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Msg_NoBindingsFound {
             get {
                 return ResourceManager.GetString("Msg_NoBindingsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No documents found.
+        /// </summary>
+        public static string Msg_NoDocumentsFound {
+            get {
+                return ResourceManager.GetString("Msg_NoDocumentsFound", resourceCulture);
             }
         }
     }
