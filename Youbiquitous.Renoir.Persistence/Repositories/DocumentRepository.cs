@@ -23,6 +23,28 @@ namespace Youbiquitous.Renoir.Persistence.Repositories;
 public partial class DocumentRepository
 {
     /// <summary>
+    /// Retrieves given document
+    /// </summary>
+    /// <param name="refId"></param>
+    /// <returns></returns>
+    public static ReleaseNote FindById(long refId)
+    {
+        try
+        {
+            using var db = new RenoirDatabase();
+            var doc = db.ReleaseNotes
+                .Include(r => r.Items)
+                .SingleOrDefault(r => r.RefId == refId && !r.Deleted);
+            return doc;
+        }
+        catch (Exception ex)
+        {
+            var x = ex.Message;
+            return null;
+        }
+    }
+
+    /// <summary>
     /// Retrieves list of documents the user can access for the given product
     /// </summary>
     /// <param name="userId"></param>

@@ -223,6 +223,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document not found.
+        /// </summary>
+        public static string Err_UnknownDocument {
+            get {
+                return ResourceManager.GetString("Err_UnknownDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product not found.
         /// </summary>
         public static string Err_UnknownProduct {

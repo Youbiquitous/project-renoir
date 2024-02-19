@@ -43,4 +43,17 @@ public partial class DocumentService : ApplicationServiceBase
                 : DocumentRepository.FindAll(userId, productId)
         };
     }
+
+    /// <summary>
+    /// Retrieve the given release note document
+    /// </summary>
+    /// <param name="refId"></param>
+    /// <returns></returns>
+    public static ReleaseNote Get(long refId)
+    {
+        if (refId <= 0)
+            return null;
+
+        return DocumentRepository.FindById(refId);
+    }
 }

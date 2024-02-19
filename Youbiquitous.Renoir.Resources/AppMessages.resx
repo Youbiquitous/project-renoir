@@ -171,6 +171,9 @@
   <data name="Err_UnauthorizedOperation" xml:space="preserve">
     <value>Operation not authorized</value>
   </data>
+  <data name="Err_UnknownDocument" xml:space="preserve">
+    <value>Document not found</value>
+  </data>
   <data name="Err_UnknownProduct" xml:space="preserve">
     <value>Product not found</value>
   </data>

@@ -1,6 +1,7 @@
 ﻿@using Youbiquitous.Renoir.DomainModel.Management
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.DomainModel.Documents
+@inject NavigationManager NavManager
 
 <!-- List documents -->
 <table class="table table-sm table-hover mt-4">
@@ -15,7 +16,7 @@
     <tbody class="pointer-cursor">
     @foreach (var d in Documents)
     {
-        <tr>
+        <tr @onclick="() => Edit(d)">
             <td>
                 <button class="btn btn-sm btn-danger"
                         @onclick="() => Delete(d)"
@@ -45,8 +46,8 @@
     [Parameter]
     public EventCallback<ReleaseNote> DocumentDeleted { get; set; }
 
-    // [Parameter]
-    // public EventCallback<User> UserEdited { get; set; }
+    [Parameter]
+    public EventCallback<User> DocumentEdited { get; set; }
 
     /// <summary>
     /// Reference to the Confirm modal dialog
@@ -71,5 +72,18 @@
 
         if (shouldProceed)
             await DocumentDeleted.InvokeAsync(rn);
+    }
+
+    /// <summary>
+    /// Opens the edit page of the release note document
+    /// </summary>
+    /// <param name="rn"></param>
+    private void Edit(ReleaseNote rn)
+    {
+        // if (!DocumentEdited.HasDelegate)
+        //     return;
+        //DocumentEdited.InvokeAsync(rn);
+
+        NavManager.NavigateTo($"/rnotes?rnid={rn.RefId}", forceLoad: true);
     }
 }

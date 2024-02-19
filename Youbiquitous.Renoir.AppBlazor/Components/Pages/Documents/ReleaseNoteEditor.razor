@@ -1,0 +1,20 @@
+﻿@page "/rnotes"
+@rendermode InteractiveServer
+@using Youbiquitous.Renoir.Resources
+@inherits ReleaseNoteEditorPage
+
+@{
+    var docId = ParentDocumentId;
+    if (RelatedDocument is null)
+    { 
+        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownDocument</div>
+        return;
+    }
+}
+
+<PageTitle>
+    @RelatedDocument
+</PageTitle>
+
+
+<h1>@docId</h1>
