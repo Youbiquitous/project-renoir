@@ -54,20 +54,5 @@ public class AuthService : ApplicationServiceBase
             : AuthenticationResponse.Fail().AddMessage("Credentials dont match");
     }
 
-    /// <summary>
-    /// Attempt to update user information
-    /// </summary>
-    /// <param name="profile"></param>
-    /// <param name="changePassword"></param>
-    /// <returns></returns>
-    //public CommandResponse TrySaveProfile(UserProfile profile, ChangePassword changePassword)
-    //{
-    //    if (!profile.IsValid())
-    //        return CommandResponse.Fail().AddMessage(AppStrings.Err_InvalidInput);
 
-    //    var response = changePassword.ShouldIgnoreRequest()
-    //        ? UserRepository.UpdateProfile(profile.UserId, profile.Email, profile.DisplayName)
-    //        : UserRepository.UpdateProfileAndPassword(profile.UserId, profile.Email, profile.DisplayName, changePassword.NewPassword);
-    //    return response;
-    //}
 }

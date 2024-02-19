@@ -1,11 +1,13 @@
-//////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 //
-// Building Enterprise ASP.NET Core 6 Blazor Applications
-// Source code
+// Project RENOIR
+// Release Notes Instant Reporter
 //
-// Dino Esposito 
-// 2023
+// Reference application presented in
+// Clean Architecture with .NET (MS Press) 2024
+// Author: Dino Esposito
 // 
+//
 
 
 namespace Youbiquitous.Renoir.Application.Auth.Dto;
