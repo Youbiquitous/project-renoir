@@ -16,6 +16,11 @@ namespace Youbiquitous.Renoir.Application.Auth.Dto;
 
 public class AuthenticationRequest
 {
+    public AuthenticationRequest()
+    {
+        StayConnected = true;
+    }
+
     /// <summary>
     /// Username/Email
     /// </summary>

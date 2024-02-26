@@ -259,6 +259,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find present version of the release note.
+        /// </summary>
+        public static string Err_VersionNotFound {
+            get {
+                return ResourceManager.GetString("Err_VersionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to proceed?.
         /// </summary>
         public static string Info_ConfirmAction {
@@ -300,6 +309,24 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Msg_NoDocumentsFound {
             get {
                 return ResourceManager.GetString("Msg_NoDocumentsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No rows found.
+        /// </summary>
+        public static string Msg_NoRowsFound {
+            get {
+                return ResourceManager.GetString("Msg_NoRowsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully done.
+        /// </summary>
+        public static string Msg_SuccessfullyDone {
+            get {
+                return ResourceManager.GetString("Msg_SuccessfullyDone", resourceCulture);
             }
         }
     }

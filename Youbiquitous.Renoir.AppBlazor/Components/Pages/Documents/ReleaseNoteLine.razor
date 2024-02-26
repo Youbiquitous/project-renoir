@@ -1,0 +1,33 @@
+﻿@using Youbiquitous.Renoir.DomainModel.Documents
+
+<div id="item-@Model.RefId" 
+     class="d-flex w-100 align-items-center">
+    <div>
+        <select @bind="Model.Category" class="form-select fw-bold">
+            @foreach (var item in Enum.GetValues(typeof(ItemCategory)))
+            {
+                <option value="@item">@(((ItemCategory)item).ForDisplay())</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="text" id="eta" class="form-control text-primary rn-eta"
+               placeholder="ETA or other notes" />
+    </div>
+    <div class="flex-grow-1">
+        <input type="text" id="desc" class="form-control rn-description"
+               placeholder="Describe the item..."
+               @bind-value="Model.Description" />
+    </div>
+    <div class="ms-1 text-primary" style="width: 150px;">
+        <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay()</div>
+        <div class="tiny italic lh-1">@Model.LastUpdated.AuthorForDisplay()</div>
+    </div>
+</div>
+
+
+@code
+{
+    [Parameter]
+    public ReleaseNoteItem Model { get; set; }
+}

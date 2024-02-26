@@ -10,6 +10,7 @@
 //
 
 using System.ComponentModel.DataAnnotations;
+using Youbiquitous.Renoir.DomainModel.Utils;
 
 namespace Youbiquitous.Renoir.DomainModel.Documents;
 
@@ -23,6 +24,18 @@ public partial class ReleaseNoteItem : BaseEntity
     /// </summary>
     public ReleaseNoteItem()
     {
+        ItemType = ReleaseNoteItemType.Default;
+    }
+
+    /// <summary>
+    /// Factory method
+    /// </summary>
+    /// <returns></returns>
+    public static ReleaseNoteItem Default()
+    {
+        var category = DateTime.Now.Millisecond % 2 > 0 ? ItemCategory.Feature : ItemCategory.Bug;
+        var desc = $"{DateTime.Now.Millisecond}";
+        return new ReleaseNoteItem { Description = desc, Category = category };
     }
 
     /// <summary>
@@ -46,6 +59,11 @@ public partial class ReleaseNoteItem : BaseEntity
     public long ProductId { get; set; }
 
     /// <summary>
+    /// Position of the item in the presentation of the parent document
+    /// </summary>
+    public int Order { get; set; }
+
+    /// <summary>
     /// Type of line in the release note
     /// </summary>
     public ItemCategory Category { get; set; }
@@ -61,4 +79,38 @@ public partial class ReleaseNoteItem : BaseEntity
     /// </summary>
     [MaxLength(30)]
     public string Eta { get; set; }
+
+    /// <summary>
+    /// Type of the item (text or divider)
+    /// </summary>
+    public ReleaseNoteItemType ItemType { get; set; }
+
+    /// <summary>
+    /// Whether the item is unchanged
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public bool SameAs(ReleaseNoteItem other)
+    {
+        return RefId == other.RefId &&
+               DocumentId == other.DocumentId &&
+               ProductId == other.ProductId &&
+               Category == other.Category &&
+               ItemType == other.ItemType &&
+               Order == other.Order &&
+               Description.NullOrEquals(other.Description) &&
+               Eta.NullOrEquals(other.Eta);
+    }
+
+    /// <summary>
+    /// Copy the state of another object
+    /// </summary>
+    public override void Import(BaseEntity entity)
+    {
+        var other = (ReleaseNoteItem) entity;
+        Category = other.Category;
+        Eta = other.Eta;
+        Description = other.Description;
+        Order = other.Order;
+    }
 }

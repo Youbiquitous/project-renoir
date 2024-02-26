@@ -9,39 +9,41 @@
 
 <CascadingAuthenticationState>
     <PageTitle>@Settings.Project.Name</PageTitle>
+    
+        <div class="app-page-container">
+            <div class="app-sidebar">
+                <CascadingValue Value="this">
+                    <NavMenu Header="@Settings.Project.Name"
+                             Items="@MenuFactory.ForRole(Logged.GetRole())" />
+                </CascadingValue>
+                <CopyrightNote 
+                    FirstLine="@Settings.Project.Copyright"
+                    SecondLine="@Settings.Project.Attribution" />
+            </div>
 
-    <div class="app-page-container">
-        <div class="app-sidebar">
-            <NavMenu Header="@Settings.Project.Name"
-                     Items="@MenuFactory.ForRole(Logged.GetRole())" />
+            <div class="app-content-container">
+                <TitleBar Left="@Environment.EnvironmentName"
+                          LeftClass="small opacity-50"
+                          Right="@Settings.Project.Version" 
+                          RightClass="fw-bold" />
 
-            <CopyrightNote 
-                FirstLine="@Settings.Project.Copyright"
-                SecondLine="@Settings.Project.Attribution" />
-        </div>
-
-        <div class="app-content-container">
-            <TitleBar Left="@Environment.EnvironmentName"
-                      LeftClass="small opacity-50"
-                      Right="@Settings.Project.Version" 
-                      RightClass="fw-bold" />
-
-            <div class="app-content">
-                <ErrorBoundary>
-                    <ChildContent>
-                        @Body
-                    </ChildContent>
-                    <ErrorContent Context="ex">
-                        <ErrorReport Icon="fa fa-exclamation-triangle" 
-                                     Exception="@ex"
-                                     ShowInternals="@(Environment.IsDevelopment())" />
-                        <button class="btn btn-warning"
-                                @onclick="Recover">
-                            @AppMenu.Resume
-                        </button>
-                    </ErrorContent>
-                </ErrorBoundary>
+                <div class="app-content">
+                    <ErrorBoundary>
+                        <ChildContent>
+                            @Body
+                        </ChildContent>
+                        <ErrorContent Context="ex">
+                            <ErrorReport Icon="fa fa-exclamation-triangle" 
+                                         Exception="@ex"
+                                         ShowInternals="@(Environment.IsDevelopment())" />
+                            <button class="btn btn-warning"
+                                    @onclick="Recover">
+                                @AppMenu.Resume
+                            </button>
+                        </ErrorContent>
+                    </ErrorBoundary>
+                </div>
             </div>
         </div>
-    </div>
+    
 </CascadingAuthenticationState>

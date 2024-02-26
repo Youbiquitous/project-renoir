@@ -122,7 +122,7 @@ public partial class RenoirDatabase
         modelBuilder.Entity<ReleaseNoteItem>()
             .HasOne(rni => rni.RelatedDocument)
             .WithMany(rn => rn.Items)
-            .HasForeignKey(rn => new {rn.RefId})
+            .HasForeignKey(rn => new {rn.DocumentId})
             .OnDelete(DeleteBehavior.Cascade);
         #endregion
     }

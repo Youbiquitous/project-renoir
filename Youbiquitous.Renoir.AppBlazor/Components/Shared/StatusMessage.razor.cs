@@ -10,7 +10,6 @@
 //
 
 using Microsoft.AspNetCore.Components;
-using Youbiquitous.Martlet.Core.Extensions;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Shared;
 
@@ -21,16 +20,38 @@ public partial class StatusMessage : ComponentBase
 {
     public StatusMessage()
     {
-        CssClass = "text-danger";
+        CssClass = "";
+        CssClassError = "text-danger";
+        CssClassSuccess = "text-success";
         Delay = 0;
     }
 
+    /// <summary>
+    /// CSS to apply choosing from error/success
+    /// </summary>
+    private string CssClass { get; set; }
+
+    /// <summary>
+    /// Text to display
+    /// </summary>
     [Parameter]
     public string Message { get; set; }
 
+    /// <summary>
+    /// CSS for a error tone message
+    /// </summary>
     [Parameter]
-    public string CssClass { get; set; }
+    public string CssClassError { get; set; }
 
+    /// <summary>
+    /// CSS for a success tone message
+    /// </summary>
+    [Parameter]
+    public string CssClassSuccess { get; set; }
+
+    /// <summary>
+    /// Message timeout
+    /// </summary>
     [Parameter]
     public int Delay { get; set; }
 
@@ -38,15 +59,20 @@ public partial class StatusMessage : ComponentBase
     /// Present the message (for a given duration)
     /// </summary>
     /// <param name="message"></param>
+    /// <param name="success"></param>
+    /// <param name="timeout"></param>
     /// <returns></returns>
-    public async Task ShowAsync(string message = null)
+    public async Task ShowAsync(string message = null, bool success = false, int timeout = 0)
     {
+        timeout = timeout <= 0 ? Delay : timeout;
+        CssClass = success ? CssClassSuccess : CssClassError;
+
         Message = message;
-        if (Delay <= 0)
+        if (timeout <= 0)
             return;
         
         StateHasChanged();
-        await Task.Delay(Delay);
+        await Task.Delay(timeout);
         Message = null;
         StateHasChanged();
     }

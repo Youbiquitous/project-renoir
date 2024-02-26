@@ -61,5 +61,5 @@ public partial class ReleaseNote : BaseEntity
     /// <summary>
     /// Items in the document 
     /// </summary>
-    public IEnumerable<ReleaseNoteItem> Items { get; set; }
+    public List<ReleaseNoteItem> Items { get; set; }
 }

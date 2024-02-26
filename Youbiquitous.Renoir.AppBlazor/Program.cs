@@ -33,6 +33,8 @@ public class Program
             .SetupMvc()
             .SetupBootstrap();
 
+        builder.WebHost.UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
+
         // Build the app instance
         var app = builder
             .Build()

@@ -10,24 +10,38 @@
 
 using Microsoft.AspNetCore.Components;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
-using Youbiquitous.Renoir.AppBlazor.Models;
+using Youbiquitous.Renoir.AppBlazor.Components.Layout;
+using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.Application;
 using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
 
-public partial class ReleaseNoteEditorPage : ViewModelBase
+public partial class ReleaseNoteEditorPage : MainLayoutPage
 {
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
     /// <summary>
     /// Selected user and related products
     /// </summary>
     public User Current { get; set; }
 
+    [Parameter]
+    public string StatusMessage { get; set; }
+    public StatusMessage Statusbar { get; set; }
+
+
     /// <summary>
     /// List of documents to present
     /// </summary>
     protected ReleaseNote RelatedDocument;
+
+    /// <summary>
+    /// Number of items read from storage (initially)
+    /// </summary>
+    protected int InitialNumberOfItems { get; set; }
     
     /// <summary>
     /// Parent document ID from query string
@@ -43,6 +57,7 @@ public partial class ReleaseNoteEditorPage : ViewModelBase
     {
         base.OnInitialized();
         RelatedDocument = DocumentService.Get(ParentDocumentId);
+        InitialNumberOfItems = RelatedDocument.Items.Count;
         Current = AccountService.Find(Logged.GetEmail());
     }
 
@@ -62,5 +77,55 @@ public partial class ReleaseNoteEditorPage : ViewModelBase
             ParentDocumentId = 0;
             return Task.CompletedTask;
         }
+    }
+
+    /// <summary>
+    /// Jump back to the page of the product
+    /// </summary>
+    public void BackToProduct()
+    {
+        NavigationManager.NavigateTo($"/docs?rn={RelatedDocument.ProductId}", forceLoad: true);
+    }
+
+    /// <summary>
+    /// New default release note item
+    /// </summary>
+    public void AddNewItem()
+    {
+        RelatedDocument.AddNewItem();
+    }
+
+    /// <summary>
+    /// Remove given item
+    /// </summary>
+    public void RemoveItem(ReleaseNoteItem rni)
+    {
+        RelatedDocument.RemoveItem(rni);
+    }
+
+    /// <summary>
+    /// Move item one position up
+    /// </summary>
+    public void MoveUp(ReleaseNoteItem rni)
+    {
+        RelatedDocument.MoveItemUp(rni);
+    }
+
+    /// <summary>
+    /// Move item one position down
+    /// </summary>
+    public void MoveDown(ReleaseNoteItem rni)
+    {
+        RelatedDocument.MoveItemDown(rni);
+    }
+
+    /// <summary>
+    /// Save changes, updating/creating a releaase note document
+    /// </summary>
+    public async Task SaveChanges()
+    {
+        var author = Logged.GetEmail();
+        var response = DocumentService.Update(RelatedDocument, author);
+        await Statusbar.ShowAsync($"{response.Message} {response.ExtraData}", response.Success);
     }
 }

@@ -88,6 +88,7 @@ public static class MenuFactory
         {
             new(AppMenu.Products, "/products", "fa fa-hand-holding-box"),
             new(AppMenu.Users, "/users", "fa fa-user"),
+            NavMenuItem.Sep(),
             new(AppMenu.ReleaseNotes, "/myproducts", "fa fa-file"),
         };
     }

@@ -16,7 +16,7 @@ using Youbiquitous.Renoir.Persistence.Repositories;
 
 namespace Youbiquitous.Renoir.Application;
 
-public partial class DocumentService : ApplicationServiceBase
+public partial class DocumentService 
 {
     /// <summary>
     /// Delete an existing document
@@ -41,8 +41,20 @@ public partial class DocumentService : ApplicationServiceBase
         {
             ReleaseDate = DateTime.UtcNow
         };
-        rn.Created.Mark(author);
-        rn.LastUpdated.Mark(author);
-        return DocumentRepository.Add(rn); 
+        rn.Init(author);
+        rn.Mark(author);
+        return DocumentRepository.Create(rn); 
+    }
+
+    /// <summary>
+    /// Save changes to the document
+    /// </summary>
+    /// <param name="rn"></param>
+    /// <param name="author"></param>
+    /// <returns></returns>
+    public static CommandResponse Update(ReleaseNote rn, string author)
+    {
+        rn.Mark(author);
+        return DocumentRepository.Update(rn);
     }
 }

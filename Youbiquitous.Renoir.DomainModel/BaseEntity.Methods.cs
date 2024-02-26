@@ -57,6 +57,8 @@ public partial class BaseEntity
     public virtual void Import(BaseEntity entity)
     {
         Deleted = entity.Deleted;
+        LastUpdated = entity.LastUpdated;
+        Created = entity.Created;
     }
 
     /// <summary>

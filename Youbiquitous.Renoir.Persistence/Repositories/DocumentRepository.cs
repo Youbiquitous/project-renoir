@@ -34,6 +34,7 @@ public partial class DocumentRepository
             using var db = new RenoirDatabase();
             var doc = db.ReleaseNotes
                 .Include(r => r.Items)
+                .Include(r => r.RelatedProduct)
                 .SingleOrDefault(r => r.RefId == refId && !r.Deleted);
             return doc;
         }
@@ -97,36 +98,5 @@ public partial class DocumentRepository
             var x = ex.Message;
             return null;
         }
-    }
-
-    /// <summary>
-    /// Remove a release note and all of its items
-    /// </summary>
-    /// <param name="docId"></param>
-    /// <returns></returns>
-    public static CommandResponse Delete(long docId)
-    {
-        using var db = new RenoirDatabase();
-        db.ReleaseNotes
-            .Where(rn => rn.RefId == docId)
-            .ExecuteDelete();
-        return CommandResponse.Ok();
-    }
-
-    /// <summary>
-    /// Add a new release note container 
-    /// </summary>
-    /// <param name="doc"></param>
-    /// <returns></returns>
-    public static CommandResponse Add(ReleaseNote doc)
-    {
-        using var db = new RenoirDatabase();
-        var found = db.ReleaseNotes.FirstOrDefault(rn => rn.Version == doc.Version);
-        if (found is not null)
-            return CommandResponse.Fail().AddMessage(AppMessages.Err_VersionAlreadyFound);
-
-        db.ReleaseNotes.Add(doc);
-        db.SaveChanges();
-        return CommandResponse.Ok();
     }
 }

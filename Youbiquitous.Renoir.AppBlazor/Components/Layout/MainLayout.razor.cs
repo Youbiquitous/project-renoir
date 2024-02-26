@@ -9,6 +9,7 @@
 // 
 //
 
+using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.AppBlazor.Models;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;
@@ -18,5 +19,4 @@ namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;
 /// </summary>
 public class MainLayoutPage : ViewModelBase
 {
-
 }

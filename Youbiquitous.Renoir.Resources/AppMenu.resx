@@ -147,6 +147,9 @@
   <data name="NewReleaseNote" xml:space="preserve">
     <value>New Release Note</value>
   </data>
+  <data name="NewRow" xml:space="preserve">
+    <value>New row</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Products</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Resume</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Save changes</value>

@@ -22,5 +22,11 @@
     "inputFiles": [
       "wwwroot/css/app-assets/renoir-grid.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/app-assets/renoir-docs.min.css",
+    "inputFiles": [
+      "wwwroot/css/app-assets/renoir-docs.css"
+    ]
   }
 ]

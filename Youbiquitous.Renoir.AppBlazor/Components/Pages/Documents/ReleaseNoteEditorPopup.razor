@@ -28,7 +28,8 @@
         <StatusMessage @ref="Statusbar"
                        Message="@StatusMessage"
                        Delay="2500"
-                       CssClass="text-danger fw-bold" />
+                       CssClassSuccess="text-success fw-bold"
+                       CssClassError="text-danger fw-bold" />
     </FooterTemplate>  
 </Modal>
 
@@ -90,5 +91,4 @@
 
         await OnFormPosted.InvokeAsync(RelatedDocument);
     }
-
 }

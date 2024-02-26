@@ -49,7 +49,7 @@ public partial class RenoirDatabase
         }
         catch (Exception ex)
         {
-            return CommandResponse.Ok()
+            return CommandResponse.Fail()
                 .AddMessage(AppMessages.Err_OperationFailed)
                 .AddExtra(ex.Message);
         }

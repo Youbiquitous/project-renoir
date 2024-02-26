@@ -61,6 +61,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string Label_Created {
+            get {
+                return ResourceManager.GetString("Label_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting.
         /// </summary>
         public static string Label_Deleting {
@@ -93,6 +102,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_JoinCommunity {
             get {
                 return ResourceManager.GetString("Label_JoinCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modified.
+        /// </summary>
+        public static string Label_Modified {
+            get {
+                return ResourceManager.GetString("Label_Modified", resourceCulture);
             }
         }
         
@@ -381,6 +399,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Text_NoProductsToWork {
             get {
                 return ResourceManager.GetString("Text_NoProductsToWork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Note.
+        /// </summary>
+        public static string Text_ReleaseNote {
+            get {
+                return ResourceManager.GetString("Text_ReleaseNote", resourceCulture);
             }
         }
     }

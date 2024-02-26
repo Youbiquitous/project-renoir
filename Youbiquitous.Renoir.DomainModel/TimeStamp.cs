@@ -12,6 +12,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using Youbiquitous.Martlet.Core.Extensions;
+using Youbiquitous.Renoir.DomainModel.Utils;
 
 namespace Youbiquitous.Renoir.DomainModel;
 
@@ -52,5 +53,26 @@ public class TimeStamp
         When = dt;
         if (!author.IsNullOrWhitespace())
             By = author;
+    }
+
+
+    public string DateForDisplay(string format = "d MMM yyyy")
+    {
+        return When.ToStringOrEmpty(format);
+    }
+
+    public string AuthorForDisplay()
+    {
+        return By.IsNullOrWhitespace() ? InternalStrings.Text_User_Unknown : By;
+    }
+
+    /// <summary>
+    /// Official display string
+    /// </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        var author = By.IsNullOrWhitespace() ? InternalStrings.Text_User_Unknown : By;
+        return $"{When:d MMM yyyy HH:mm} - ({author})";
     }
 }

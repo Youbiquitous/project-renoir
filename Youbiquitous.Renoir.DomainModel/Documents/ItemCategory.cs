@@ -10,6 +10,8 @@
 //
 
 
+using Youbiquitous.Renoir.DomainModel.Utils;
+
 namespace Youbiquitous.Renoir.DomainModel.Documents;
 
 /// <summary>
@@ -42,5 +44,17 @@ public static class ItemCategoryExtensions
     public static bool IsInternal(this ItemCategory category)
     {
         return category == ItemCategory.Internal;
+    }
+
+    public static string ForDisplay(this ItemCategory category)
+    {
+        return category switch
+        {
+            ItemCategory.None => InternalStrings.Text_Category_None,
+            ItemCategory.Internal => InternalStrings.Text_Category_Internal,
+            ItemCategory.Bug => InternalStrings.Text_Category_Bug,            
+            ItemCategory.Feature => InternalStrings.Text_Category_Feature,
+            _ => ""
+        };
     }
 }

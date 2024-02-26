@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label_Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
   <data name="Label_Deleting" xml:space="preserve">
     <value>Deleting</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Label_JoinCommunity" xml:space="preserve">
     <value>Join the community</value>
+  </data>
+  <data name="Label_Modified" xml:space="preserve">
+    <value>Modified</value>
   </data>
   <data name="Label_MyProducts" xml:space="preserve">
     <value>My Products</value>
@@ -225,5 +231,8 @@
   </data>
   <data name="Text_NoProductsToWork" xml:space="preserve">
     <value>You're not enabled to work on any products</value>
+  </data>
+  <data name="Text_ReleaseNote" xml:space="preserve">
+    <value>Release Note</value>
   </data>
 </root>
