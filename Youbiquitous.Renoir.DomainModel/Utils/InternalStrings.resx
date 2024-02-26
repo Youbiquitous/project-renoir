@@ -129,6 +129,15 @@
   <data name="Text_Category_None" xml:space="preserve">
     <value>N/A</value>
   </data>
+  <data name="Text_Document_ReleaseNote" xml:space="preserve">
+    <value>Release Note</value>
+  </data>
+  <data name="Text_Document_Roadmap" xml:space="preserve">
+    <value>Roadmap</value>
+  </data>
+  <data name="Text_Document_TodoList" xml:space="preserve">
+    <value>Todo List</value>
+  </data>
   <data name="Text_Position_Bottom" xml:space="preserve">
     <value>Bottom</value>
   </data>
@@ -137,6 +146,9 @@
   </data>
   <data name="Text_Position_Top" xml:space="preserve">
     <value>Top</value>
+  </data>
+  <data name="Text_ReleaseNote_NewSection" xml:space="preserve">
+    <value>New Section</value>
   </data>
   <data name="Text_User_Unknown" xml:space="preserve">
     <value>Unknown</value>

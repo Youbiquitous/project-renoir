@@ -88,6 +88,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Release Note.
+        /// </summary>
+        public static string Label_EditReleaseNote {
+            get {
+                return ResourceManager.GetString("Label_EditReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Label_Email {
@@ -183,6 +192,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_NoRole {
             get {
                 return ResourceManager.GetString("Label_NoRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string Label_Notes {
+            get {
+                return ResourceManager.GetString("Label_Notes", resourceCulture);
             }
         }
         

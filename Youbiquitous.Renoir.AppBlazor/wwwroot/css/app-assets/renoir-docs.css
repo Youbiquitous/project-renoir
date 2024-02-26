@@ -11,4 +11,21 @@
     font-size: 0.8rem;
     font-style: italic;
 }
- 
+
+.rn-timestamp {
+    font-size: .7rem;
+    border-top: solid 1px var(--app-color-dark);
+    border-bottom: solid 1px var(--app-color-dark);
+    padding: 8px;
+    padding-bottom: 0;
+    background-color: #eeeeff;
+    padding-top: 4px;
+}
+
+.rn-divider {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}

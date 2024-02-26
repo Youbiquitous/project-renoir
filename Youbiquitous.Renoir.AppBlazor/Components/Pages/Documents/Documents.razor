@@ -29,7 +29,7 @@
             <span class="ms-2 opacity-50">@container.Product.Version</span>
         </div>
         <div>
-            <button class="btn btn-primary" @onclick="OpenDocumentEditor">
+            <button class="btn btn-primary" @onclick="NewDocumentEditor">
                 <i class="fa fa-plus"></i>
                 @AppMenu.NewReleaseNote
             </button>
@@ -48,10 +48,11 @@
     {
         <DocumentsTable @ref="ListOfDocuments" 
                         Documents="documents"
+                        DocumentEdited="EditDocumentEditor"
                         DocumentDeleted="DeleteExistingDocument" />
     }
 </div>
 
 <!-- Popup Editor -->
 <ReleaseNoteEditorPopup @ref="DocumentEditor" 
-                        OnFormPosted="NewDocument" />
+                        OnFormPosted="SaveDocument" />

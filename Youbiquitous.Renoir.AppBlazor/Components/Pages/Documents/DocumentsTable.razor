@@ -16,12 +16,18 @@
     <tbody class="pointer-cursor">
     @foreach (var d in Documents)
     {
-        <tr @onclick="() => Edit(d)">
+        <tr @onclick="() => Open(d)">
             <td>
                 <button class="btn btn-sm btn-danger"
                         @onclick="() => Delete(d)"
                         @onclick:stopPropagation="true">
                     <span class="fa fa-times"></span>
+                </button>
+
+                <button class="btn btn-sm btn-primary ms-2"
+                        @onclick="() => Edit(d)"
+                        @onclick:stopPropagation="true">
+                    <span class="fa fa-edit"></span>
                 </button>
             </td>
             <td>@d.Version</td>
@@ -47,7 +53,7 @@
     public EventCallback<ReleaseNote> DocumentDeleted { get; set; }
 
     [Parameter]
-    public EventCallback<User> DocumentEdited { get; set; }
+    public EventCallback<ReleaseNote> DocumentEdited { get; set; }
 
     /// <summary>
     /// Reference to the Confirm modal dialog
@@ -75,15 +81,22 @@
     }
 
     /// <summary>
-    /// Opens the edit page of the release note document
+    /// Edits the details of the document (version and comment) 
     /// </summary>
     /// <param name="rn"></param>
     private void Edit(ReleaseNote rn)
     {
-        // if (!DocumentEdited.HasDelegate)
-        //     return;
-        //DocumentEdited.InvokeAsync(rn);
+        if (!DocumentEdited.HasDelegate)
+            return;
+        DocumentEdited.InvokeAsync(rn);
+    }
 
+    /// <summary>
+    /// Opens the edit page of the release note document
+    /// </summary>
+    /// <param name="rn"></param>
+    private void Open(ReleaseNote rn)
+    {
         NavManager.NavigateTo($"/rnotes?rnid={rn.RefId}", forceLoad: true);
     }
 }

@@ -13,7 +13,13 @@
                 <label class="fw-bold">@AppStrings.Label_Version</label>
                  <InputText class="form-control" 
                             autofocus
-                           @bind-Value="RelatedDocument.Version" />
+                            @bind-Value="RelatedDocument.Version" />
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Notes</label>
+                <InputTextArea class="form-control" 
+                               maxlength="180"
+                               @bind-Value="RelatedDocument.Notes" />
             </div>
 
             <div class="d-flex justify-content-end mt-4">

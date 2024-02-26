@@ -33,17 +33,41 @@ public partial class DocumentService
     /// </summary>
     /// <param name="productId"></param>
     /// <param name="version"></param>
+    /// <param name="notes"></param>
     /// <param name="author"></param>
     /// <returns></returns>
-    public static CommandResponse NewReleaseNote(long productId, string version, string author)
+    public static CommandResponse NewReleaseNote(long productId, string version, string notes, string author)
     {
         var rn = new ReleaseNote(productId, version)
         {
-            ReleaseDate = DateTime.UtcNow
+            ReleaseDate = DateTime.UtcNow,
+            Notes = notes,
         };
         rn.Init(author);
         rn.Mark(author);
         return DocumentRepository.Create(rn); 
+    }
+
+    /// <summary>
+    /// Create a new release note document
+    /// </summary>
+    /// <param name="refId"></param>
+    /// <param name="productId"></param>
+    /// <param name="version"></param>
+    /// <param name="notes"></param>
+    /// <param name="author"></param>
+    /// <returns></returns>
+    public static CommandResponse SaveReleaseNote(long refId, long productId, string version, string notes, string author)
+    {
+        var rn = new ReleaseNote(productId, version)
+        {
+            RefId = refId,
+            ReleaseDate = DateTime.UtcNow,
+            Notes = notes,
+        };
+//        rn.Init(author);
+        rn.Mark(author);
+        return DocumentRepository.Update(rn);
     }
 
     /// <summary>

@@ -14,6 +14,7 @@ using Youbiquitous.Renoir.AppBlazor.Components.Layout;
 using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.Application;
 using Youbiquitous.Renoir.DomainModel.Documents;
+using Youbiquitous.Renoir.DomainModel.Documents.Core;
 using Youbiquitous.Renoir.DomainModel.Management;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
@@ -90,10 +91,21 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
     /// <summary>
     /// New default release note item
     /// </summary>
-    public void AddNewItem()
+    /// <param name="position"></param>
+    public void AddNewItem(InsertPosition position = InsertPosition.Bottom)
     {
-        RelatedDocument.AddNewItem();
+        RelatedDocument.AddNewItem(position);
     }
+
+    /// <summary>
+    /// New default divider 
+    /// </summary>
+    /// <param name="position"></param>
+    public void AddNewDivider(InsertPosition position = InsertPosition.Bottom)
+    {
+        RelatedDocument.AddNewDivider(position);
+    }
+
 
     /// <summary>
     /// Remove given item
@@ -101,6 +113,14 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
     public void RemoveItem(ReleaseNoteItem rni)
     {
         RelatedDocument.RemoveItem(rni);
+    }
+
+    /// <summary>
+    /// Remove all current items
+    /// </summary>
+    public void ClearAll()
+    {
+        RelatedDocument.Items.RemoveAll(_ => true);
     }
 
     /// <summary>
@@ -127,5 +147,8 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
         var author = Logged.GetEmail();
         var response = DocumentService.Update(RelatedDocument, author);
         await Statusbar.ShowAsync($"{response.Message} {response.ExtraData}", response.Success);
+
+        // Update number of items in the view 
+        InitialNumberOfItems = RelatedDocument.Items.Count;
     }
 }

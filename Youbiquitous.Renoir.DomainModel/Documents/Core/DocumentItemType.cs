@@ -9,12 +9,12 @@
 // 
 //
 
-namespace Youbiquitous.Renoir.DomainModel.Documents;
+namespace Youbiquitous.Renoir.DomainModel.Documents.Core;
 
 /// <summary>
-/// Item types for release-note items
+/// Item types for document items
 /// </summary>
-public enum ReleaseNoteItemType
+public enum DocumentItemType
 {
     Default = 0,
     Divider = 1
@@ -24,15 +24,15 @@ public enum ReleaseNoteItemType
 /// <summary>
 /// Dedicated extension methods for the enum
 /// </summary>
-public static class ReleaseNoteItemTypeExtensions
+public static class DocumentItemTypeExtensions
 {
-    public static bool IsDefault(this ReleaseNoteItemType type)
+    public static bool IsDefault(this DocumentItemType type)
     {
-        return type == ReleaseNoteItemType.Default;
+        return type == DocumentItemType.Default;
     }
 
-    public static bool IsDivider(this ReleaseNoteItemType type)
+    public static bool IsDivider(this DocumentItemType type)
     {
-        return type == ReleaseNoteItemType.Divider;
+        return type == DocumentItemType.Divider;
     }
 }

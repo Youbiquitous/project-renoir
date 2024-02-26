@@ -1,12 +1,27 @@
-﻿@using Youbiquitous.Renoir.DomainModel.Documents
+﻿@using Youbiquitous.Renoir.DomainModel.Documents.Core
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Renoir.DomainModel.Documents
+
+@if (Model.ItemType.IsDivider())
+{
+    <div class="d-flex w-100 justify-content-center bordered-bottom mb-2">
+        <div class="rn-divider">
+            <input type="text" 
+                   class="form-control fw-bold text-center" 
+                   @bind-value="@Model.Description" />
+        </div>
+    </div>
+
+    return;
+}
 
 <div id="item-@Model.RefId" 
      class="d-flex w-100 align-items-center">
     <div>
         <select @bind="Model.Category" class="form-select fw-bold">
-            @foreach (var item in Enum.GetValues(typeof(ItemCategory)))
+            @foreach (var item in Enum.GetValues(typeof(DocumentItemCategory)))
             {
-                <option value="@item">@(((ItemCategory)item).ForDisplay())</option>
+                <option value="@item">@(((DocumentItemCategory)item).ForDisplay())</option>
             }
         </select>
     </div>
@@ -19,7 +34,7 @@
                placeholder="Describe the item..."
                @bind-value="Model.Description" />
     </div>
-    <div class="ms-1 text-primary" style="width: 150px;">
+    <div class="ms-1 text-primary text-end" style="width: 150px;">
         <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay()</div>
         <div class="tiny italic lh-1">@Model.LastUpdated.AuthorForDisplay()</div>
     </div>

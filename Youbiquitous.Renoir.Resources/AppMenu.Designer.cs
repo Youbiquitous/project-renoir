@@ -106,7 +106,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My products.
+        ///   Looks up a localized string similar to My Products.
         /// </summary>
         public static string MyProducts {
             get {
@@ -115,7 +115,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My profile.
+        ///   Looks up a localized string similar to My Profile.
         /// </summary>
         public static string MyProfile {
             get {
@@ -124,7 +124,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My work.
+        ///   Looks up a localized string similar to My Work.
         /// </summary>
         public static string MyWork {
             get {
@@ -142,6 +142,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Section.
+        /// </summary>
+        public static string NewDivider {
+            get {
+                return ResourceManager.GetString("NewDivider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Release Note.
         /// </summary>
         public static string NewReleaseNote {
@@ -151,7 +160,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New row.
+        ///   Looks up a localized string similar to New Row.
         /// </summary>
         public static string NewRow {
             get {
@@ -196,7 +205,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save changes.
+        ///   Looks up a localized string similar to Save Changes.
         /// </summary>
         public static string SaveChanges {
             get {

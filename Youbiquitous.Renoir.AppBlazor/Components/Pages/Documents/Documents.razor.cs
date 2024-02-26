@@ -9,6 +9,7 @@
 // 
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.VisualBasic;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Models;
 using Youbiquitous.Renoir.AppBlazor.Models.Input;
@@ -82,7 +83,7 @@ public partial class ReleaseNotesPage : ViewModelBase
     /// Display the Document-Editor modal for a new release note document
     /// </summary>
     /// <returns></returns>
-    protected async Task OpenDocumentEditor()
+    protected async Task NewDocumentEditor()
     {
         DocumentEditor.SetTitle(AppStrings.Label_NewReleaseNote);
         DocumentEditor.SetUserData(new DocRef());
@@ -90,13 +91,29 @@ public partial class ReleaseNotesPage : ViewModelBase
     }
 
     /// <summary>
-    /// Finalize the New-Document modal and create a new release-note
+    /// Reopen the document modal for editing version and comment 
     /// </summary>
-    protected async Task NewDocument(DocRef rn)
+    /// <param name="document"></param>
+    /// <returns></returns>
+    protected async Task EditDocumentEditor(ReleaseNote document)
+    {
+        DocumentEditor.SetTitle(AppStrings.Label_EditReleaseNote);
+        DocumentEditor.SetUserData(new DocRef(document.RefId, document.Version, document.Notes));
+        await DocumentEditor.Window.ShowAsync();
+    }
+
+    /// <summary>
+    /// Finalize the New-Document modal and create a new release-note (or edit)
+    /// </summary>
+    /// <param name="rn"></param>
+    /// <returns></returns>
+    protected async Task SaveDocument(DocRef rn)
     {
         // Save user data to the DB
         var author = Logged.GetEmail();
-        var response = DocumentService.NewReleaseNote(SelectedProductId, rn.Version, author);
+        var response = rn.RefId == 0
+            ? DocumentService.NewReleaseNote(SelectedProductId, rn.Version, rn.Notes, author)
+            : DocumentService.SaveReleaseNote(rn.RefId, SelectedProductId, rn.Version, rn.Notes, author);
         if (!response.Success)
         {
             await DocumentEditor.Statusbar.ShowAsync(response.Message);
@@ -106,4 +123,6 @@ public partial class ReleaseNotesPage : ViewModelBase
         Refresh();
         await DocumentEditor.Window.HideAsync();
     }
+
+
 }

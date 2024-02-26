@@ -97,6 +97,33 @@ namespace Youbiquitous.Renoir.DomainModel.Utils {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Release Note.
+        /// </summary>
+        internal static string Text_Document_ReleaseNote {
+            get {
+                return ResourceManager.GetString("Text_Document_ReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roadmap.
+        /// </summary>
+        internal static string Text_Document_Roadmap {
+            get {
+                return ResourceManager.GetString("Text_Document_Roadmap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todo List.
+        /// </summary>
+        internal static string Text_Document_TodoList {
+            get {
+                return ResourceManager.GetString("Text_Document_TodoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         internal static string Text_Position_Bottom {
@@ -120,6 +147,15 @@ namespace Youbiquitous.Renoir.DomainModel.Utils {
         internal static string Text_Position_Top {
             get {
                 return ResourceManager.GetString("Text_Position_Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Section.
+        /// </summary>
+        internal static string Text_ReleaseNote_NewSection {
+            get {
+                return ResourceManager.GetString("Text_ReleaseNote_NewSection", resourceCulture);
             }
         }
         

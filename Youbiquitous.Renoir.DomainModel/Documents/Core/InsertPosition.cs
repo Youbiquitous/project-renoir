@@ -12,7 +12,7 @@
 
 using Youbiquitous.Renoir.DomainModel.Utils;
 
-namespace Youbiquitous.Renoir.DomainModel.Documents;
+namespace Youbiquitous.Renoir.DomainModel.Documents.Core;
 
 /// <summary>
 /// Categories for release-note items

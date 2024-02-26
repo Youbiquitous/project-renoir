@@ -21,7 +21,19 @@ namespace Youbiquitous.Renoir.AppBlazor.Models.Input;
 /// </summary>
 public class DocRef : DtoBase
 {
+    public DocRef()
+    {
+    }
+    public DocRef(long refId, string version, string notes)
+    {
+        RefId = refId;
+        Version = version;
+        Notes = notes;
+    }
+
+    public long RefId { get; set; }
     public string Version { get; set; }
+    public string Notes { get; set; }
 
     /// <summary>
     /// Whether data is acceptable for a User reference

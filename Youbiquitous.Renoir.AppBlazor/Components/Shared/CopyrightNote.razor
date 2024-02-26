@@ -1,12 +1,29 @@
 ﻿@inherits CopyrightNoteComponent
 
-<div class="app-copyright-notes">
-    <div class="border-bottom">
-        <span class="fa fa-copyright"></span>
-        @((MarkupString)FirstLine)
+<div class="app-copyright-container d-flex justify-content-between">
+    <div>
+        <a href="https://www.microsoftpressstore.com/store/clean-architecture-with-.net-9780138203283"
+           target="_blank">
+            <img src="/images/clean-book.jpg"
+                 class="img-thumbnail img-fluid"/>
+        </a>
     </div>
-    <div class="text-center">
-        @((MarkupString)SecondLine)
+
+    <div class="text-end mt-4">
+        <div class="border-bottom app-copyright-notes">
+            <span class="fa fa-copyright"></span>
+            @((MarkupString)FirstLine)
+        </div>
+        <div class="app-copyright-notes">
+            @((MarkupString)SecondLine)
+        </div>
+        
+        <div class="mt-3 text-center">
+            <a href="https://github.com/youbiquitous/project-renoir/" 
+               target="_blank">
+                <i class="fab text-white fa-3x fa-github"></i>
+            </a>
+        </div>
     </div>
 </div>
 

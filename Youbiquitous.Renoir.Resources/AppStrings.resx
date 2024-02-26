@@ -126,6 +126,9 @@
   <data name="Label_DisplayName" xml:space="preserve">
     <value>Display name</value>
   </data>
+  <data name="Label_EditReleaseNote" xml:space="preserve">
+    <value>Edit Release Note</value>
+  </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="Label_NoRole" xml:space="preserve">
     <value>No role assigned</value>
+  </data>
+  <data name="Label_Notes" xml:space="preserve">
+    <value>Notes</value>
   </data>
   <data name="Label_NoUser" xml:space="preserve">
     <value>No user selected</value>

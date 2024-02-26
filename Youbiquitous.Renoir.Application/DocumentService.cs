@@ -30,12 +30,12 @@ public partial class DocumentService : ApplicationServiceBase
     /// <param name="productId"></param>
     /// <param name="isSystem"></param>
     /// <returns></returns>
-    public static DocumentContainer For(long userId, long productId, bool isSystem = false)
+    public static DocumentContainer<ReleaseNote, ReleaseNoteItem> For(long userId, long productId, bool isSystem = false)
     {
         if (productId <= 0)
             return null;
 
-        return new DocumentContainer
+        return new DocumentContainer<ReleaseNote, ReleaseNoteItem>
         {
             Product = ProductRepository.FindById(productId),
             Documents = isSystem

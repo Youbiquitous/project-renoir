@@ -5,16 +5,16 @@
 @inherits ReleaseNoteEditorPage
 
 @{
-    var docId = ParentDocumentId;
-    if (RelatedDocument is null)
+    var doc = RelatedDocument;
+    if (doc is null)
     { 
         <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownDocument</div>
         return;
     }
 
-    var items = RelatedDocument.Items;
-    var product = RelatedDocument.RelatedProduct;
-    var title = $"{AppStrings.Text_ReleaseNote.ToUpper()}: {RelatedDocument.Version}";
+    var items = doc.Items;
+    var product = doc.RelatedProduct;
+    var title = $"{AppStrings.Text_ReleaseNote.ToUpper()}: {doc.Version}";
 }
 
 <link href="/css/app-assets/renoir-docs.min.css" rel="stylesheet" />
@@ -22,70 +22,92 @@
 
 <PageTitle>@title</PageTitle>
 
-<div class="d-flex justify-content-between align-items-center bg-primary text-white p-2">
+<!-- PRODUCT HEADER -->
+<div class="d-flex justify-content-between align-items-center bg-primary text-white p-1">
     <div>
         <button class="btn btn-primary fs-4" @onclick="BackToProduct">
             <span>@product.Name</span>
             <span class="ms-2 opacity-50">@product.Version</span>
         </button>
+        <span>@doc.Notes</span>
     </div>
     <div>
         <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_ReleaseNote</span>
-        <span>@RelatedDocument.Version</span>
+        <span>@doc.Version</span>
     </div>
 </div>
 
+<!-- PRODUCT TIMESTAMP -->
+<div class="d-flex justify-content-between rn-timestamp">
+    <div>
+        <div class="lh-1">
+            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Created</span>
+            <span class="italic">@doc.Created.DateForDisplay()</span>
+            <i class="fal mx-1 fa-clock"></i>
+            <span class="italic">@doc.Created.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+        </div>
+        <div>
+            <span class="italic opacity-50">@doc.Created.AuthorForDisplay()</span>
+        </div>
+    </div>
+    <div class="text-end">
+        <div class="lh-1">
+            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Modified</span>
+            <span class="italic">@doc.LastUpdated.DateForDisplay()</span>
+            <i class="fal mx-1 fa-clock"></i>
+            <span class="italic">@doc.LastUpdated.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+        </div>
+        <div>
+            <span class="italic opacity-50">@doc.LastUpdated.AuthorForDisplay()</span>
+        </div>
+    </div>
+</div>
+
+<!-- FEEDBACK -->
 <StatusMessage @ref="Statusbar"
                Message="@StatusMessage"
                Delay="2500"
                CssClassSuccess="text-success fw-bold"
                CssClassError="text-danger fw-bold" />
 
-<div class="d-flex justify-content-end m-3">
-    <button class="btn btn-secondary" @onclick="AddNewItem">
-        @AppMenu.NewRow
-    </button>
-    @if (items.Any())
-    {
-        <button class="ms-3 btn btn-danger" @onclick="SaveChanges">
-            @AppMenu.SaveChanges
+<!-- TOOLBAR -->
+<div class="d-flex justify-content-between my-3">
+    <div>
+        <button class="btn btn-primary" @onclick="() => AddNewItem()">
+            <i class="fa fa-plus me-1 opacity-50"></i>
+            @AppMenu.NewRow
         </button>
-    }
+        <button class="btn btn-primary" @onclick="() => AddNewDivider()">
+            <i class="fa fa-horizontal-rule me-1 opacity-50"></i>
+            @AppMenu.NewDivider
+        </button>
+    </div>
+    
+    <div>
+        @if (items.Any() || InitialNumberOfItems > 0)
+        {
+            <button class="ms-3 btn btn-primary" @onclick="SaveChanges">
+                <i class="fa fa-upload me-1 opacity-50"></i>
+                @AppMenu.SaveChanges
+            </button>
+        }
+        @if (items.Any())
+        {
+            <button class="ms-3 btn btn-danger" @onclick="ClearAll">
+                <i class="fa fa-trash"></i>
+            </button>
+        }
+    </div>
 </div>
 
-
+<!-- ITEMS -->
 @if (items.Empty())
 {
     <div class="mt-4 p-2 italic opacity-50 text-center">@AppMessages.Msg_NoRowsFound</div>
     return;
 }
 
-<div class="mb-4 d-flex justify-content-between">
-    <div>
-        <div>
-            <span class="fw-bold me-2">@AppStrings.Label_Created</span>
-            <span class="italic">@RelatedDocument.Created.DateForDisplay()</span>
-            <i class="fal mx-1 fa-clock"></i>
-            <span class="italic">@RelatedDocument.Created.DateForDisplay("HH:mm")</span>
-        </div>
-        <div style="line-height: 10px;">
-            <span class="italic opacity-50">@RelatedDocument.Created.AuthorForDisplay()</span>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span class="fw-bold me-2">@AppStrings.Label_Modified</span>
-            <span class="italic">@RelatedDocument.LastUpdated.DateForDisplay()</span>
-            <i class="fal mx-1 fa-clock"></i>
-            <span class="italic">@RelatedDocument.LastUpdated.DateForDisplay("HH:mm")</span>
-        </div>
-        <div style="line-height: 10px;">
-            <span class="italic opacity-50">@RelatedDocument.LastUpdated.AuthorForDisplay()</span>
-        </div>
-    </div>
-</div>
-
-<div class="w-100">
+<div class="mt-4 w-100">
     @{ var index = 1; }
     @foreach (var item in items
         .OrderBy(i => i.Order))
@@ -93,25 +115,27 @@
         var css = index <= InitialNumberOfItems 
             ? "fw-bold" 
             : "text-danger opacity-50";
+        var canMoveUp = doc.CanMoveItemUp(item);
+        var canMoveDown = doc.CanMoveItemDown(item);
 
         <div class="d-flex w-100 align-items-center">
             <div class="@css">
                 @(index++)
-                <span>(@item.Order)</span>
+                (@item.Order)
             </div>
-            <div class="ms-1">
+            <div class="ms-3">
                 <button class="bg-danger text-white" 
                         @onclick="() => RemoveItem(item)">
                     <i class="fa fa-times"></i>
                 </button> 
             </div>
             <div class="ms-1">
-                <button @onclick="() => MoveUp(item)">
+                <button @onclick="() => MoveUp(item)" disabled="@(!canMoveUp)">
                     <i class="fa fa-chevron-up"></i>
                 </button>
-                <button @onclick="() => MoveDown(item)">
+                <button @onclick="() => MoveDown(item)" disabled="@(!canMoveDown)">
                     <i class="fa fa-chevron-down"></i>
-                </button> 
+                </button>
             </div>
             <div class="ms-3 flex-grow-1">
                 <ReleaseNoteLine Model="item" />

@@ -133,22 +133,25 @@
     <value>Sign Out</value>
   </data>
   <data name="MyProducts" xml:space="preserve">
-    <value>My products</value>
+    <value>My Products</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
-    <value>My profile</value>
+    <value>My Profile</value>
   </data>
   <data name="MyWork" xml:space="preserve">
-    <value>My work</value>
+    <value>My Work</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>New</value>
+  </data>
+  <data name="NewDivider" xml:space="preserve">
+    <value>New Section</value>
   </data>
   <data name="NewReleaseNote" xml:space="preserve">
     <value>New Release Note</value>
   </data>
   <data name="NewRow" xml:space="preserve">
-    <value>New row</value>
+    <value>New Row</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Products</value>
@@ -163,7 +166,7 @@
     <value>Save</value>
   </data>
   <data name="SaveChanges" xml:space="preserve">
-    <value>Save changes</value>
+    <value>Save Changes</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

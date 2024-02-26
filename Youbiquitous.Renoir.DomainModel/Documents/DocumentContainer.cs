@@ -9,17 +9,20 @@
 // 
 //
 
+using Youbiquitous.Renoir.DomainModel.Documents.Core;
 
 namespace Youbiquitous.Renoir.DomainModel.Documents;
 
 /// <summary>
 /// View model for the product/doc page
 /// </summary>
-public partial class DocumentContainer  
+public class DocumentContainer<TDoc, TDocItem> 
+    where TDoc : CoreDocument<TDocItem> 
+    where TDocItem : CoreDocumentItem, new()
 {
     public DocumentContainer()
     {
-        Documents = new List<ReleaseNote>();
+        Documents = new List<TDoc>();
         Product = new Product();
     }
 
@@ -29,7 +32,7 @@ public partial class DocumentContainer
     public Product Product { get; set; }
 
     /// <summary>
-    /// List of documents
+    /// Generic list of documents
     /// </summary>
-    public IEnumerable<ReleaseNote> Documents { get; set; }
+    public IEnumerable<TDoc> Documents { get; set; }
 }

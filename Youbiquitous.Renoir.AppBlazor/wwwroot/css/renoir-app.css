@@ -102,15 +102,26 @@ h1:focus {
     padding: 10px;
 }
 
-.app-copyright-notes {
-    text-align: center;
-    font-size: .7rem;
-    opacity: .35;
+.app-copyright-container {
+    padding-left: 10px;
+    padding-right: 10px;
     color: var(--app-color-light);
     position: fixed;
     bottom: 20px;
     width: var(--app-sidebar-width);
 }
+
+.app-copyright-notes {
+    font-size: .7rem;
+    color: var(--app-color-light);
+    opacity: .5;
+}
+
+.app-copyright-container img {
+    opacity: .8;
+    width: 130px;
+}
+
 
 .app-signature {
     padding: 8px;
@@ -170,6 +181,19 @@ h1:focus {
 
 .bordered {
     border: solid 1px var(--app-color-dark);
+}
+
+.bordered-top {
+    border-top: solid 1px var(--app-color-dark);
+}
+
+.bordered-bottom {
+    border-bottom: solid 1px var(--app-color-dark);
+}
+
+.bordered-top-bottom {
+    border-top: solid 1px var(--app-color-dark);
+    border-bottom: solid 1px var(--app-color-dark);
 }
 
 .whiten {
