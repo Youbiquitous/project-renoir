@@ -1,18 +1,28 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
 @using Youbiquitous.Renoir.AppBlazor.Components.Layout
+@using Youbiquitous.Renoir.AppBlazor.Components.Pages
+@using Youbiquitous.Renoir.AppBlazor.Components.Shared
+@using Youbiquitous.Renoir.Resources
 
 
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <LoginRedirect />
+                </NotAuthorized>
+            </AuthorizeRouteView>
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
-        
-@*         <NotFound> 
+            
+        <NotFound> 
             <LayoutView Layout="@typeof(SimpleLayout)"> 
-                <p>Sorry, there's nothing at this address.</p>   <!-- 404 -->
+                <div class="h3 opacity-75 text-primary">
+                    @AppMessages.Err_PageNotFound
+                </div>
             </LayoutView> 
-        </NotFound>  *@
+        </NotFound>   
     </Router>
 </CascadingAuthenticationState>

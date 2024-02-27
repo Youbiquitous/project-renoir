@@ -112,6 +112,6 @@ public class LoginPage : ViewModelBase
     /// </summary>
     protected override void OnInitialized()
     {
-        ReturnUrl ??= "/home";
+        ReturnUrl ??= "/";
     }
 }

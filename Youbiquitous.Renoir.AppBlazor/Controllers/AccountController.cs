@@ -12,7 +12,9 @@
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.Application.Auth;
 using Youbiquitous.Renoir.Application.Auth.Dto;
@@ -50,8 +52,8 @@ public class AccountController : RenoirController
             return Json(response);
 
         // Create the authentication cookie and redirect to destination
-        var destination = input.ReturnUrl ?? "/home";
         await HttpContext.AuthenticateUser(response);
+        var destination = input.ReturnUrl ?? GetHomeUrl(response);
         response.Redirect(destination);
         return Json(response);
     }
@@ -69,26 +71,33 @@ public class AccountController : RenoirController
         return LocalRedirect("/");
     }
 
+    /// <summary>
+    /// Test exceptions
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    [Route("/throw")]
+    public IActionResult Throw()
+    {
+        throw new Exception("Exception thrown for testing purposes");
+    }
 
     /// <summary>
-    /// Update the profile of the logged user
+    /// 
     /// </summary>
-    /// <param name="profile"></param>
-    /// <param name="password"></param>
+    /// <param name="response"></param>
     /// <returns></returns>
-    //[HttpPost]
-    //[ActionName("profile")]
-    //public IActionResult TryUpdateProfile(UserProfile profile, ChangePassword password)
-    //{
-    //    // Check if received data are valid
-    //    if (profile == null || !profile.IsValid() || password == null)
-    //    {
-    //        var fail = AuthenticationResponse.Fail().AddMessage(AppStrings.Err_InvalidInput);
-    //        return Json(fail);
-    //    }
-
-    //    // Attempt to update the user profile 
-    //    var response = _auth.TrySaveProfile(profile, password);
-    //    return Json(response);
-    //}
+    public static string GetHomeUrl(AuthenticationResponse response)
+    {
+        return response.Role.EqualsAny("system") 
+            ? "/home" 
+            : "/myproducts";
+    }
+    public static string GetHomeUrl(AuthenticationState state)
+    {
+        var role = state.GetRole();
+        return role.EqualsAny("system") 
+            ? "/home" 
+            : "/myproducts";
+    }
 }

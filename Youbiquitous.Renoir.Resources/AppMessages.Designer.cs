@@ -61,6 +61,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access denied.
+        /// </summary>
+        public static string Err_AccessDenied {
+            get {
+                return ResourceManager.GetString("Err_AccessDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Given email address already exists in the system.
         /// </summary>
         public static string Err_EmailAlreadyExists {
@@ -70,7 +79,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred.
+        ///   Looks up a localized string similar to The application is temporarily unavailable.
         /// </summary>
         public static string Err_Generic {
             get {
@@ -196,7 +205,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot figure out the requested page.
+        ///   Looks up a localized string similar to Sorry, there seems to be nothing at the requested address.
         /// </summary>
         public static string Err_PageNotFound {
             get {
@@ -291,15 +300,6 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Info_ConfirmAction {
             get {
                 return ResourceManager.GetString("Info_ConfirmAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New binding.
-        /// </summary>
-        public static string Label_NewBinding {
-            get {
-                return ResourceManager.GetString("Label_NewBinding", resourceCulture);
             }
         }
         

@@ -20,7 +20,7 @@ namespace Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 public static class StateExtensions
 {
     /// <summary>
-    /// Full user object currently logged (if any)
+    /// Role from claims
     /// </summary>
     /// <param name="state"></param>
     /// <returns></returns>
@@ -29,8 +29,23 @@ public static class StateExtensions
         return state?.User.FindFirst(c => c.Type == ClaimTypes.Role)?.Value;
     }
 
+    /// <summary>
+    /// Email address from claims
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
     public static string GetEmail(this AuthenticationState state)
     {
         return state?.User.FindFirst(c => c.Type == ClaimTypes.Name)?.Value;
+    }
+
+    /// <summary>
+    /// Whether the user is authenticated
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    public static bool IsAuthenticated(this AuthenticationState state)
+    {
+        return state.User.Identity?.IsAuthenticated ?? false;
     }
 }

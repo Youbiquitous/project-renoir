@@ -34,12 +34,6 @@ public class ViewModelBase : LayoutComponentBase
     protected Task<AuthenticationState> AuthState { get; private set; }
 
     /// <summary>
-    /// Error object in case of exceptions
-    /// </summary>
-    private AppErrorBoundary ErrorBoundary;
-
-    
-    /// <summary>
     /// Exposes authentication details
     /// </summary>
     public AuthenticationState Logged { get; private set; }
@@ -60,10 +54,10 @@ public class ViewModelBase : LayoutComponentBase
     /// <summary>
     /// Attempt to recover from exceptions
     /// </summary>
-    public void Recover()
-    {
-        ErrorBoundary?.Recover();
-    }
+    //public void Recover()
+    //{
+    //    ErrorBoundary?.Recover();
+    //}
 
     /// <summary>
     /// Trigger re-rendering (with new data)

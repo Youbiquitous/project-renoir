@@ -26,7 +26,7 @@ public class Program
         var builder = WebApplication
             .CreateBuilder(args)
             .SetupSettings<RenoirSettings>()
-            .SetupCookieAuthentication("/account/login", RenoirSettings.AuthCookieName)
+            .SetupCookieAuthentication("/login", RenoirSettings.AuthCookieName)
             .SetupAdditionalServices()
             .SetupLoggers()
             .SetupBlazor()
@@ -38,18 +38,16 @@ public class Program
         // Build the app instance
         var app = builder
             .Build()
-            .SetupErrorHandling("/app/error")
+            .SetupErrorHandling("/error", ExceptionHandlingMode.Production)
             .SetupSecurity()
             .SetupDatabase();
 
         // Auth stuff
-        app.UseStatusCodePagesWithRedirects("/404");
         app.UseAuthentication();
-        //app.UseAuthorization();
 
 
         // Blazor engine setup
-        app.SetupRouting()
+        app.SetupRouting()      // and authorization
             .SetupControllerEndpoints()
             .SetupBlazorRouting<Components.App>();
 

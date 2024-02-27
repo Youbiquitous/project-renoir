@@ -2,7 +2,9 @@
 @rendermode InteractiveServer
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.Application
+@using Microsoft.AspNetCore.Authorization
 @inherits ReleaseNotesPage
+@attribute [Authorize]
 
 @{
     var productId = SelectedProductId;
@@ -20,6 +22,7 @@
 </PageTitle>
 
 <div class="fs-4">@AppStrings.Label_ReleaseNotes</div>
+
 <!-- List of documents per product -->
 <div>
     <div class="d-flex justify-content-between bg-primary text-white p-2">

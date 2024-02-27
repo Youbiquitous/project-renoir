@@ -1,6 +1,8 @@
 ﻿@page "/home"
 @using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Authorization
 @inherits HomePage
+@attribute [Authorize(Roles = "System")]
 
 <PageTitle>@AppMenu.Dashboard</PageTitle>
 

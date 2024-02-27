@@ -69,6 +69,7 @@ public static class WebApplicationBuilderExtensions
                 options.Cookie.Name = cookieName;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(minutesBeforeExpiration);
                 options.LoginPath = new PathString(loginPath);
+                options.AccessDeniedPath = new PathString("/denied");
                 options.SlidingExpiration = true;
                 options.Cookie.SameSite = SameSiteMode.Strict;
                 options.Cookie.HttpOnly = true;

@@ -3,7 +3,7 @@
 @using Youbiquitous.Renoir.Resources
 @using Microsoft.AspNetCore.Authorization
 @inherits UsersPage
-@attribute [Authorize]
+@attribute [Authorize(Roles = "System")]
 
 
 <link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />

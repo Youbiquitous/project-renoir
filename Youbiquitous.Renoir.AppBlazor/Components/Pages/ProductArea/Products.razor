@@ -1,7 +1,9 @@
 ﻿@page "/products"
 @rendermode InteractiveServer
 @using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Authorization
 @inherits ProductsPage
+@attribute [Authorize(Roles = "System")]
 
 <link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
 

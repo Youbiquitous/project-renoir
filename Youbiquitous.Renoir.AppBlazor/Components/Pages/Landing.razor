@@ -1,6 +1,9 @@
 ﻿@page "/"
 @using Youbiquitous.Renoir.AppBlazor.Components.Layout
 @using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Youbiquitous.Renoir.AppBlazor.Common.Extensions
+@using Youbiquitous.Renoir.AppBlazor.Controllers
 @layout LandingLayout
 @attribute [AllowAnonymous]
 
@@ -36,10 +39,32 @@
             <i class="fab fa-github me-1"></i>
             <span class="opacity-75">INSPECT</span> <b>SOURCE CODE</b>
         </a>
-        <a class="btn btn-primary ms-2 px-3 btn-lg" 
-           href="/login">
-            <i class="fa fa-sign-in me-1"></i>
-            <span class="opacity-75">START USING</span> <b>RENOIR</b>
-        </a>
+
+        @if (AuthState.Result.IsAuthenticated())
+        {
+            <a class="btn btn-primary ms-2 px-3 btn-lg"
+               href="@AccountController.GetHomeUrl(AuthState.Result)">
+                <i class="fal fa-mouse me-1"></i>
+                <span class="opacity-75">START USING</span> <b>RENOIR</b>
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-primary ms-2 px-3 btn-lg" 
+               href="/login">
+                <i class="fa fa-sign-in me-1"></i>
+                <span class="opacity-75">SIGN IN TO</span> <b>RENOIR</b>
+            </a>
+        }
     </div>
 </div>
+
+@code
+{
+    [CascadingParameter]
+    protected Task<AuthenticationState> AuthState { get; private set; }
+
+    protected override void OnInitialized()
+    {
+    }
+}

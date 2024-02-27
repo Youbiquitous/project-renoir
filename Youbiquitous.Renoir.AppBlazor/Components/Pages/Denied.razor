@@ -1,11 +1,11 @@
-﻿@page "/404"
+﻿@page "/denied"
 @using Youbiquitous.Renoir.AppBlazor.Components.Layout
 @using Youbiquitous.Renoir.Resources
 @layout SimpleLayout
 
 
-<div class="h3 opacity-75">
-    @AppMessages.Err_PageNotFound
+<div class="h3 opacity-75 text-danger">
+    @AppMessages.Err_AccessDenied
 </div>
 
 @code
