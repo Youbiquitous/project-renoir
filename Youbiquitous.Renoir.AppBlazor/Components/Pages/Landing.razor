@@ -1,0 +1,45 @@
+﻿@page "/"
+@using Youbiquitous.Renoir.AppBlazor.Components.Layout
+@using Microsoft.AspNetCore.Authorization
+@layout LandingLayout
+@attribute [AllowAnonymous]
+
+<PageTitle>Renoir Home</PageTitle>
+
+<div>
+    <b style="zoom: 1.5;">Project Renoir</b> is a reference web application built on the 
+    latest <b>.NET Core</b> and <b>Blazor</b> stack to demonstrate the implementation of a <b>clean architecture</b>.
+    <hr/>
+    <div>
+        The demo app is centered around three fundamental business entities: product, release note, and roadmap.
+    </div>
+    <div class="mb-4">
+        According to their role and assigned permissions,
+        logged users can:
+    </div>
+    
+    <ol>
+        <li>Create and edit products</li>
+        <li>Assign contributors to a product</li>
+        <li>Create and edit release notes and roadmap</li>
+        <li>Navigate the list of available documents (release notes and roadmaps)</li>
+        <li>Export and share documents</li>
+    </ol>
+            
+    <div class="h4">
+        You're welcome to:
+    </div>
+    <div>
+        <a class="btn btn-info px-3 btn-lg" 
+           href="https://github.com/youbiquitous/project-renoir/"
+           target="_blank">
+            <i class="fab fa-github me-1"></i>
+            <span class="opacity-75">INSPECT</span> <b>SOURCE CODE</b>
+        </a>
+        <a class="btn btn-primary ms-2 px-3 btn-lg" 
+           href="/login">
+            <i class="fa fa-sign-in me-1"></i>
+            <span class="opacity-75">START USING</span> <b>RENOIR</b>
+        </a>
+    </div>
+</div>

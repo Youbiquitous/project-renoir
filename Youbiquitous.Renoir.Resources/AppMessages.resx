@@ -162,6 +162,9 @@
   <data name="Err_OperationFailed" xml:space="preserve">
     <value>Could not complete the operation</value>
   </data>
+  <data name="Err_PageNotFound" xml:space="preserve">
+    <value>Cannot figure out the requested page</value>
+  </data>
   <data name="Err_ProductAlreadyExists" xml:space="preserve">
     <value>A product with same name and version already exists</value>
   </data>
@@ -174,8 +177,8 @@
   <data name="Err_UnknownDocument" xml:space="preserve">
     <value>Document not found</value>
   </data>
-  <data name="Err_UnknownProduct" xml:space="preserve">
-    <value>Product not found</value>
+  <data name="Err_UnknownProductOrDocument" xml:space="preserve">
+    <value>Product or document not found</value>
   </data>
   <data name="Err_UserNotFound" xml:space="preserve">
     <value>Weird, but no user seems to match provided identity</value>
@@ -185,6 +188,9 @@
   </data>
   <data name="Err_VersionNotFound" xml:space="preserve">
     <value>Could not find present version of the release note</value>
+  </data>
+  <data name="Info_AllDocsToDelete" xml:space="preserve">
+    <value>All documents related to the product will be permanently deleted.</value>
   </data>
   <data name="Info_ConfirmAction" xml:space="preserve">
     <value>Do you want to proceed?</value>
@@ -200,6 +206,9 @@
   </data>
   <data name="Msg_NoDocumentsFound" xml:space="preserve">
     <value>No documents found</value>
+  </data>
+  <data name="Msg_NoProductsFound" xml:space="preserve">
+    <value>No products found</value>
   </data>
   <data name="Msg_NoRowsFound" xml:space="preserve">
     <value>No rows found</value>

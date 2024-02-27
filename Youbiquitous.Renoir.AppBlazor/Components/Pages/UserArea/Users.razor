@@ -1,7 +1,10 @@
 ﻿@page "/users"
 @rendermode InteractiveServer
 @using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Authorization
 @inherits UsersPage
+@attribute [Authorize]
+
 
 <link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
 

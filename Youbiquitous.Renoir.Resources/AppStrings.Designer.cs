@@ -70,6 +70,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System dashboard.
+        /// </summary>
+        public static string Label_Dashboard {
+            get {
+                return ResourceManager.GetString("Label_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting.
         /// </summary>
         public static string Label_Deleting {
@@ -241,11 +250,56 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products.
+        /// </summary>
+        public static string Label_Products {
+            get {
+                return ResourceManager.GetString("Label_Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total products available for technical documentation.
+        /// </summary>
+        public static string Label_Products_Desc {
+            get {
+                return ResourceManager.GetString("Label_Products_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Release Notes.
         /// </summary>
         public static string Label_ReleaseNotes {
             get {
                 return ResourceManager.GetString("Label_ReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total number of release note documents in the system.
+        /// </summary>
+        public static string Label_ReleaseNotes_Desc {
+            get {
+                return ResourceManager.GetString("Label_ReleaseNotes_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roadmaps.
+        /// </summary>
+        public static string Label_Roadmaps {
+            get {
+                return ResourceManager.GetString("Label_Roadmaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total number of roadmap documents in the system.
+        /// </summary>
+        public static string Label_Roadmaps_Desc {
+            get {
+                return ResourceManager.GetString("Label_Roadmaps_Desc", resourceCulture);
             }
         }
         
@@ -331,6 +385,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total users allowed to use the platform.
+        /// </summary>
+        public static string Label_Users_Desc {
+            get {
+                return ResourceManager.GetString("Label_Users_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string Label_Version {
@@ -394,7 +457,7 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re authorized to work on the following products.
+        ///   Looks up a localized string similar to Products and documents you&apos;re allowed to work on.
         /// </summary>
         public static string Text_AuthorizedToWork {
             get {

@@ -28,5 +28,11 @@
     "inputFiles": [
       "wwwroot/css/app-assets/renoir-docs.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/renoir-theme.min.css",
+    "inputFiles": [
+      "wwwroot/css/renoir-theme.css"
+    ]
   }
 ]

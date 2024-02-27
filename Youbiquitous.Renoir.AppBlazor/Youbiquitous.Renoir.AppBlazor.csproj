@@ -31,11 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\Pages\Documents\Roadmaps\" />
     <Folder Include="Models\View\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Components\Pages\Documents\Documents.razor">
+    <Content Update="Components\Pages\Documents\ReleaseNotes\RnDocs.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
   </ItemGroup>

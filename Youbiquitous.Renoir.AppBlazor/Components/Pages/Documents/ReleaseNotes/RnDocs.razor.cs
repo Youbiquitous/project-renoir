@@ -9,7 +9,6 @@
 // 
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.VisualBasic;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Models;
 using Youbiquitous.Renoir.AppBlazor.Models.Input;
@@ -18,7 +17,7 @@ using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
 using Youbiquitous.Renoir.Resources;
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents.ReleaseNotes;
 
 public partial class ReleaseNotesPage : ViewModelBase
 {
@@ -123,6 +122,4 @@ public partial class ReleaseNotesPage : ViewModelBase
         Refresh();
         await DocumentEditor.Window.HideAsync();
     }
-
-
 }

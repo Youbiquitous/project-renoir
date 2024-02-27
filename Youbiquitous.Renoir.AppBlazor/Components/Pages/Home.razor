@@ -1,26 +1,67 @@
-﻿@page "/"
+﻿@page "/home"
+@using Youbiquitous.Renoir.Resources
 @inherits HomePage
 
-<PageTitle>Renoir Home</PageTitle>
+<PageTitle>@AppMenu.Dashboard</PageTitle>
 
+<div class="p-3">
+    <div class="fs-2 mb-4 text-uppercase">@AppStrings.Label_Dashboard</div>
 
-<div class="p-5">
-    <b style="zoom: 1.5;">Project Renoir</b> is a web application built on the 
-    latest <b>.NET Core</b> and <b>Blazor</b> stack to demonstrate a <b>clean architecture</b>.
-    <hr/>
-    <div>
-        It is centered around three fundamental business entities: product, release note, and roadmap.
-    </div>
-    <div class="mb-4">
-        According to their role and assigned permissions,
-        logged users can:
-    </div>
+    <div class="d-flex">
+        <div class="card text-white bg-primary mx-2"
+             style="max-width: 15rem;"> 
+            <div class="card-header text-uppercase">@AppStrings.Label_Products</div> 
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="" style="zoom: 4;">@Counters.TotalProducts</div>
+                    <div class="ms-4 card-text small opacity-75">
+                        @AppStrings.Label_Products_Desc
+                    </div>
+                </div>
+            </div> 
+            <a href="/products" class="stretched-link"></a>
+        </div>
     
-    <ol>
-        <li>Create and edit products</li>
-        <li>Assign contributors to a product</li>
-        <li>Create and edit release notes and roadmap</li>
-        <li>Navigate the list of available documents (release notes and roadmaps)</li>
-        <li>Export and share documents</li>
-    </ol>
+        <div class="card text-white bg-primary mx-2" 
+             style="max-width: 15rem;"> 
+            <div class="card-header text-uppercase">@AppStrings.Label_Users</div> 
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="" style="zoom: 4;">@Counters.TotalUsers</div>
+                    <div class="ms-4 card-text small opacity-75">
+                        @AppStrings.Label_Users_Desc
+                    </div>
+                </div>
+            </div> 
+            <a href="/users" class="stretched-link"></a>
+        </div> 
+    
+        <div class="card bg-info mx-2"
+             style="max-width: 15rem;"> 
+            <div class="card-header text-uppercase">@AppStrings.Label_ReleaseNotes</div> 
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="" style="zoom: 4;">@Counters.TotalNotes</div>
+                    <div class="ms-4 card-text small opacity-75">
+                        @AppStrings.Label_ReleaseNotes_Desc
+                    </div>
+                </div>
+            </div> 
+            <a href="/myproducts" class="stretched-link"></a>
+        </div> 
+    
+        <div class="card bg-info mx-2"
+             style="max-width: 15rem;"> 
+            <div class="card-header text-uppercase">@AppStrings.Label_Roadmaps</div> 
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="" style="zoom: 4;">@Counters.TotalRoadmaps</div>
+                    <div class="ms-4 card-text small opacity-75">
+                        @AppStrings.Label_Roadmaps_Desc
+                    </div>
+                </div>
+            </div> 
+            <a href="/myproducts" class="stretched-link"></a>
+        </div> 
+    </div>
 </div>

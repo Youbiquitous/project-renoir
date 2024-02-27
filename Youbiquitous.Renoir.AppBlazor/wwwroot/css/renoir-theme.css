@@ -5,11 +5,13 @@
 :root {
     --app-sidebar-width: 250px;
     --app-sidebar-width-min: 80px;
-    --app-sidebar-header-bkgnd: #360036;
-    --app-sidebar-bkgnd: #500050;
+    --app-sidebar-header-bkgnd: #131F6B; /*#360036;*/
+    --app-sidebar-bkgnd: #13336b;
     --app-content-bkgnd: #ffffff;
     --app-titlebar-bkgnd: #e5e5ec;
     --app-signature-bkgnd: #cc00cc;
     --app-color-dark: #111111;
     --app-color-light: #ffffff;
+    --app-tiffany: #81d8d0;
+    --app-purple: #500050;
 }

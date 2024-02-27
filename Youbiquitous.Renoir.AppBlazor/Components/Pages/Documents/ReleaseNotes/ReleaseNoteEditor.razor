@@ -21,7 +21,7 @@
 
 
 <PageTitle>@title</PageTitle>
-
+ 
 <!-- PRODUCT HEADER -->
 <div class="d-flex justify-content-between align-items-center bg-primary text-white p-1">
     <div>
@@ -29,11 +29,15 @@
             <span>@product.Name</span>
             <span class="ms-2 opacity-50">@product.Version</span>
         </button>
-        <span>@doc.Notes</span>
     </div>
     <div>
-        <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_ReleaseNote</span>
-        <span>@doc.Version</span>
+        <div>
+            <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_ReleaseNote</span>
+            <span>@doc.Version</span>
+        </div>
+        <div class="text-xs italic opacity-50 text-end">
+            @doc.Notes
+        </div>
     </div>
 </div>
 

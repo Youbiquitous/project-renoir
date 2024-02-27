@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inherits Youbiquitous.Renoir.AppBlazor.Models.ViewModelBase
+
+<CascadingAuthenticationState>
+    
+    <div class="app-page-container">
+        <div class="app-content-container">
+            <div class="h1 text-center mb-5">Project RENOIR</div>
+
+            <div class="text-center">
+                @Body
+                <hr/>
+                <a href="/" class="btn btn-outline-primary">Home</a>
+            </div>
+        </div>
+    </div>
+</CascadingAuthenticationState>

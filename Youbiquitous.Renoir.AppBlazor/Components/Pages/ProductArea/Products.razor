@@ -21,11 +21,21 @@
 </div>
 
 
-<!-- List users -->
-<ProductsTable @ref="ListOfProducts" 
-               Products="Products"
-               ProductEdited="EditExistingProduct"
-               OwnerEdited="EditProductOwners" />
+<!-- List products -->
+@if (!Products.Any())
+{
+    <div class="fs-5 mt-4 opacity-50 italic text-center">
+        @AppMessages.Msg_NoProductsFound
+    </div>
+}
+else
+{
+    <ProductsTable @ref="ListOfProducts"
+                   Products="Products"
+                   ProductEdited="EditExistingProduct"
+                   ProductDeleted="DeleteExistingProduct"
+                   OwnerEdited="EditProductOwners"/>
+}
 
 <!-- Popup Editor -->
 <ProductEditorPopup @ref="ProductEditor" 

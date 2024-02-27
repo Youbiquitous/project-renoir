@@ -3,7 +3,7 @@
 /* HTML overrides */
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'roboto condensed';
     background-size: auto;
     background-repeat: no-repeat;
     height: 100%;
@@ -60,7 +60,18 @@ h1:focus {
     width: var(--app-sidebar-width);
 }
 
+.app-sidebar-bg {
+    background: var(--app-sidebar-bkgnd);
+    color: #ffffff;
+}
+
+.app-tiffany-bg {
+    background: var(--app-tiffany);
+    color: #000000;
+}
+
 .app-navbar {
+    backgr1ound: var(--app-sidebar-bkgnd);
     background: var(--app-sidebar-header-bkgnd);
 }
 
@@ -70,6 +81,7 @@ h1:focus {
     padding-top: 10px;
     padding-bottom: 10px;
     background: var(--app-sidebar-header-bkgnd);
+    bac1kground: var(--app-sidebar-bkgnd);
 }
 
     .app-sidebar-header a {
@@ -107,12 +119,12 @@ h1:focus {
     padding-right: 10px;
     color: var(--app-color-light);
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     width: var(--app-sidebar-width);
 }
 
 .app-copyright-notes {
-    font-size: .7rem;
+    font-size: .8rem;
     color: var(--app-color-light);
     opacity: .5;
 }

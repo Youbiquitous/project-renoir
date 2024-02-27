@@ -1,0 +1,101 @@
+﻿@inherits Youbiquitous.Renoir.AppBlazor.Models.ViewModelBase
+@inject IWebHostEnvironment Environment
+@using Youbiquitous.Renoir.Resources
+
+
+<PageTitle>@Settings.Project.Name</PageTitle>
+
+<div class="mt-5 h1 text-center text-uppercase">
+    CREATE <span class="opacity-75 small">RELEASE NOTES</span> AND 
+    <spa class="opacity-75 small">ROADMAP</spa> DOCS
+</div>
+
+<div class="container app-tiffany-bg">
+    <div class="p-5 row">
+        <div class="col-12 col-lg-7">
+            <div>
+                <ErrorBoundary>
+                    <ChildContent>
+                        @Body
+                    </ChildContent>
+                    <ErrorContent Context="ex">
+                        <ErrorReport Icon="fa fa-exclamation-triangle"
+                                     Exception="@ex"
+                                     ShowInternals="@(Environment.IsDevelopment())" />
+                        <button class="btn btn-warning" onclick="Recover">@AppMenu.Resume</button>
+                    </ErrorContent>
+                </ErrorBoundary>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-5 text-center">
+            <div class="d-flex justify-content-around">
+                <div>
+                    <a href="https://www.microsoftpressstore.com/store/clean-architecture-with-.net-9780138203283"
+                       target="_blank">
+                        <img src="/images/clean-book.jpg"
+                             class="img-fluid"
+                             style="width: 240px;" />
+                    </a>
+                    <div class="bg-white p-2 mb-3">
+                        <div class="fw-bold">Dino ESPOSITO</div>
+                        <div class="italic text-secondary text-sm">Software person since 1992</div>
+                    </div>
+                    <div>
+                        <a href="https://www.linkedin.com/in/dinoesposito/" class="me-3" target="_blank">
+                            <i class="fab fa-2x fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://www.microsoftpressstore.com/store/programming-large-language-models-with-azure-open-ai-9780138280376"
+                       target="_blank">
+                        <img src="/images/llm-book.jpg"
+                             class="img-fluid"
+                             style="width: 240px;" />
+                    </a>
+                    <div class="bg-white p-2 mb-3">
+                        <div class="fw-bold">Francesco ESPOSITO</div>
+                        <div class="italic text-secondary text-sm">Data, numbers and software from the start</div>
+                    </div>
+                    <div>
+                        <a href="https://www.linkedin.com/in/fesposi/" class="me-3" target="_blank">
+                            <i class="fab fa-2x fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex mt-3 justify-content-center align-items-center">
+    <div class="card mb-3 shadow" style="max-width: 540px;">
+        <div class="d-flex align-items-center">
+            <div class="px-4">
+                <img src="/images/ybq.png" class="img-fluid rounded-start" style="width: 150px;">
+            </div>
+            <div class="">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-decoration-none fw-bold"
+                           style="zoom: 1.3;"
+                           href="https://youbiquitous.net">YOUBIQUITOUS</a>
+                    </h5>
+                    <p class="card-text">
+                        We could use <b>fancy</b> words to describe how we spend our work hours here but,
+                        <b>at the very end of the day</b>, all we do is looking at how to make things simple.
+                    </p>
+                    <p>As simple as possible. But <b>no simpler</b> than that.</p>
+                    <p class="card-text">
+                        <small class="opacity-50 text-body-secondary">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

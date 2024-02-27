@@ -1,34 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Youbiquitous.Renoir.AppBlazor.Components.Layout
 
 
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
+        
+@*         <NotFound> 
+            <LayoutView Layout="@typeof(SimpleLayout)"> 
+                <p>Sorry, there's nothing at this address.</p>   <!-- 404 -->
+            </LayoutView> 
+        </NotFound>  *@
     </Router>
 </CascadingAuthenticationState>
-
-
-@* 
-<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(Program).Assembly">
-        <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData">
-                <NotAuthorized>
-                    <LayoutView Layout="@typeof(SimpleLayout)">
-                        <StatusMessage Message="@AppStrings.Err_UnauthorizedOperation"
-                                       CssClass="fs-2"/>
-                    </LayoutView>
-                </NotAuthorized>
-            </AuthorizeRouteView>
-            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
-        </Found>
-        <NotFound>
-            <LayoutView Layout="@typeof(SimpleLayout)">
-                <p>Sorry, there's nothing at this address.</p>   <!-- 404 -->
-            </LayoutView>
-        </NotFound>
-    </Router>
-</CascadingAuthenticationState> *@

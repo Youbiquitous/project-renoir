@@ -87,6 +87,7 @@ public static class WebApplicationExtensions
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAntiforgery();
+        app.UseAuthorization();
 
         return app;
     }
@@ -128,7 +129,6 @@ public static class WebApplicationExtensions
     /// Contains the code 
     /// </summary>
     /// <param name="app"></param>
-    /// <param name="settings"></param>
     /// <returns></returns>
     public static WebApplication SetupDatabase(this WebApplication app)
     {

@@ -120,6 +120,9 @@
   <data name="Label_Created" xml:space="preserve">
     <value>Created</value>
   </data>
+  <data name="Label_Dashboard" xml:space="preserve">
+    <value>System dashboard</value>
+  </data>
   <data name="Label_Deleting" xml:space="preserve">
     <value>Deleting</value>
   </data>
@@ -177,8 +180,23 @@
   <data name="Label_Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Label_Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Label_Products_Desc" xml:space="preserve">
+    <value>Total products available for technical documentation</value>
+  </data>
   <data name="Label_ReleaseNotes" xml:space="preserve">
     <value>Release Notes</value>
+  </data>
+  <data name="Label_ReleaseNotes_Desc" xml:space="preserve">
+    <value>Total number of release note documents in the system</value>
+  </data>
+  <data name="Label_Roadmaps" xml:space="preserve">
+    <value>Roadmaps</value>
+  </data>
+  <data name="Label_Roadmaps_Desc" xml:space="preserve">
+    <value>Total number of roadmap documents in the system</value>
   </data>
   <data name="Label_Role" xml:space="preserve">
     <value>Role</value>
@@ -208,6 +226,9 @@
   <data name="Label_Users" xml:space="preserve">
     <value>Registered users</value>
   </data>
+  <data name="Label_Users_Desc" xml:space="preserve">
+    <value>Total users allowed to use the platform</value>
+  </data>
   <data name="Label_Version" xml:space="preserve">
     <value>Version</value>
   </data>
@@ -230,7 +251,7 @@
     <value>Email address or user name</value>
   </data>
   <data name="Text_AuthorizedToWork" xml:space="preserve">
-    <value>You're authorized to work on the following products</value>
+    <value>Products and documents you're allowed to work on</value>
   </data>
   <data name="Text_NA" xml:space="preserve">
     <value>N/A</value>

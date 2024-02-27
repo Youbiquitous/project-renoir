@@ -1,17 +1,16 @@
-﻿@page "/docs"
+﻿@page "/rns"
 @rendermode InteractiveServer
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.Application
-@using Youbiquitous.Renoir.DomainModel.Documents
 @inherits ReleaseNotesPage
 
 @{
     var productId = SelectedProductId;
     var container = DocumentService.For(Current.UserId, productId, Current.IsSystem());
-    var documents = container?.Documents.ToList() ?? new List<ReleaseNote>();
+    var documents = container?.Documents.ToList() ?? new List<DomainModel.Documents.ReleaseNote>();
     if (container?.Product is null || productId <= 0)
     { 
-        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownProduct</div>
+        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownProductOrDocument</div>
         return;
     }
 }
@@ -20,7 +19,7 @@
     @container.Product [@AppStrings.Label_ReleaseNotes]
 </PageTitle>
 
-
+<div class="fs-4">@AppStrings.Label_ReleaseNotes</div>
 <!-- List of documents per product -->
 <div>
     <div class="d-flex justify-content-between bg-primary text-white p-2">
@@ -46,10 +45,10 @@
     }
     else
     {
-        <DocumentsTable @ref="ListOfDocuments" 
-                        Documents="documents"
-                        DocumentEdited="EditDocumentEditor"
-                        DocumentDeleted="DeleteExistingDocument" />
+        <RnList @ref="ListOfDocuments" 
+                Documents="documents"
+                DocumentEdited="EditDocumentEditor"
+                DocumentDeleted="DeleteExistingDocument" />
     }
 </div>
 

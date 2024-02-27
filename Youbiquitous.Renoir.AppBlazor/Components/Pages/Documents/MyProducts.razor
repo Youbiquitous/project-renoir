@@ -1,14 +1,16 @@
 ﻿@page "/myproducts"
 
 @using Youbiquitous.Renoir.Resources
+@using Microsoft.AspNetCore.Authorization
 @rendermode InteractiveServer
 @inherits MyProductsPage
+@attribute [Authorize]
 
 
 <PageTitle>@AppStrings.Label_MyProducts</PageTitle>
 
 <!-- List of products -->
-<div>
+<div class="px-4">
     <div class="fs-4 mb-5">
         @if (Current.Products.Any())
         {
@@ -21,22 +23,30 @@
     </div>
 
 
-    <div class="d-flex">
-        @foreach (var p in Current.Products)
-        {
-            var product = p.RelatedProduct;
-            var url = $"/docs?rn={product.ProductId}";
+   
+    @foreach (var binding in Current.Products)
+    {
+        var product = binding.RelatedProduct;
+        var urlRnt = $"/rns?rn={product.ProductId}";
+        var urlRmp = $"/rms?rm={product.ProductId}";
 
-            <ClickableCard
-                Url="@url"
-                BodyClass="me-4 shadow"
-                Header="@product.Name"
-                HeaderClass="fw-bold fs-3"
-                Subheader="@p.RoleId"
-                SubheaderClass="opacity-50"
-                BadgeText="@product.Version"/>
-        }
-    </div>
+        <div class="card bg-info mx-2"
+             style="max-width: 15rem;">
+            <div class="card-header text-uppercase">
+                <span>@binding.RoleId</span>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="fw-bold fs-3">@product.Name</div>
+                    <div class="ms-3 opacity-75 small">@product.Version</div>
+                </div>
+            </div>
+            <div class="p-2 text-center">
+                <a class="btn btn-sm btn-primary p-0 px-2 me-3"
+                   href="@urlRnt">@AppMenu.ReleaseNotes</a>
+                <a class="btn btn-sm btn-primary p-0 px-2"
+                   href="@urlRmp">@AppMenu.Roadmaps</a>
+            </div>
+        </div>
+    }
 </div>
-
-

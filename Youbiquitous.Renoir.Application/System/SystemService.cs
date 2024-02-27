@@ -10,7 +10,9 @@
 //
 
 using Youbiquitous.Renoir.Application.Settings;
+using Youbiquitous.Renoir.DomainModel.Misc;
 using Youbiquitous.Renoir.Persistence;
+using Youbiquitous.Renoir.Persistence.Repositories;
 
 namespace Youbiquitous.Renoir.Application.System;
 
@@ -29,5 +31,14 @@ public partial class SystemService : ApplicationServiceBase
     {
         new RenoirDatabaseInitializer()
             .Initialize(settings.Secrets.RenoirDatabase.Get());
+    }
+
+    /// <summary>
+    /// Returns counters for the most relevant tables in the system
+    /// </summary>
+    /// <returns></returns>
+    public static CountersDescriptor GetCounters()
+    {
+        return MiscRepository.GetCounters();
     }
 }

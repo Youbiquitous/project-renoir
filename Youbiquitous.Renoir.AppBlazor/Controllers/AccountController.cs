@@ -50,7 +50,7 @@ public class AccountController : RenoirController
             return Json(response);
 
         // Create the authentication cookie and redirect to destination
-        var destination = input.ReturnUrl ?? "/";
+        var destination = input.ReturnUrl ?? "/home";
         await HttpContext.AuthenticateUser(response);
         response.Redirect(destination);
         return Json(response);

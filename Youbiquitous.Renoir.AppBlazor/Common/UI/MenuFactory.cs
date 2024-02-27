@@ -86,10 +86,13 @@ public static class MenuFactory
     {
         return new List<NavMenuItem>
         {
+            new(AppMenu.Dashboard, "/home", "fa fa-home"),
             new(AppMenu.Products, "/products", "fa fa-hand-holding-box"),
             new(AppMenu.Users, "/users", "fa fa-user"),
             NavMenuItem.Sep(),
-            new(AppMenu.ReleaseNotes, "/myproducts", "fa fa-file"),
+            new(AppMenu.Documents, "/myproducts", "fa fa-file")
+            //new(AppMenu.ReleaseNotes, "/myproducts", "fa fa-file"),
+            //new(AppMenu.Roadmaps, "/myproducts", "fa fa-file"),
         };
     }
 }

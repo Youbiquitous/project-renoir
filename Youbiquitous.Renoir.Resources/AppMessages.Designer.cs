@@ -196,6 +196,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot figure out the requested page.
+        /// </summary>
+        public static string Err_PageNotFound {
+            get {
+                return ResourceManager.GetString("Err_PageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A product with same name and version already exists.
         /// </summary>
         public static string Err_ProductAlreadyExists {
@@ -232,11 +241,11 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product not found.
+        ///   Looks up a localized string similar to Product or document not found.
         /// </summary>
-        public static string Err_UnknownProduct {
+        public static string Err_UnknownProductOrDocument {
             get {
-                return ResourceManager.GetString("Err_UnknownProduct", resourceCulture);
+                return ResourceManager.GetString("Err_UnknownProductOrDocument", resourceCulture);
             }
         }
         
@@ -264,6 +273,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Err_VersionNotFound {
             get {
                 return ResourceManager.GetString("Err_VersionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All documents related to the product will be permanently deleted..
+        /// </summary>
+        public static string Info_AllDocsToDelete {
+            get {
+                return ResourceManager.GetString("Info_AllDocsToDelete", resourceCulture);
             }
         }
         
@@ -309,6 +327,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Msg_NoDocumentsFound {
             get {
                 return ResourceManager.GetString("Msg_NoDocumentsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No products found.
+        /// </summary>
+        public static string Msg_NoProductsFound {
+            get {
+                return ResourceManager.GetString("Msg_NoProductsFound", resourceCulture);
             }
         }
         

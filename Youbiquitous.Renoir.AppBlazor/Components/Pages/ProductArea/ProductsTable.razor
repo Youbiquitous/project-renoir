@@ -6,6 +6,7 @@
     <thead>
     <tr>
         <th class="col-index">Id</th>
+        <th>&nbsp;</th>
         <th>@AppStrings.Label_Name</th>
         <th>@AppStrings.Label_Version</th>
         <th>@AppStrings.Label_Owners</th>
@@ -15,14 +16,22 @@
     @foreach (var p in Products)
     {
         <tr @onclick="() => Edit(p)">
-            <td class="col-index">@p.ProductId</td>
+            <td class="col-index small">@p.ProductId</td>
+            <td>
+                <button class="btn btn-sm btn-danger"
+                        @onclick="() => Delete(p)"
+                        @onclick:stopPropagation="true">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
             <td>@p.Name</td>
             <td>@p.Version</td>
             <td>
-                <button class="btn btn-sm btn-danger"
+                <button class="btn btn-sm btn-primary"
                             @onclick="() => ManageOwners(p)"
                         @onclick:stopPropagation="true">
-                    <span class="fa fa-edit"></span>
+                    <i class="fa fa-edit opacity-50 me-2"></i>
+                    <span>@AppMenu.Manage</span>
                 </button>
             </td>
         </tr>
@@ -46,6 +55,9 @@
 
     [Parameter]
     public EventCallback<Product> OwnerEdited { get; set; }
+
+    [Parameter]
+    public EventCallback<Product> ProductDeleted { get; set; }
 
     /// <summary>
     /// Reference to the Confirm modal dialog
@@ -74,5 +86,26 @@
             return;
 
         OwnerEdited.InvokeAsync(p);
+    }
+
+    /// <summary>
+    /// Used to trigger the ProductDeleted custom event
+    /// </summary>
+    /// <param name="p"></param>
+    private async Task Delete(Product p)
+    {
+        if (!ProductDeleted.HasDelegate)
+            return;
+
+        // Ask confirmation
+        var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
+        var shouldProceed = await Confirmation.ShowAsync(
+            title: $"{AppStrings.Label_Deleting}   [{p.Name}] ",
+            message1: $"{AppMessages.Info_AllDocsToDelete}",
+            message2: $"{AppMessages.Info_ConfirmAction}",
+            confirmDialogOptions: options);
+
+        if (shouldProceed)
+            await ProductDeleted.InvokeAsync(p);
     }
 }

@@ -43,8 +43,10 @@ public class Program
             .SetupDatabase();
 
         // Auth stuff
+        app.UseStatusCodePagesWithRedirects("/404");
         app.UseAuthentication();
-        app.UseAuthorization();
+        //app.UseAuthorization();
+
 
         // Blazor engine setup
         app.SetupRouting()

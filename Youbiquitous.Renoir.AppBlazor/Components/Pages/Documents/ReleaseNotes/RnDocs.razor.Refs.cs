@@ -9,7 +9,7 @@
 // 
 
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents.ReleaseNotes;
 
 public partial class ReleaseNotesPage 
 {
@@ -21,6 +21,6 @@ public partial class ReleaseNotesPage
     /// <summary>
     /// Reference to the custom component with the table of users
     /// </summary>
-    protected DocumentsTable ListOfDocuments;
+    protected RnList ListOfDocuments;
 }
 

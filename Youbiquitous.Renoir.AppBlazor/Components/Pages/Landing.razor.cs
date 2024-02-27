@@ -10,26 +10,24 @@
 //
 
 using Youbiquitous.Renoir.AppBlazor.Models;
-using Youbiquitous.Renoir.Application.System;
-using Youbiquitous.Renoir.DomainModel.Misc;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Pages;
 
 /// <summary>
-/// Code-behind class for the /home view
+/// Code-behind class for the / view
 /// </summary>
-public class HomePage : ViewModelBase
+public class LandingPage : ViewModelBase
 {
-    /// <summary>
-    /// Data holder
-    /// </summary>
-    public CountersDescriptor Counters { get; set; }
+    public LandingPage()
+    {
+    }
 
     /// <summary>
     /// Finalize initialization
     /// </summary>
     protected override void OnInitialized()
     {
-        Counters = SystemService.GetCounters();
+        // Ideally clean up the side menu
+
     }
 }

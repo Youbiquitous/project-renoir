@@ -123,6 +123,12 @@
   <data name="Approve" xml:space="preserve">
     <value>Approve</value>
   </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -131,6 +137,9 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Sign Out</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
   </data>
   <data name="MyProducts" xml:space="preserve">
     <value>My Products</value>
@@ -161,6 +170,9 @@
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Resume</value>
+  </data>
+  <data name="Roadmaps" xml:space="preserve">
+    <value>Roadmaps</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
