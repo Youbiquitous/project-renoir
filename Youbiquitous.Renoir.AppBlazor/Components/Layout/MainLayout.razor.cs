@@ -9,7 +9,6 @@
 // 
 //
 
-using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.AppBlazor.Models;
 
 namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;

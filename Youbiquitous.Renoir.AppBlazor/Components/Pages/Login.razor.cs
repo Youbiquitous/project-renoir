@@ -83,7 +83,8 @@ public class LoginPage : ViewModelBase
             var response = raw.ToJsonObject<AuthenticationResponse>();
             if (response.Success)
             {
-                GotoManager.NavigateTo(ReturnUrl, true);
+                var returnUrl = ReturnUrl.IsNullOrWhitespace() ? response.ReturnUrl : ReturnUrl;
+                GotoManager.NavigateTo(returnUrl, true);
                 return;
             }
 
@@ -105,13 +106,5 @@ public class LoginPage : ViewModelBase
     protected void HideErrorMessage()
     {
         ErrorMessage = "";
-    }
-
-    /// <summary>
-    /// Finalize initialization
-    /// </summary>
-    protected override void OnInitialized()
-    {
-        ReturnUrl ??= "/";
     }
 }

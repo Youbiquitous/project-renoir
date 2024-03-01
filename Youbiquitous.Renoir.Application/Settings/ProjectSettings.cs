@@ -30,6 +30,11 @@ public class ProjectSettings
     public string Version { get; set; }
     
     /// <summary>
+    /// App version date
+    /// </summary>
+    public string ReleaseDate { get; set; }
+
+    /// <summary>
     /// Copyright note
     /// </summary>
     public string Copyright { get; set; }

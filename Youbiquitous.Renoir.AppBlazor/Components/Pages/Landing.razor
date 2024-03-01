@@ -1,11 +1,12 @@
 ﻿@page "/"
 @using Youbiquitous.Renoir.AppBlazor.Components.Layout
 @using Microsoft.AspNetCore.Authorization
-@using Microsoft.AspNetCore.Components.Authorization
 @using Youbiquitous.Renoir.AppBlazor.Common.Extensions
 @using Youbiquitous.Renoir.AppBlazor.Controllers
 @layout LandingLayout
+@inherits LandingPage 
 @attribute [AllowAnonymous]
+
 
 <PageTitle>Renoir Home</PageTitle>
 
@@ -14,7 +15,7 @@
     latest <b>.NET Core</b> and <b>Blazor</b> stack to demonstrate the implementation of a <b>clean architecture</b>.
     <hr/>
     <div>
-        The demo app is centered around three fundamental business entities: product, release note, and roadmap.
+        The app is centered around three fundamental business entities: product, release note, and roadmap.
     </div>
     <div class="mb-4">
         According to their role and assigned permissions,
@@ -58,13 +59,3 @@
         }
     </div>
 </div>
-
-@code
-{
-    [CascadingParameter]
-    protected Task<AuthenticationState> AuthState { get; private set; }
-
-    protected override void OnInitialized()
-    {
-    }
-}

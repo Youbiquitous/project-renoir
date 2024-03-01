@@ -11,7 +11,10 @@
 
     <DropdownMenu Class="app-userbox p-0 m-0">
         <DropdownHeader>
-            <div class="app-userbox-header">@Settings.Project.Version</div>
+            <div class="app-userbox-header">
+                @Settings.Project.Version
+                <span class="ms-3 opacity-50">@Settings.Project.ReleaseDate</span>
+            </div>
         </DropdownHeader>
         <DropdownItem To="/logout" Type="ButtonType.Link">
             <i class="fa fa-fw fa-sign-out me-1 opacity-50"></i>

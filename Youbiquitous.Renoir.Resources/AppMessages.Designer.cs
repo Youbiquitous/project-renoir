@@ -88,6 +88,16 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We encountered an error and cannot fulfill the request. The error has been traced
+        ///and we will work hard to get a fix out as soon as possible..
+        /// </summary>
+        public static string Err_Generic_Description {
+            get {
+                return ResourceManager.GetString("Err_Generic_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicate both email and password.
         /// </summary>
         public static string Err_IncompleteCredentials {

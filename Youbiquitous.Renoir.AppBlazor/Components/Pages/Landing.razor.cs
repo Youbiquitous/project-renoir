@@ -21,13 +21,4 @@ public class LandingPage : ViewModelBase
     public LandingPage()
     {
     }
-
-    /// <summary>
-    /// Finalize initialization
-    /// </summary>
-    protected override void OnInitialized()
-    {
-        // Ideally clean up the side menu
-
-    }
 }

@@ -1,10 +1,15 @@
 ﻿@inject IWebHostEnvironment Environment
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 @inherits MainLayoutPage
 
 
 @using Youbiquitous.Renoir.AppBlazor.Common.UI
 @using Microsoft.AspNetCore.Components.Authorization
 @using Youbiquitous.Renoir.AppBlazor.Common.Extensions
+
+@{
+    var left = $"<div class='fw-bold'>Release Notes Instant Reporter</div><div class='lh-1 '>{Environment.EnvironmentName}</div>";
+}
 
 <CascadingAuthenticationState>
     <PageTitle>@Settings.Project.Name</PageTitle>
@@ -21,10 +26,11 @@
         </div>
 
         <div class="app-content-container">
-            <TitleBar Left="@Environment.EnvironmentName"
+            <TitleBar Left="@left"
                       LeftClass="small opacity-50"
                       Right="@Settings.Project.Version" 
                       RightClass="fw-bold" />
+            @Body
         </div>
     </div>
 </CascadingAuthenticationState>

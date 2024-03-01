@@ -1,17 +1,20 @@
-﻿@inherits Youbiquitous.Renoir.AppBlazor.Models.ViewModelBase
+﻿@inherits LandingLayoutPage
 @inject IWebHostEnvironment Environment
 @using Youbiquitous.Renoir.Resources
 
 
 <PageTitle>@Settings.Project.Name</PageTitle>
 
-<div class="mt-5 h1 text-center text-uppercase">
+<div class="mt-5 lh-1 h1 text-center">Release Notes Instant Reporter</div>
+
+<div class="h5 lh-1 text-center text-uppercase">
     CREATE <span class="opacity-75 small">RELEASE NOTES</span> AND 
     <spa class="opacity-75 small">ROADMAP</spa> DOCS
 </div>
 
-<div class="container app-tiffany-bg">
-    <div class="p-5 row">
+
+<div class="container mt-2">
+    <div class="p-4 row app-tiffany-bg ">
         <div class="col-12 col-lg-7">
             <div>
                 <ErrorBoundary>
@@ -68,30 +71,33 @@
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="d-flex mt-3 justify-content-center align-items-center">
-    <div class="card mb-3 shadow" style="max-width: 540px;">
-        <div class="d-flex align-items-center">
-            <div class="px-4">
-                <img src="/images/ybq.png" class="img-fluid rounded-start" style="width: 150px;">
-            </div>
-            <div class="">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a class="text-decoration-none fw-bold"
-                           style="zoom: 1.3;"
-                           href="https://youbiquitous.net">YOUBIQUITOUS</a>
-                    </h5>
-                    <p class="card-text">
-                        We could use <b>fancy</b> words to describe how we spend our work hours here but,
-                        <b>at the very end of the day</b>, all we do is looking at how to make things simple.
-                    </p>
-                    <p>As simple as possible. But <b>no simpler</b> than that.</p>
-                    <p class="card-text">
-                        <small class="opacity-50 text-body-secondary">Last updated 3 mins ago</small>
-                    </p>
+    
+    <div class="row">
+        <div class="d-flex mt-3 justify-content-end align-items-center">
+            <div class="card mb-3 shadow" style="max-width: 600px;">
+                <div class="d-flex align-items-center">
+                    <div class="px-2">
+                        <img src="/images/ybq.png" class="img-fluid" style="width: 100px;">
+                    </div>
+                    <div class="">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="text-decoration-none fw-bold"
+                                   style="zoom: 1.2;"
+                                   href="https://youbiquitous.net">YOUBIQUITOUS</a>
+                            </h5>
+                            <p class="card-text">
+                                We could use <b>fancy</b> words to describe how we spend our work hours here but,
+                                <b>at the very end of the day</b>, all we do is looking at how to make things simple.
+                            </p>
+                            <p>As simple as possible. But <b>no simpler</b> than that.</p>
+                            <p class="card-text">
+                                <small class="opacity-50 text-body-secondary">
+                                    Last updated <span>@(new Random().Next(1, 5))</span> mins ago
+                                </small>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,8 +6,12 @@
 
 <div class="h3 opacity-75 text-danger">
     @Message
+    <hr/>
 </div>
 
+<div>
+    @AppMessages.Err_Generic_Description
+</div>
 
 @code {
     [CascadingParameter] 
@@ -21,6 +25,7 @@
     /// <summary>
     /// Initializer
     /// </summary>
+    //protected override void OnAfterRender(bool firstRender)
     protected override void OnInitialized()
     {
         // Figure out what happened

@@ -126,6 +126,10 @@
   <data name="Err_Generic" xml:space="preserve">
     <value>The application is temporarily unavailable</value>
   </data>
+  <data name="Err_Generic_Description" xml:space="preserve">
+    <value>We encountered an error and cannot fulfill the request. The error has been traced
+and we will work hard to get a fix out as soon as possible.</value>
+  </data>
   <data name="Err_IncompleteCredentials" xml:space="preserve">
     <value>Indicate both email and password</value>
   </data>

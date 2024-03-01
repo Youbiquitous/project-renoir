@@ -14,7 +14,8 @@
 
   "Project": {
     "Name": "Project Renoir",
-    "Version": "1.0.5",
+    "Version": "1.0.8",
+    "ReleaseDate": "March 1, 2024",
     "Description": "Clean Architecture for .NET",
     "Copyright": "Dino Esposito",
     "Attribution": "Fork and love"

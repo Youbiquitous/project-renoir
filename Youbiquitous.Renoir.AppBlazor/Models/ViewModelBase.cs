@@ -39,7 +39,7 @@ public class ViewModelBase : LayoutComponentBase
     public AuthenticationState Logged { get; private set; }
 
     /// <summary>
-    /// Initialization steps
+    /// Initialization steps (NB: will hit this TWICE)
     /// </summary>
     protected override void OnInitialized()
     {
@@ -64,7 +64,7 @@ public class ViewModelBase : LayoutComponentBase
     /// </summary>
     protected virtual void Refresh()
     {
-        OnInitialized();
-        StateHasChanged();
+        //OnInitialized();
+        //StateHasChanged();
     }
 }

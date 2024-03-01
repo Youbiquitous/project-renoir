@@ -16,7 +16,6 @@ namespace Youbiquitous.Renoir.AppBlazor.Components.Layout;
 /// <summary>
 /// Code-behind class for the main layout 
 /// </summary>
-public partial class LandingLayout : ViewModelBase
+public partial class LandingLayoutPage : ViewModelBase
 {
-
 }
