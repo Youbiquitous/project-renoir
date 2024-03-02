@@ -1,0 +1,20 @@
+﻿///////////////////////////////////////////////////////////////////
+//
+// Project RENOIR
+// Release Notes Instant Reporter
+//
+// Reference application presented in
+// Clean Architecture with .NET (MS Press) 2024
+// Author: Dino Esposito
+// 
+//
+
+The following are known issues at the time of the first deploy to the Github repo.
+
+1) In release/roadmap editors, when adding a new section and moving it up order numbers are screwed up. 
+   Adding a new row and saving usually fixes it.
+
+2) The title of the modal presenting the plain text version of the documents doesn't appear all the time.
+   To be investigated.
+
+

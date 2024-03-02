@@ -79,6 +79,15 @@ namespace Youbiquitous.Renoir.DomainModel.Utils {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fix.
+        /// </summary>
+        internal static string Text_Category_Fix {
+            get {
+                return ResourceManager.GetString("Text_Category_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internal.
         /// </summary>
         internal static string Text_Category_Internal {

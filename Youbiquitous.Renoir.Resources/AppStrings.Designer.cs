@@ -79,6 +79,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string Label_Date {
+            get {
+                return ResourceManager.GetString("Label_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting.
         /// </summary>
         public static string Label_Deleting {
@@ -102,6 +111,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_EditReleaseNote {
             get {
                 return ResourceManager.GetString("Label_EditReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Roadmap.
+        /// </summary>
+        public static string Label_EditRoadmap {
+            get {
+                return ResourceManager.GetString("Label_EditRoadmap", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Label_NewReleaseNote {
             get {
                 return ResourceManager.GetString("Label_NewReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Roadmap.
+        /// </summary>
+        public static string Label_NewRoadmap {
+            get {
+                return ResourceManager.GetString("Label_NewRoadmap", resourceCulture);
             }
         }
         
@@ -412,11 +439,38 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ETA.
+        /// </summary>
+        public static string Placeholder_Eta {
+            get {
+                return ResourceManager.GetString("Placeholder_Eta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Describe the item....
+        /// </summary>
+        public static string Placeholder_ItemDescription {
+            get {
+                return ResourceManager.GetString("Placeholder_ItemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password you want to use now.
         /// </summary>
         public static string Placeholder_NewPassword {
             get {
                 return ResourceManager.GetString("Placeholder_NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes....
+        /// </summary>
+        public static string Placeholder_Notes {
+            get {
+                return ResourceManager.GetString("Placeholder_Notes", resourceCulture);
             }
         }
         
@@ -489,6 +543,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Text_ReleaseNote {
             get {
                 return ResourceManager.GetString("Text_ReleaseNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roadmap.
+        /// </summary>
+        public static string Text_Roadmap {
+            get {
+                return ResourceManager.GetString("Text_Roadmap", resourceCulture);
             }
         }
     }

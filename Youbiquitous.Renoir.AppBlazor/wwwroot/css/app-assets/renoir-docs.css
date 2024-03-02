@@ -29,3 +29,8 @@
     margin-top: 20px;
     margin-bottom: 2px;
 }
+
+.share-text-reader {
+    font-family: monospace;
+    white-space: nowrap;
+}

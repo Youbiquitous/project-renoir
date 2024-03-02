@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Documents\Core\DocumentCategory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Documents\Core\DocumentCategory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Youbiquitous.Martlet.Core" Version="1.5.6" />
   </ItemGroup>
 

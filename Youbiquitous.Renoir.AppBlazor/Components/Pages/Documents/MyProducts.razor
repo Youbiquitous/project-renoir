@@ -2,7 +2,6 @@
 
 @using Youbiquitous.Renoir.Resources
 @using Microsoft.AspNetCore.Authorization
-@rendermode InteractiveServer
 @inherits MyProductsPage
 @attribute [Authorize]
 
@@ -22,31 +21,31 @@
         }
     </div>
 
+    <div class="d-flex">
+        @foreach (var binding in Current.Products)
+        {
+            var product = binding.RelatedProduct;
+            var urlRnt = $"/rns?rn={product.ProductId}";
+            var urlRmp = $"/rmps?rm={product.ProductId}";
 
-   
-    @foreach (var binding in Current.Products)
-    {
-        var product = binding.RelatedProduct;
-        var urlRnt = $"/rns?rn={product.ProductId}";
-        var urlRmp = $"/rms?rm={product.ProductId}";
-
-        <div class="card bg-info mx-2"
-             style="max-width: 15rem;">
-            <div class="card-header text-uppercase">
-                <span>@binding.RoleId</span>
-            </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="fw-bold fs-3">@product.Name</div>
-                    <div class="ms-3 opacity-75 small">@product.Version</div>
+            <div class="card bg-info mx-2"
+                 style="max-width: 15rem;">
+                <div class="card-header text-uppercase">
+                    <span>@binding.RoleId</span>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="fw-bold fs-3">@product.Name</div>
+                        <div class="ms-3 opacity-75 small">@product.Version</div>
+                    </div>
+                </div>
+                <div class="p-2 text-center">
+                    <a class="btn btn-sm btn-primary p-0 px-2 me-3"
+                       href="@urlRnt">@AppMenu.ReleaseNotes</a>
+                    <a class="btn btn-sm btn-primary p-0 px-2"
+                       href="@urlRmp">@AppMenu.Roadmaps</a>
                 </div>
             </div>
-            <div class="p-2 text-center">
-                <a class="btn btn-sm btn-primary p-0 px-2 me-3"
-                   href="@urlRnt">@AppMenu.ReleaseNotes</a>
-                <a class="btn btn-sm btn-primary p-0 px-2"
-                   href="@urlRmp">@AppMenu.Roadmaps</a>
-            </div>
-        </div>
-    }
+        }
+    </div>
 </div>

@@ -79,6 +79,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        public static string Copy {
+            get {
+                return ResourceManager.GetString("Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string Dashboard {
@@ -187,6 +196,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Roadmap.
+        /// </summary>
+        public static string NewRoadmap {
+            get {
+                return ResourceManager.GetString("NewRoadmap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Row.
         /// </summary>
         public static string NewRow {
@@ -214,15 +232,6 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resume.
-        /// </summary>
-        public static string Resume {
-            get {
-                return ResourceManager.GetString("Resume", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Roadmaps.
         /// </summary>
         public static string Roadmaps {
@@ -246,6 +255,42 @@ namespace Youbiquitous.Renoir.Resources {
         public static string SaveChanges {
             get {
                 return ResourceManager.GetString("SaveChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        public static string Share {
+            get {
+                return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As Plain Text.
+        /// </summary>
+        public static string ShareAsPlainText {
+            get {
+                return ResourceManager.GetString("ShareAsPlainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to Release Notes.
+        /// </summary>
+        public static string SwitchToNotes {
+            get {
+                return ResourceManager.GetString("SwitchToNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to Roadmaps.
+        /// </summary>
+        public static string SwitchToRoadmaps {
+            get {
+                return ResourceManager.GetString("SwitchToRoadmaps", resourceCulture);
             }
         }
         

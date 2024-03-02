@@ -30,10 +30,18 @@ public partial class UsersPage : ViewModelBase
     protected override void OnInitialized()
     {
         // Ensure ViewModelBase is initialized
-        base.OnInitialized();
+        //base.OnInitialized();
         Accounts = AccountService.Accounts();
     }
-    
+
+    //protected override void OnAfterRender(bool firstRender)
+    //{
+    //    // Ensure ViewModelBase is initialized
+    //    //base.OnInitialized();
+    //    if (!firstRender)
+    //        Accounts = AccountService.Accounts();
+    //}
+
     /// <summary>
     /// Display the User-Editor modal for a new user
     /// </summary>

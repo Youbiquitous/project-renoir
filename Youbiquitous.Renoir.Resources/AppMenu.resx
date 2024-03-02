@@ -123,6 +123,9 @@
   <data name="Approve" xml:space="preserve">
     <value>Approve</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="NewReleaseNote" xml:space="preserve">
     <value>New Release Note</value>
   </data>
+  <data name="NewRoadmap" xml:space="preserve">
+    <value>New Roadmap</value>
+  </data>
   <data name="NewRow" xml:space="preserve">
     <value>New Row</value>
   </data>
@@ -168,9 +174,6 @@
   <data name="ReleaseNotes" xml:space="preserve">
     <value>Release Notes</value>
   </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
-  </data>
   <data name="Roadmaps" xml:space="preserve">
     <value>Roadmaps</value>
   </data>
@@ -179,6 +182,18 @@
   </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Save Changes</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="ShareAsPlainText" xml:space="preserve">
+    <value>As Plain Text</value>
+  </data>
+  <data name="SwitchToNotes" xml:space="preserve">
+    <value>Switch to Release Notes</value>
+  </data>
+  <data name="SwitchToRoadmaps" xml:space="preserve">
+    <value>Switch to Roadmaps</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

@@ -24,6 +24,7 @@ public partial class StatusMessage : ComponentBase
         CssClassError = "text-danger";
         CssClassSuccess = "text-success";
         Delay = 0;
+        Message = "HAZ";
     }
 
     /// <summary>

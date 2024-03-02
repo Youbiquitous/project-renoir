@@ -123,6 +123,9 @@
   <data name="Text_Category_Feature" xml:space="preserve">
     <value>Feature</value>
   </data>
+  <data name="Text_Category_Fix" xml:space="preserve">
+    <value>Fix</value>
+  </data>
   <data name="Text_Category_Internal" xml:space="preserve">
     <value>Internal</value>
   </data>

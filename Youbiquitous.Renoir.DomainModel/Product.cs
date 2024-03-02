@@ -59,10 +59,15 @@ public partial class Product : BaseEntity
     /// <summary>
     /// Users active on the product
     /// </summary>
-    public virtual IEnumerable<UserProductBinding> Users { get; set; }
+    public IEnumerable<UserProductBinding> Users { get; set; }
 
     /// <summary>
     /// Pending release notes for the product
     /// </summary>
-    public virtual IEnumerable<ReleaseNote> ReleaseNotes { get; set; }
+    public IEnumerable<ReleaseNote> ReleaseNotes { get; set; }
+
+    /// <summary>
+    /// Pending roadmaps for the product
+    /// </summary>
+    public IEnumerable<Roadmap> Roadmaps { get; set; }
 }

@@ -11,7 +11,6 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using Youbiquitous.Renoir.AppBlazor.Common.Exceptions;
 using Youbiquitous.Renoir.Application.Settings;
 
 namespace Youbiquitous.Renoir.AppBlazor.Models;
@@ -52,19 +51,11 @@ public class ViewModelBase : LayoutComponentBase
     public string Title { get; set; }
 
     /// <summary>
-    /// Attempt to recover from exceptions
-    /// </summary>
-    //public void Recover()
-    //{
-    //    ErrorBoundary?.Recover();
-    //}
-
-    /// <summary>
     /// Trigger re-rendering (with new data)
     /// </summary>
-    protected virtual void Refresh()
+    protected void Refresh()
     {
-        //OnInitialized();
-        //StateHasChanged();
+        OnInitialized();
+        StateHasChanged();
     }
 }

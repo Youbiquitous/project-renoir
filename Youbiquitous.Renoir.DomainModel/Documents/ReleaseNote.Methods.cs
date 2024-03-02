@@ -10,16 +10,11 @@
 //
 
 
-using Youbiquitous.Renoir.DomainModel.Documents.Core;
-
 namespace Youbiquitous.Renoir.DomainModel.Documents;
 
 /// <summary>
-/// RELEASE-NOTE entity (properties)
+/// RELEASE-NOTE entity (methods)
 /// </summary>
 public partial class ReleaseNote 
 {
-
-
-
 }

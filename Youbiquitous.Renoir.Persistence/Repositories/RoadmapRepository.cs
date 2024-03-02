@@ -20,19 +20,19 @@ namespace Youbiquitous.Renoir.Persistence.Repositories;
 /// <summary>
 /// Repository for document entities
 /// </summary>
-public partial class DocumentRepository
+public partial class RoadmapRepository
 {
     /// <summary>
     /// Retrieves given document
     /// </summary>
     /// <param name="refId"></param>
     /// <returns></returns>
-    public static ReleaseNote FindById(long refId)
+    public static Roadmap FindById(long refId)
     {
         try
         {
             using var db = new RenoirDatabase();
-            var doc = db.ReleaseNotes
+            var doc = db.Roadmaps
                 .Include(r => r.Items)
                 .Include(r => r.RelatedProduct)
                 .SingleOrDefault(r => r.RefId == refId && !r.Deleted);
@@ -51,7 +51,7 @@ public partial class DocumentRepository
     /// <param name="userId"></param>
     /// <param name="productId"></param>
     /// <returns></returns>
-    public static IEnumerable<ReleaseNote> FindAll(long userId, long productId)
+    public static IEnumerable<Roadmap> FindAll(long userId, long productId)
     {
         try
         {
@@ -60,9 +60,9 @@ public partial class DocumentRepository
                 .Include(p => p.Users)
                 .SingleOrDefault(p => p.ProductId == productId);
             if (product == null || !product.AccessibleBy(userId))
-                return new List<ReleaseNote>();
+                return new List<Roadmap>();
 
-            var docs = db.ReleaseNotes
+            var docs = db.Roadmaps
                 .Include(r => r.Items)
                 .Where(r => r.ProductId == productId && 
                             !r.Deleted)
@@ -81,12 +81,12 @@ public partial class DocumentRepository
     /// </summary>
     /// <param name="productId"></param>
     /// <returns></returns>
-    public static IEnumerable<ReleaseNote> FindAll(long productId)
+    public static IEnumerable<Roadmap> FindAll(long productId)
     {
         try
         {
             using var db = new RenoirDatabase();
-            var docs = db.ReleaseNotes
+            var docs = db.Roadmaps
                 .Include(r => r.Items)
                 .Where(r => r.ProductId == productId && 
                             !r.Deleted)

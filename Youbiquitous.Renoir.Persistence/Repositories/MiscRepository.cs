@@ -10,11 +10,7 @@
 //
 
 
-using Microsoft.EntityFrameworkCore;
-using Youbiquitous.Martlet.Core.Types;
-using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Misc;
-using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.Persistence.Repositories;
 
@@ -34,7 +30,7 @@ public partial class MiscRepository
         var descriptor = new CountersDescriptor
         {
             TotalNotes = db.ReleaseNotes.Count(),
-            TotalRoadmaps = 0, //db.Roadmaps.Count();
+            TotalRoadmaps = db.Roadmaps.Count(),
             TotalProducts = db.Products.Count(),
             TotalUsers = db.Users.Count()
         };

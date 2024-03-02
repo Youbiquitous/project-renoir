@@ -45,7 +45,7 @@ public partial class ReleaseNotesPage : ViewModelBase
     {
         base.OnInitialized();
         Current = AccountService.Find(Logged.GetEmail());
-        Documents = DocumentService.For(Current.UserId, SelectedProductId)?.Documents ?? new List<ReleaseNote>();
+        Documents = DocumentService.ReleaseNotesFor(Current.UserId, SelectedProductId)?.Documents ?? new List<ReleaseNote>();
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public partial class ReleaseNotesPage : ViewModelBase
     protected void DeleteExistingDocument(ReleaseNote document)
     {
         // Remove given document
-        var response = DocumentService.Delete(document.RefId);
+        var response = DocumentService.DeleteReleaseNote(document.RefId);
         if (response.Success)
             Refresh();
     }
@@ -97,7 +97,7 @@ public partial class ReleaseNotesPage : ViewModelBase
     protected async Task EditDocumentEditor(ReleaseNote document)
     {
         DocumentEditor.SetTitle(AppStrings.Label_EditReleaseNote);
-        DocumentEditor.SetUserData(new DocRef(document.RefId, document.Version, document.Notes));
+        DocumentEditor.SetUserData(new DocRef(document.RefId, document.Version, document.ReleaseDate, document.Notes));
         await DocumentEditor.Window.ShowAsync();
     }
 
@@ -111,8 +111,8 @@ public partial class ReleaseNotesPage : ViewModelBase
         // Save user data to the DB
         var author = Logged.GetEmail();
         var response = rn.RefId == 0
-            ? DocumentService.NewReleaseNote(SelectedProductId, rn.Version, rn.Notes, author)
-            : DocumentService.SaveReleaseNote(rn.RefId, SelectedProductId, rn.Version, rn.Notes, author);
+            ? DocumentService.NewReleaseNote(SelectedProductId, rn.Version, rn.ReleaseDate, rn.Notes, author)
+            : DocumentService.SaveReleaseNote(rn.RefId, SelectedProductId, rn.Version, rn.ReleaseDate, rn.Notes, author);
         if (!response.Success)
         {
             await DocumentEditor.Statusbar.ShowAsync(response.Message);

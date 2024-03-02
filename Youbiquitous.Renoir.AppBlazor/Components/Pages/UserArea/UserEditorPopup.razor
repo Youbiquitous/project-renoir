@@ -45,13 +45,14 @@
                 </button>
             </div>
         </EditForm>
-
     </BodyTemplate>
+
     <FooterTemplate>
         <StatusMessage @ref="Statusbar"
                        Message="@StatusMessage"
                        Delay="2500"
-                       CssClass="text-danger fw-bold" />
+                       CssClassError="text-danger fw-bold" />
+
     </FooterTemplate>  
 </Modal>
 
@@ -106,7 +107,7 @@
     }
 
     /// <summary>
-    /// 
+    /// Set user reference
     /// </summary>
     /// <param name="user"></param>
     public void SetUserData(UserRef user)
@@ -115,7 +116,7 @@
     }
 
     /// <summary>
-    /// 
+    /// Set title of the modal
     /// </summary>
     /// <param name="title"></param>
     public void SetTitle(string title)

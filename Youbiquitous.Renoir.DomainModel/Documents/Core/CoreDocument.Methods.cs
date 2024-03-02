@@ -75,7 +75,7 @@ public partial class CoreDocument<TDocumentItem> : BaseEntity
     /// </summary>
     /// <param name="rni"></param>
     /// <returns></returns>
-    public bool CanMoveItemUp(ReleaseNoteItem rni)
+    public bool CanMoveItemUp(TDocumentItem rni)
     {
         return rni.Order > 1;
     }
@@ -86,7 +86,7 @@ public partial class CoreDocument<TDocumentItem> : BaseEntity
     /// <param name="rni"></param>
     /// <param name="count"></param>
     /// <returns></returns>
-    public bool CanMoveItemDown(ReleaseNoteItem rni)
+    public bool CanMoveItemDown(TDocumentItem rni)
     {
         return rni.Order < Items.Count;
     }

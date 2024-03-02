@@ -19,7 +19,7 @@ public partial class ReleaseNotesPage
     protected ReleaseNoteEditorPopup DocumentEditor;
 
     /// <summary>
-    /// Reference to the custom component with the table of users
+    /// Reference to the custom component with the table of release note docs
     /// </summary>
     protected RnList ListOfDocuments;
 }

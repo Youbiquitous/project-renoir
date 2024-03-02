@@ -1,0 +1,110 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel.Management
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Martlet.Core.Extensions
+@using Youbiquitous.Renoir.AppBlazor.Models.Input
+@using Youbiquitous.Renoir.DomainModel.Documents
+
+@{
+    var disabled = !RelatedDocument?.Version.IsNullOrWhitespace() ?? false;
+}
+
+<!-- Popup Editor -->
+<Modal @ref="Window" Title="@Title" IsVerticallyCentered="true">
+    <BodyTemplate>
+        <EditForm Model="@RelatedDocument" OnSubmit="@Submitted">
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Version</label>
+                <InputText class="form-control" 
+                           disabled="@disabled"
+                           autofocus
+                           @bind-Value="RelatedDocument.Version" />
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Date</label>
+                <InputDate class="form-control"
+                           @bind-Value="RelatedDocument.ReleaseDate" />
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Notes</label>
+                <InputTextArea class="form-control" 
+                               maxlength="180"
+                               @bind-Value="RelatedDocument.Notes" />
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-primary px-5" type="submit">
+                    @AppMenu.SaveChanges
+                </button>
+            </div>
+        </EditForm>
+    </BodyTemplate>
+
+    <FooterTemplate>
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClassSuccess="text-success fw-bold"
+                       CssClassError="text-danger fw-bold" />
+    </FooterTemplate>  
+</Modal>
+
+            
+@code{
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public DocRef RelatedDocument { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; }
+
+    [Parameter]
+    public EventCallback<DocRef> OnFormPosted { get; set; }
+
+    /// <summary>
+    /// Component references
+    /// </summary>
+    public Modal Window { get; set; }
+    public StatusMessage Statusbar { get; set; }
+    
+    /// <summary>
+    /// Initialize the object to edit
+    /// </summary>
+    /// <param name="doc"></param>
+    public void SetUserData(DocRef doc)
+    {
+        RelatedDocument = doc ?? new DocRef();
+    }
+
+    /// <summary>
+    /// Sets the title of the modal dialog
+    /// </summary>
+    /// <param name="title"></param>
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
+
+    /// <summary>
+    /// Internal trigger of the form-post event
+    /// </summary>
+    private async Task Submitted()
+    {
+        // Validate
+        var valid = RelatedDocument.Validate();
+        if (!valid.Success)
+        {
+            await Statusbar.ShowAsync(valid.Message);
+            return;
+        }
+
+        // Go on
+        if (!OnFormPosted.HasDelegate)
+            return;
+
+        await OnFormPosted.InvokeAsync(RelatedDocument);
+    }
+}

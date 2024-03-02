@@ -21,8 +21,9 @@ public enum DocumentItemCategory
 {
     None = 0,
     Bug = 1,
-    Feature = 2,
-    Internal = 3
+    Fix = 2,
+    Feature = 3,
+    Internal = 4
 }
 
 
@@ -34,6 +35,11 @@ public static class ItemCategoryExtensions
     public static bool IsBug(this DocumentItemCategory category)
     {
         return category == DocumentItemCategory.Bug;
+    }
+
+    public static bool IsFix(this DocumentItemCategory category)
+    {
+        return category == DocumentItemCategory.Fix;
     }
 
     public static bool IsFeature(this DocumentItemCategory category)
@@ -53,6 +59,7 @@ public static class ItemCategoryExtensions
             DocumentItemCategory.None => InternalStrings.Text_Category_None,
             DocumentItemCategory.Internal => InternalStrings.Text_Category_Internal,
             DocumentItemCategory.Bug => InternalStrings.Text_Category_Bug,
+            DocumentItemCategory.Fix => InternalStrings.Text_Category_Fix,
             DocumentItemCategory.Feature => InternalStrings.Text_Category_Feature,
             _ => ""
         };

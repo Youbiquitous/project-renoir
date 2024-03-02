@@ -59,7 +59,7 @@
         <StatusMessage @ref="Statusbar"
                        Message="@StatusMessage"
                        Delay="2500"
-                       CssClassError="text-danger fw-bold"/>
+                       CssClassError="text-danger fw-bold" />
     </FooterTemplate>
 </Modal>
 
@@ -164,6 +164,5 @@
 
         // Refresh the list of active users
         AttachBindings(ProductService.BindingsFor(binding.ProductId));
-
     }
 }

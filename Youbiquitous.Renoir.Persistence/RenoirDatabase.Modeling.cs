@@ -86,10 +86,9 @@ public partial class RenoirDatabase
         #endregion
 
         ////////////////////////////////////////////////////////
-        //  DOCUMENT(s)
+        //  RELEASE NOTE(s)
         // 
-        #region DOCUMENTS
-        // Release Note
+        #region RELEASE NOTES
         modelBuilder.Entity<ReleaseNote>()
             .Property(p => p.RefId)
             .ValueGeneratedOnAdd();
@@ -123,6 +122,46 @@ public partial class RenoirDatabase
             .HasOne(rni => rni.RelatedDocument)
             .WithMany(rn => rn.Items)
             .HasForeignKey(rn => new {rn.DocumentId})
+            .OnDelete(DeleteBehavior.Cascade);
+        #endregion
+
+        ////////////////////////////////////////////////////////
+        //  ROADMAP(s)
+        // 
+        #region ROADMAPS
+        modelBuilder.Entity<Roadmap>()
+            .Property(p => p.RefId)
+            .ValueGeneratedOnAdd();
+        modelBuilder.Entity<Roadmap>()
+            .HasKey(rm => rm.RefId);
+        modelBuilder.Entity<Roadmap>(p =>
+        {
+            p.ComplexProperty(r => r.Created).IsRequired();
+            p.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
+
+        modelBuilder.Entity<Roadmap>()
+            .HasOne(rm => rm.RelatedProduct)
+            .WithMany(p => p.Roadmaps)
+            .HasForeignKey(rm => new {rm.ProductId})
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Roadmap items
+        modelBuilder.Entity<RoadmapItem>()
+            .Property(p => p.RefId)
+            .ValueGeneratedOnAdd();
+        modelBuilder.Entity<RoadmapItem>()
+            .HasKey(rm => rm.RefId);
+        modelBuilder.Entity<RoadmapItem>(p =>
+        {
+            p.ComplexProperty(r => r.Created).IsRequired();
+            p.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
+
+        modelBuilder.Entity<RoadmapItem>()
+            .HasOne(rmi => rmi.RelatedDocument)
+            .WithMany(rm => rm.Items)
+            .HasForeignKey(rm => new {rm.DocumentId})
             .OnDelete(DeleteBehavior.Cascade);
         #endregion
     }

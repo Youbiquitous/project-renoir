@@ -24,15 +24,17 @@ public class DocRef : DtoBase
     public DocRef()
     {
     }
-    public DocRef(long refId, string version, string notes)
+    public DocRef(long refId, string version, DateTime? release, string notes)
     {
         RefId = refId;
         Version = version;
         Notes = notes;
+        ReleaseDate = release;
     }
 
     public long RefId { get; set; }
     public string Version { get; set; }
+    public DateTime? ReleaseDate { get; set; }
     public string Notes { get; set; }
 
     /// <summary>

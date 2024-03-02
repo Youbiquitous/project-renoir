@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Pages\Documents\Roadmaps\" />
     <Folder Include="Models\View\" />
   </ItemGroup>
 

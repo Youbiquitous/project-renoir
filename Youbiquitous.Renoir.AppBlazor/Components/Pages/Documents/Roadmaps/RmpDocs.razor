@@ -1,0 +1,71 @@
+﻿@page "/rmps"
+@inherits RoadmapPage
+@attribute [Authorize]
+
+@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.Application
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Renoir.DomainModel.Documents
+
+@{
+    var productId = SelectedProductId;
+    var container = DocumentService.RoadmapsFor(Current.UserId, productId, Current.IsSystem());
+    var documents = container?.Documents.ToList() ?? new List<Roadmap>();
+    if (container?.Product is null || productId <= 0)
+    { 
+        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownProductOrDocument</div>
+        return;
+    }
+}
+
+<PageTitle>
+    @container.Product [@AppStrings.Label_Roadmaps]
+</PageTitle>
+
+<div class="d-flex justify-content-between">
+    <div class="fs-4 fw-bold">@AppStrings.Label_Roadmaps</div>
+    <div class="fs-6">
+        <a class="btn btn-sm btn-outline-info" href="/rns?rn=1">
+            <i class="fa fa-exchange-alt fw-bold me-1"></i>
+            @AppMenu.SwitchToNotes
+        </a>
+    </div>
+</div>
+
+
+<!-- List of documents per product -->
+<div>
+    <div class="d-flex justify-content-between bg-success text-white p-2">
+        <div class="fs-4">
+            <span>@container.Product.Name</span>
+            <span class="ms-2 opacity-50">@container.Product.Version</span>
+        </div>
+        <div>
+            <button class="btn btn-success" @onclick="NewDocumentEditor">
+                <i class="fa fa-plus"></i>
+                @AppMenu.NewRoadmap
+            </button>
+        </div>
+    </div>
+
+    
+    <!-- List users -->
+    @if (!documents.Any())
+    {
+        <div class="fs-5 mt-4 opacity-50 italic text-center">
+            @AppMessages.Msg_NoDocumentsFound
+        </div>
+    }
+    else
+    {
+        <RmpList @ref="ListOfDocuments" 
+                Documents="documents"
+                DocumentEdited="EditDocumentEditor"
+                DocumentDeleted="DeleteExistingDocument" />
+    }
+</div>
+
+<!-- Popup Editor -->
+<RoadmapEditorPopup @ref="DocumentEditor" 
+                    OnFormPosted="SaveDocument" />

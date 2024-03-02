@@ -10,7 +10,6 @@
 //
 
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Transactions;
 using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.DomainModel;
@@ -39,6 +38,9 @@ public partial class RenoirDatabase : DbContext
     public DbSet<UserProductBinding> UserProductBindings { get; set; }
     public DbSet<ReleaseNote> ReleaseNotes { get; set; }
     public DbSet<ReleaseNoteItem> ReleaseNoteItems { get; set; }
+    public DbSet<Roadmap> Roadmaps { get; set; }
+    public DbSet<RoadmapItem> RoadmapItems { get; set; }
+
 }
 
 /// <summary>

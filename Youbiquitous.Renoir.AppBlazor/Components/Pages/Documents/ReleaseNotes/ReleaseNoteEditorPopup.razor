@@ -5,15 +5,25 @@
 @using Youbiquitous.Renoir.AppBlazor.Models.Input
 @using Youbiquitous.Renoir.DomainModel.Documents
 
+@{
+    var disabled = !RelatedDocument?.Version.IsNullOrWhitespace() ?? false; 
+}
+
 <!-- Popup Editor -->
 <Modal @ref="Window" Title="@Title" IsVerticallyCentered="true">
     <BodyTemplate>
         <EditForm Model="@RelatedDocument" OnSubmit="@Submitted">
-             <div class="mt-2">
+            <div class="mt-2">
                 <label class="fw-bold">@AppStrings.Label_Version</label>
-                 <InputText class="form-control" 
-                            autofocus
-                            @bind-Value="RelatedDocument.Version" />
+                <InputText class="form-control"
+                           disabled="@disabled"
+                           autofocus
+                           @bind-Value="RelatedDocument.Version" />
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">@AppStrings.Label_Date</label>
+                <InputDate class="form-control"
+                           @bind-Value="RelatedDocument.ReleaseDate" />
             </div>
             <div class="mt-2">
                 <label class="fw-bold">@AppStrings.Label_Notes</label>

@@ -13,7 +13,6 @@ using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Management;
-using Youbiquitous.Renoir.Infrastructure.Security;
 using Youbiquitous.Renoir.Infrastructure.Security.Password;
 using Youbiquitous.Renoir.Resources;
 
@@ -72,19 +71,19 @@ public partial class RenoirDatabase
         };
 
         var own1 = new User(
-            "boss1@renoir-app.net",
+            "op1@renoir-app.net",
             PasswordServiceLocator.Get().Store("your-password"),
             Role.Owner.Name)
         {
-            DisplayName = "Top Owner #1",
+            DisplayName = "Owner #1",
         };
 
         var own2 = new User(
-            "boss2@renoir-app.net",
+            "op2@renoir-app.net",
             PasswordServiceLocator.Get().Store("your-password"),
             Role.Owner.Name)
         {
-            DisplayName = "Top Owner #2",
+            DisplayName = "Owner #2",
         };
 
         context.Users.AddRange(root, own1, own2);
@@ -100,7 +99,7 @@ public partial class RenoirDatabase
         if (context.Products.Any())
             return;
 
-        var prod1 = new Product("APOLLO", "2.0");
+        var prod1 = new Product("ATHENA", "2.0");
         var prod2 = new Product("MERCURY", "1.0");
 
         context.Products.AddRange(prod1, prod2);

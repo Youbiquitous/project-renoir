@@ -1,17 +1,21 @@
 ﻿@using Youbiquitous.Renoir.DomainModel.Documents.Core
 @using Microsoft.AspNetCore.Components
 @using Youbiquitous.Renoir.DomainModel.Documents
+@using Youbiquitous.Renoir.Resources
 
 @if (Model.ItemType.IsDivider())
 {
-    <div class="d-flex w-100 justify-content-center bordered-bottom mb-2">
-        <div class="rn-divider">
-            <input type="text" 
-                   class="form-control fw-bold text-center" 
+    <div class="d-flex w-100 justify-content-between align-items-center bordered-bottom mb-2">
+        <div class="rn-divider flex-grow-1 justify-content-center">
+            <input type="text"
+                   class="fw-bold text-center"
                    @bind-value="@Model.Description" />
         </div>
+        <div class="ms-1 text-primary text-end" style="width: 150px;">
+            <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay("d MMM yyyy - HH:mm")<sup>UTC</sup></div>
+            <div class="tiny italic lh-1">@Model.LastUpdated.AuthorForDisplay()</div>
+        </div>
     </div>
-
     return;
 }
 
@@ -27,15 +31,15 @@
     </div>
     <div>
         <input type="text" id="eta" class="form-control text-primary rn-eta"
-               placeholder="ETA or other notes" />
+               placeholder="@AppStrings.Placeholder_Notes" />
     </div>
     <div class="flex-grow-1">
         <input type="text" id="desc" class="form-control rn-description"
-               placeholder="Describe the item..."
+               placeholder="@AppStrings.Placeholder_ItemDescription"
                @bind-value="Model.Description" />
     </div>
     <div class="ms-1 text-primary text-end" style="width: 150px;">
-        <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay()</div>
+        <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay("d MMM yyyy - HH:mm")<sup>UTC</sup></div>
         <div class="tiny italic lh-1">@Model.LastUpdated.AuthorForDisplay()</div>
     </div>
 </div>

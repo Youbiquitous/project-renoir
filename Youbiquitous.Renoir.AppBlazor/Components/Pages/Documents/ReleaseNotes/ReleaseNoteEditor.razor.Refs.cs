@@ -9,10 +9,10 @@
 // 
 
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents.ReleaseNotes;
 
-public partial class ReleaseNotesPage 
+public partial class ReleaseNoteEditorPage 
 {
-
+    protected ShareDocumentPopup Share;
 }
 

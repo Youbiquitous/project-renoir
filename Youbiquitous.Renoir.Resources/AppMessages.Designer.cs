@@ -314,6 +314,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copied!.
+        /// </summary>
+        public static string Msg_Copied {
+            get {
+                return ResourceManager.GetString("Msg_Copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully done!.
         /// </summary>
         public static string Msg_Done {

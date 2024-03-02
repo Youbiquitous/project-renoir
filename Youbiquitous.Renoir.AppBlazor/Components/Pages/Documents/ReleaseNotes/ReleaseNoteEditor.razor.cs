@@ -9,15 +9,18 @@
 // 
 
 using Microsoft.AspNetCore.Components;
+using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Components.Layout;
 using Youbiquitous.Renoir.AppBlazor.Components.Shared;
 using Youbiquitous.Renoir.Application;
+using Youbiquitous.Renoir.Application.Renderers;
 using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Documents.Core;
 using Youbiquitous.Renoir.DomainModel.Management;
+using Youbiquitous.Renoir.Resources;
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents.ReleaseNotes;
 
 public partial class ReleaseNoteEditorPage : MainLayoutPage
 {
@@ -57,8 +60,8 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        RelatedDocument = DocumentService.Get(ParentDocumentId);
-        InitialNumberOfItems = RelatedDocument.Items.Count;
+        RelatedDocument = DocumentService.GetReleaseNote(ParentDocumentId);
+        InitialNumberOfItems = RelatedDocument?.Items.Count ?? 0;
         Current = AccountService.Find(Logged.GetEmail());
     }
 
@@ -85,7 +88,7 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
     /// </summary>
     public void BackToProduct()
     {
-        NavigationManager.NavigateTo($"/docs?rn={RelatedDocument.ProductId}", forceLoad: true);
+        NavigationManager.NavigateTo($"/rns?rn={RelatedDocument.ProductId}", forceLoad: true);
     }
 
     /// <summary>
@@ -150,5 +153,20 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
 
         // Update number of items in the view 
         InitialNumberOfItems = RelatedDocument.Items.Count;
+    }
+
+    /// <summary>
+    /// Presents a modal to edit/copy the release note items as plain text
+    /// </summary>
+    /// <param name="rn"></param>
+    protected async Task ShareAsText(ReleaseNote rn)
+    {
+        Share.SetHeader($"{rn.Version}", $"{rn.ReleaseDate.ToStringOrEmpty("d MMM yyyy")}");
+        Share.SetTitle($"[{AppStrings.Text_ReleaseNote}]  {rn.RelatedProduct.Name}");
+
+        // Serialize release note as plain text
+        var serialized = PlainTextRenderer.Get(rn);
+        Share.SetUserData(serialized);
+        await Share.Window.ShowAsync();
     }
 }

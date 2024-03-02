@@ -15,6 +15,9 @@
                 @Settings.Project.Version
                 <span class="ms-3 opacity-50">@Settings.Project.ReleaseDate</span>
             </div>
+            <div class="text-center small">
+                @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription
+            </div>
         </DropdownHeader>
         <DropdownItem To="/logout" Type="ButtonType.Link">
             <i class="fa fa-fw fa-sign-out me-1 opacity-50"></i>

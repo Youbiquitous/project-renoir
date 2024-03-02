@@ -16,7 +16,7 @@ using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.Persistence.Repositories;
 
-public partial class DocumentRepository
+public partial class ReleaseNoteRepository
 {
     /// <summary>
     /// Remove a release note and all of its items

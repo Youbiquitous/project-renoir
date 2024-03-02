@@ -1,5 +1,4 @@
 ﻿@inject IWebHostEnvironment Environment
-@rendermode @(new InteractiveServerRenderMode(prerender: false))
 @inherits MainLayoutPage
 
 
@@ -8,7 +7,7 @@
 @using Youbiquitous.Renoir.AppBlazor.Common.Extensions
 
 @{
-    var left = $"<div class='fw-bold'>Release Notes Instant Reporter</div><div class='lh-1 '>{Environment.EnvironmentName}</div>";
+    var left = $"<div class='fw-bold'>{Settings.Project.Description}</div><div class='lh-1 '>{Environment.EnvironmentName}</div>";
 }
 
 <CascadingAuthenticationState>
@@ -30,7 +29,9 @@
                       LeftClass="small opacity-50"
                       Right="@Settings.Project.Version" 
                       RightClass="fw-bold" />
-            @Body
+            <div class="px-3">
+                @Body
+            </div>
         </div>
     </div>
 </CascadingAuthenticationState>

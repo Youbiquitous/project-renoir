@@ -1,0 +1,110 @@
+﻿@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel.Management
+@using Microsoft.AspNetCore.Components
+@using Youbiquitous.Martlet.Core.Extensions
+@using Youbiquitous.Renoir.AppBlazor.Models.Input
+@using Youbiquitous.Renoir.DomainModel.Documents
+@inject IJSRuntime JS
+
+@{
+}
+
+<!-- Display Editor -->
+<Modal @ref="Window" Title="@Title" Size="ModalSize.Large" IsVerticallyCentered="true">
+    <BodyTemplate>
+        <div class="d-flex justify-content-between py-2">
+            <div class="text-primary">
+                <span class="fw-bold text-uppercase me-1">@AppStrings.Label_Version</span> 
+                <span class="opacity-75">@Header1</span>
+            </div>
+            <div class="text-primary">
+                <span class="fw-bold text-uppercase me-1">@AppStrings.Label_Date</span>
+                <span class="opacity-75">@Header2</span>
+            </div>        
+        </div>
+
+        <textarea id="plaintext" class="form-control share-text-reader" rows="20">@Content</textarea>
+        <div class="d-flex justify-content-between mt-4">
+            <div class="fw-bold text-primary fs-4" id="feedback"></div>
+            <button class="btn btn-primary px-5" type="button" @onclick="CopyToClipboard">
+                <i class=" fa fa-copy opacity-50 me-1"></i>
+                @AppMenu.Copy
+            </button>
+        </div>
+    </BodyTemplate>
+
+    <FooterTemplate>
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClassSuccess="text-success fw-bold"
+                       CssClassError="text-danger fw-bold" />
+    </FooterTemplate>  
+</Modal>
+
+            
+@code{
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Header1 { get; set; }
+
+    [Parameter]
+    public string Header2 { get; set; }
+
+    [Parameter]
+    public string Content { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; }
+
+
+    /// <summary>
+    /// Component references
+    /// </summary>
+    public Modal Window { get; set; }
+    public StatusMessage Statusbar { get; set; }
+
+    /// <summary>
+    /// Initialize the object to edit
+    /// </summary>
+    /// <param name="serialized"></param>
+    public void SetUserData(string serialized)
+    {
+        Content = serialized;
+    }
+
+    /// <summary>
+    /// Sets the title of the modal dialog
+    /// </summary>
+    /// <param name="title"></param>
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
+
+    /// <summary>
+    /// Left and right text over the text-area element
+    /// </summary>
+    /// <param name="text1"></param>
+    /// <param name="text2"></param>
+    public void SetHeader(string text1, string text2)
+    {
+        Header1 = text1;
+        Header2 = text2;
+    }
+
+    /// <summary>
+    /// Copy text to the clipboard
+    /// </summary>
+    /// <returns></returns>
+    private async Task CopyToClipboard()
+    {
+        await JS.InvokeVoidAsync("clipboardCopy.copyText", 
+            "plaintext", 
+            "feedback",
+            AppMessages.Msg_Copied);  
+    }
+}

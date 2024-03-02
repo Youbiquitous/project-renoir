@@ -123,6 +123,9 @@
   <data name="Label_Dashboard" xml:space="preserve">
     <value>System dashboard</value>
   </data>
+  <data name="Label_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="Label_Deleting" xml:space="preserve">
     <value>Deleting</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Label_EditReleaseNote" xml:space="preserve">
     <value>Edit Release Note</value>
+  </data>
+  <data name="Label_EditRoadmap" xml:space="preserve">
+    <value>Edit Roadmap</value>
   </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Email</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="Label_NewReleaseNote" xml:space="preserve">
     <value>New Release Note</value>
+  </data>
+  <data name="Label_NewRoadmap" xml:space="preserve">
+    <value>New Roadmap</value>
   </data>
   <data name="Label_NewUser" xml:space="preserve">
     <value>New User</value>
@@ -235,8 +244,17 @@
   <data name="Placeholder_DisplayName" xml:space="preserve">
     <value>Public name</value>
   </data>
+  <data name="Placeholder_Eta" xml:space="preserve">
+    <value>ETA</value>
+  </data>
+  <data name="Placeholder_ItemDescription" xml:space="preserve">
+    <value>Describe the item...</value>
+  </data>
   <data name="Placeholder_NewPassword" xml:space="preserve">
     <value>Password you want to use now</value>
+  </data>
+  <data name="Placeholder_Notes" xml:space="preserve">
+    <value>Notes...</value>
   </data>
   <data name="Placeholder_OldPassword" xml:space="preserve">
     <value>Password currently in use</value>
@@ -261,5 +279,8 @@
   </data>
   <data name="Text_ReleaseNote" xml:space="preserve">
     <value>Release Note</value>
+  </data>
+  <data name="Text_Roadmap" xml:space="preserve">
+    <value>Roadmap</value>
   </data>
 </root>

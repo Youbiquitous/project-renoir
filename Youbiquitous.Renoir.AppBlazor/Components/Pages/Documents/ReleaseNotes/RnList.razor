@@ -1,6 +1,7 @@
 ﻿@using Youbiquitous.Renoir.DomainModel.Management
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.DomainModel.Documents
+@using Youbiquitous.Martlet.Core.Extensions
 @inject NavigationManager NavManager
 
 <!-- List documents -->
@@ -9,6 +10,7 @@
     <tr class="text-uppercase">
         <th class="col-button"></th>
         <th>@AppStrings.Label_Version</th>
+        <th>@AppStrings.Label_Date</th>
         <th>@AppStrings.Label_Modified</th>
         <th>@AppStrings.Label_Notes</th>
     </tr>
@@ -17,22 +19,23 @@
     @foreach (var d in Documents)
     {
         <tr @onclick="() => Open(d)">
-            <td style="width: 100px;">
+            <td style="width: 120px;">
                 <button class="btn btn-sm btn-danger"
                         @onclick="() => Delete(d)"
                         @onclick:stopPropagation="true">
-                    <span class="fa fa-times"></span>
+                    <span class="fa fa-fw fa-times"></span>
                 </button>
 
                 <button class="btn btn-sm btn-primary ms-2"
                         @onclick="() => Edit(d)"
                         @onclick:stopPropagation="true">
-                    <span class="fa fa-edit"></span>
+                    <span class="fa fa-fw fa-edit"></span>
                 </button>
             </td>
-            <td style="width: 150px;">@d.Version</td>
+            <td style="width: 120px;">@d.Version</td>
+            <td style="width: 120px;">@d.ReleaseDate.ToString("d MMM yyyy")</td>
             <td style="width: 200px;">
-                <div class="small">@d.ReleaseDate.ToString("d MMM yyyy  -  HH:mm")<sup>UTC</sup></div>
+                <div class="small">@d.LastUpdated.When.ToStringOrEmpty("d MMM yyyy  -  HH:mm")<sup>UTC</sup></div>
                 <div class="italic opacity-50 text-xs">@d.LastUpdated.By</div>
             </td>
             <td>

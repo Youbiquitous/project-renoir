@@ -39,6 +39,7 @@
            target="_blank">
             <i class="fab fa-github me-1"></i>
             <span class="opacity-75">INSPECT</span> <b>SOURCE CODE</b>
+            <div class="text-xs">&nbsp;</div>
         </a>
 
         @if (AuthState.Result.IsAuthenticated())
@@ -47,7 +48,12 @@
                href="@AccountController.GetHomeUrl(AuthState.Result)">
                 <i class="fal fa-mouse me-1"></i>
                 <span class="opacity-75">START USING</span> <b>RENOIR</b>
+                <div class="text-xs">
+                    <span>@AuthState.Result.GetEmail()</span>
+                    <span class="text-uppercase ms-2">[@AuthState.Result.GetRole()]</span>
+                </div>
             </a>
+            
         }
         else
         {

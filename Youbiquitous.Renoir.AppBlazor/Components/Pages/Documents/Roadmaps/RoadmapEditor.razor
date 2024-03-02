@@ -1,0 +1,163 @@
+﻿@page "/roadmaps"
+@using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Martlet.Core.Extensions
+@inherits RoadmapEditorPage
+
+@{
+    var doc = RelatedDocument;
+    if (doc is null)
+    { 
+        <div class="fs-5 italic opacity-50">@AppMessages.Err_UnknownDocument</div>
+        return;
+    }
+
+    var items = doc.Items;
+    var product = doc.RelatedProduct;
+    var title = $"{AppStrings.Text_Roadmap.ToUpper()}: {doc.Version}";
+}
+
+<link href="/css/app-assets/renoir-docs.min.css" rel="stylesheet" />
+
+<PageTitle>@title</PageTitle>
+ 
+<!-- PRODUCT HEADER -->
+<div class="d-flex justify-content-between align-items-center bg-success text-white p-1">
+    <div>
+        <button class="btn btn-success fs-4" @onclick="BackToProduct">
+            <span>@product.Name</span>
+            <span class="ms-2 opacity-50">@product.Version</span>
+        </button>
+    </div>
+    <div>
+        <div>
+            <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_Roadmap</span>
+            <span>@doc.Version</span>
+        </div>
+        <div class="text-xs italic opacity-50 text-end">
+            @doc.Notes
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT TIMESTAMP -->
+<div class="d-flex justify-content-between rn-timestamp">
+    <div>
+        <div class="lh-1">
+            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Created</span>
+            <span class="italic">@doc.Created.DateForDisplay()</span>
+            <i class="fal mx-1 fa-clock"></i>
+            <span class="italic">@doc.Created.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+        </div>
+        <div>
+            <span class="italic opacity-50">@doc.Created.AuthorForDisplay()</span>
+        </div>
+    </div>
+    <div class="text-end">
+        <div class="lh-1">
+            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Modified</span>
+            <span class="italic">@doc.LastUpdated.DateForDisplay()</span>
+            <i class="fal mx-1 fa-clock"></i>
+            <span class="italic">@doc.LastUpdated.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+        </div>
+        <div>
+            <span class="italic opacity-50">@doc.LastUpdated.AuthorForDisplay()</span>
+        </div>
+    </div>
+</div>
+
+<!-- FEEDBACK -->
+<StatusMessage @ref="Statusbar"
+               Message="@StatusMessage"
+               Delay="2500"
+               CssClassSuccess="text-success fw-bold"
+               CssClassError="text-danger fw-bold" />
+
+<!-- TOOLBAR -->
+<div class="d-flex justify-content-between my-3">
+    <div>
+        <button class="btn btn-primary" @onclick="() => AddNewItem()">
+            <i class="fa fa-plus me-1 opacity-50"></i>
+            @AppMenu.NewRow
+        </button>
+        <button class="btn btn-primary" @onclick="() => AddNewDivider()">
+            <i class="fa fa-horizontal-rule me-1 opacity-50"></i>
+            @AppMenu.NewDivider
+        </button>
+    </div>
+    
+    <div>
+        @if (items.Any() || InitialNumberOfItems > 0)
+        {
+            <button class="btn btn-primary" @onclick="SaveChanges">
+                <i class="fa fa-upload me-1 opacity-50"></i>
+                @AppMenu.SaveChanges
+            </button>
+        }
+        @if (items.Any())
+        {
+            <Dropdown class="ms-1" >
+                <DropdownToggleButton Color="ButtonColor.Primary">
+                    <i class="fa fa-share-alt me-1 opacity-50"></i>
+                    @AppMenu.Share
+                    <i class="fa fa-chevron-down ms-3"></i>
+                </DropdownToggleButton>
+                <DropdownMenu>
+                    <DropdownItem Type="ButtonType.Button" @onclick="() => ShareAsText(doc)">
+                        @AppMenu.ShareAsPlainText
+                    </DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
+
+            <button class="ms-3 btn btn-danger" @onclick="ClearAll">
+                <i class="fa fa-trash"></i>
+            </button>
+        }
+    </div>
+</div>
+
+<!-- ITEMS -->
+@if (items.Empty())
+{
+    <div class="mt-4 p-2 italic opacity-50 text-center">@AppMessages.Msg_NoRowsFound</div>
+    return;
+}
+
+<div class="mt-4 w-100">
+    @{ var index = 1; }
+    @foreach (var item in items
+        .OrderBy(i => i.Order))
+    {
+        var css = index <= InitialNumberOfItems 
+            ? "fw-bold" 
+            : "text-danger opacity-50";
+        var canMoveUp = doc.CanMoveItemUp(item);
+        var canMoveDown = doc.CanMoveItemDown(item);
+
+        <div class="d-flex w-100 align-items-center">
+            <div class="@css">
+                @(index++)
+                (@item.Order)
+            </div>
+            <div class="ms-3">
+                <button class="bg-danger text-white" 
+                        @onclick="() => RemoveItem(item)">
+                    <i class="fa fa-times"></i>
+                </button> 
+            </div>
+            <div class="ms-1">
+                <button @onclick="() => MoveUp(item)" disabled="@(!canMoveUp)">
+                    <i class="fa fa-chevron-up"></i>
+                </button>
+                <button @onclick="() => MoveDown(item)" disabled="@(!canMoveDown)">
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="ms-3 flex-grow-1">
+                <RoadmapLine Model="item" />
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Share box -->
+<ShareDocumentPopup @ref="Share" />

@@ -18,7 +18,7 @@ namespace Youbiquitous.Renoir.DomainModel.Documents;
 /// <summary>
 /// RELEASE-NOTE item entity (properties)
 /// </summary>
-public partial class ReleaseNoteItem : Core.CoreDocumentItem
+public partial class ReleaseNoteItem : CoreDocumentItem
 {
     /// <summary>
     /// Ctor, mostly needed for EF and to save us an entire layer of DTOs
@@ -26,7 +26,7 @@ public partial class ReleaseNoteItem : Core.CoreDocumentItem
     public ReleaseNoteItem()
     {
         ItemType = DocumentItemType.Default;
-        Order = 1000;       // Ensure it goes to the bottom
+        Order = 1000;       // Ensure it goes to the bottom when added
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class ReleaseNoteItem : Core.CoreDocumentItem
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public override bool SameAs(Core.CoreDocumentItem obj)
+    public override bool SameAs(CoreDocumentItem obj)
     {
         var other = (ReleaseNoteItem)obj;
 

@@ -30,30 +30,56 @@ public partial class DocumentService : ApplicationServiceBase
     /// <param name="productId"></param>
     /// <param name="isSystem"></param>
     /// <returns></returns>
-    public static DocumentContainer<ReleaseNote, ReleaseNoteItem> For(long userId, long productId, bool isSystem = false)
-    {
-        if (productId <= 0)
-            return null;
+    //public static DocumentContainer<ReleaseNote, ReleaseNoteItem> ReleaseNotesFor(long userId, long productId, bool isSystem = false)
+    //{
+    //    if (productId <= 0)
+    //        return null;
 
-        return new DocumentContainer<ReleaseNote, ReleaseNoteItem>
-        {
-            Product = ProductRepository.FindById(productId),
-            Documents = isSystem
-                ? DocumentRepository.FindAll(productId)
-                : DocumentRepository.FindAll(userId, productId)
-        };
-    }
+    //    return new DocumentContainer<ReleaseNote, ReleaseNoteItem>
+    //    {
+    //        Product = ProductRepository.FindById(productId),
+    //        Documents = isSystem
+    //            ? ReleaseNoteRepository.FindAll(productId)
+    //            : ReleaseNoteRepository.FindAll(userId, productId)
+    //    };
+    //}
+    //public static DocumentContainer<Roadmap, RoadmapItem> RoadmapsFor(long userId, long productId, bool isSystem = false)
+    //{
+    //    if (productId <= 0)
+    //        return null;
+
+    //    return new DocumentContainer<Roadmap, RoadmapItem>
+    //    {
+    //        Product = ProductRepository.FindById(productId),
+    //        Documents = isSystem
+    //            ? RoadmapRepository.FindAll(productId)
+    //            : RoadmapRepository.FindAll(userId, productId)
+    //    };
+    //}
 
     /// <summary>
     /// Retrieve the given release note document
     /// </summary>
     /// <param name="refId"></param>
     /// <returns></returns>
-    public static ReleaseNote Get(long refId)
-    {
-        if (refId <= 0)
-            return null;
+    //public static ReleaseNote GetReleaseNote(long refId)
+    //{
+    //    if (refId <= 0)
+    //        return null;
 
-        return DocumentRepository.FindById(refId);
-    }
+    //    return ReleaseNoteRepository.FindById(refId);
+    //}
+
+    ///// <summary>
+    ///// Retrieve the given roadmap document
+    ///// </summary>
+    ///// <param name="refId"></param>
+    ///// <returns></returns>
+    //public static Roadmap GetRoadmap(long refId)
+    //{
+    //    if (refId <= 0)
+    //        return null;
+
+    //    return RoadmapRepository.FindById(refId);
+    //}
 }
