@@ -15,3 +15,5 @@ of what users can expect from the new release. It may also include instructions,
 to help users working with the product more effectively. Release notes, though, may also serve another purpose--documenting the 
 work done. By navigating the list of release notes documents, one can track back the history of development and count the number 
 of fixes, hot fixes, new features and maintenance that has been done in a range of time. 
+
+From a purely tech standpoint, Renoir uses Blazor for the UI and C#.
