@@ -14,7 +14,7 @@ using Youbiquitous.Renoir.DomainModel.Documents.Core;
 namespace Youbiquitous.Renoir.DomainModel.Documents;
 
 /// <summary>
-/// View model for the product/doc page
+/// Aggregation of documents and product
 /// </summary>
 public class DocumentContainer<TDoc, TDocItem> 
     where TDoc : CoreDocument<TDocItem> 

@@ -1,12 +1,12 @@
 ﻿@page "/users"
 @using Youbiquitous.Renoir.Resources
 @using Microsoft.AspNetCore.Authorization
+@using Youbiquitous.Renoir.DomainModel.Management
 @inherits UsersPage
-@attribute [Authorize(Roles = "System")]
+@attribute [Authorize(Roles = Role.NameOf_System)]
 
 
 <link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
-
 <PageTitle>@AppMenu.Users</PageTitle>
 
 <div class="d-flex justify-content-between">

@@ -572,5 +572,14 @@ namespace Youbiquitous.Renoir.Resources {
                 return ResourceManager.GetString("Text_Roadmap", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work Items.
+        /// </summary>
+        public static string Text_WorkItems {
+            get {
+                return ResourceManager.GetString("Text_WorkItems", resourceCulture);
+            }
+        }
     }
 }

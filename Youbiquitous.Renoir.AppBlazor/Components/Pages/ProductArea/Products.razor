@@ -1,11 +1,11 @@
 ﻿@page "/products"
 @using Youbiquitous.Renoir.Resources
 @using Microsoft.AspNetCore.Authorization
+@using Youbiquitous.Renoir.DomainModel.Management
 @inherits ProductsPage
-@attribute [Authorize(Roles = "System")]
+@attribute [Authorize(Roles = Role.NameOf_System)]
 
 <link href="/css/app-assets/renoir-grid.min.css" rel="stylesheet" />
-
 <PageTitle>@AppMenu.Products</PageTitle>
 
 

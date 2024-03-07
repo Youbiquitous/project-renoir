@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
+using Youbiquitous.Renoir.DomainModel.WorkInProgress;
 
 namespace Youbiquitous.Renoir.Persistence;
 
@@ -83,6 +84,22 @@ public partial class RenoirDatabase
             .HasOne(up => up.RelatedProduct)
             .WithMany(p => p.Users)
             .HasForeignKey(p => p.ProductId);
+        #endregion
+
+        ////////////////////////////////////////////////////////
+        //  WORK-ITEM(s)
+        // 
+        #region WORKITEM
+        modelBuilder.Entity<WorkItem>()
+            .Property(w => w.Id)
+            .ValueGeneratedOnAdd();
+        modelBuilder.Entity<WorkItem>()
+            .HasKey(w => new { w.Id });
+        modelBuilder.Entity<WorkItem>(w =>
+        {
+            w.ComplexProperty(r => r.Created).IsRequired();
+            w.ComplexProperty(r => r.LastUpdated).IsRequired();
+        });
         #endregion
 
         ////////////////////////////////////////////////////////

@@ -30,15 +30,18 @@
             }
         </select>
     </div>
-    <div>
-        <input type="text" id="eta" class="form-control text-primary rn-eta"
-               placeholder="@AppStrings.Placeholder_Eta" />
-    </div>
+    
     <div class="flex-grow-1">
         <input type="text" id="desc" class="form-control rn-description"
                placeholder="@AppStrings.Placeholder_ItemDescription"
                @bind-value="Model.Description" />
     </div>
+
+    <div class="ms-3">
+        <input type="text" id="eta" class="form-control text-primary rn-eta"
+               placeholder="@AppStrings.Placeholder_Eta" />
+    </div>
+
     <div class="ms-1 text-primary text-end" style="width: 150px;">
         <div class="tiny lh-1">@Model.LastUpdated.DateForDisplay("d MMM yyyy - HH:mm")<sup>UTC</sup></div>
         <div class="tiny italic lh-1">@Model.LastUpdated.AuthorForDisplay()</div>

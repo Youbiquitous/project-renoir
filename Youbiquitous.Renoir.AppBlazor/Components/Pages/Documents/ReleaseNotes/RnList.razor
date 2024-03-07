@@ -12,7 +12,6 @@
         <th class="col-button"></th>
         <th>@AppStrings.Label_Version</th>
         <th>@AppStrings.Label_Date</th>
-        @* <th>@AppStrings.Label_Modified</th> *@
         <th>@AppStrings.Label_Notes</th>
     </tr>
     </thead>
@@ -35,10 +34,6 @@
             </td>
             <td style="width: 120px;">@d.Version</td>
             <td style="width: 160px;">@d.ReleaseDate.ToString("d MMM yyyy")</td>
-@*             <td style="width: 200px;">
-                <div class="small">@d.LastUpdated.When.ToStringOrEmpty("d MMM yyyy  -  HH:mm")<sup>UTC</sup></div>
-                <div class="italic opacity-50 text-xs">@d.LastUpdated.By</div>
-            </td> *@
             <td>
                 <div class="italic text-xs">
                     @d.Notes

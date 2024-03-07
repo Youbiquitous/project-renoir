@@ -133,6 +133,69 @@ namespace Youbiquitous.Renoir.DomainModel.Utils {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bug.
+        /// </summary>
+        internal static string Text_Item_Bug {
+            get {
+                return ResourceManager.GetString("Text_Item_Bug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feature.
+        /// </summary>
+        internal static string Text_Item_Feature {
+            get {
+                return ResourceManager.GetString("Text_Item_Feature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finished.
+        /// </summary>
+        internal static string Text_Item_Finished {
+            get {
+                return ResourceManager.GetString("Text_Item_Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed.
+        /// </summary>
+        internal static string Text_Item_Fixed {
+            get {
+                return ResourceManager.GetString("Text_Item_Fixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending.
+        /// </summary>
+        internal static string Text_Item_Pending {
+            get {
+                return ResourceManager.GetString("Text_Item_Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scheduled.
+        /// </summary>
+        internal static string Text_Item_Scheduled {
+            get {
+                return ResourceManager.GetString("Text_Item_Scheduled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To-Do.
+        /// </summary>
+        internal static string Text_Item_Todo {
+            get {
+                return ResourceManager.GetString("Text_Item_Todo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         internal static string Text_Position_Bottom {

@@ -1,9 +1,19 @@
 ﻿@page "/stateart"
 @using Youbiquitous.Renoir.Resources
+@using Youbiquitous.Renoir.DomainModel.Management
 @inherits StateArtPage
 
 <PageTitle>@AppMenu.StateOfArt</PageTitle>
 
+<!-- System only -->
+@if (Logged.User.IsInRole(Role.NameOf_System))
+{
+    <a class="btn btn-outline-primary px-5"
+       href="/workitems">
+        <i class="fa fa-edit me-1 opacity-50"></i>
+        @AppMenu.Edit
+    </a>
+}
 
 <div class="row mt-2">
     <div class="col-12 col-lg-6">

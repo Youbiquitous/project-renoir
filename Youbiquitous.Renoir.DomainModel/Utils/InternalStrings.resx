@@ -141,6 +141,27 @@
   <data name="Text_Document_TodoList" xml:space="preserve">
     <value>Todo List</value>
   </data>
+  <data name="Text_Item_Bug" xml:space="preserve">
+    <value>Bug</value>
+  </data>
+  <data name="Text_Item_Feature" xml:space="preserve">
+    <value>Feature</value>
+  </data>
+  <data name="Text_Item_Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="Text_Item_Fixed" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="Text_Item_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Text_Item_Scheduled" xml:space="preserve">
+    <value>Scheduled</value>
+  </data>
+  <data name="Text_Item_Todo" xml:space="preserve">
+    <value>To-Do</value>
+  </data>
   <data name="Text_Position_Bottom" xml:space="preserve">
     <value>Bottom</value>
   </data>

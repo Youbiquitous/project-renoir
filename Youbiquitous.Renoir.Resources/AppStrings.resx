@@ -289,4 +289,7 @@
   <data name="Text_Roadmap" xml:space="preserve">
     <value>Roadmap</value>
   </data>
+  <data name="Text_WorkItems" xml:space="preserve">
+    <value>Work Items</value>
+  </data>
 </root>

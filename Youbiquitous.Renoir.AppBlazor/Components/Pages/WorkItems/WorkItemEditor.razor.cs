@@ -11,11 +11,11 @@
 
 using Youbiquitous.Renoir.AppBlazor.Models;
 
-namespace Youbiquitous.Renoir.AppBlazor.Components.Pages;
+namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.WorkItems;
 
 /// <summary>
-/// Code-behind class for the /reportbug view
+/// Code-behind class for the /stateart view
 /// </summary>
-public class ReportBugPage : ViewModelBase
+public class WorkItemEditorPage : ViewModelBase
 {
 }

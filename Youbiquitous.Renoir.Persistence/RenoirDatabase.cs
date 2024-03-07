@@ -15,6 +15,7 @@ using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.DomainModel;
 using Youbiquitous.Renoir.DomainModel.Documents;
 using Youbiquitous.Renoir.DomainModel.Management;
+using Youbiquitous.Renoir.DomainModel.WorkInProgress;
 using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.Persistence;
@@ -40,7 +41,7 @@ public partial class RenoirDatabase : DbContext
     public DbSet<ReleaseNoteItem> ReleaseNoteItems { get; set; }
     public DbSet<Roadmap> Roadmaps { get; set; }
     public DbSet<RoadmapItem> RoadmapItems { get; set; }
-
+    public DbSet<WorkItem> WorkItems { get; set; }
 }
 
 /// <summary>
