@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
+    <Content Remove="Common\Extensions\SimpleModalBodyTemplate.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazor.Bootstrap" Version="1.11.1" />
+    <PackageReference Include="Blazor.Bootstrap" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.2" />
     <PackageReference Include="Youbiquitous.Martlet.Core" Version="1.5.6" />
   </ItemGroup>

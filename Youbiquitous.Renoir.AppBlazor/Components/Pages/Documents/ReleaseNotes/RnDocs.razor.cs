@@ -97,7 +97,7 @@ public partial class ReleaseNotesPage : ViewModelBase
     protected async Task EditDocumentEditor(ReleaseNote document)
     {
         DocumentEditor.SetTitle(AppStrings.Label_EditReleaseNote);
-        DocumentEditor.SetUserData(new DocRef(document.RefId, document.Version, document.ReleaseDate, document.Notes));
+        DocumentEditor.SetUserData(DocRef.Import(document));
         await DocumentEditor.Window.ShowAsync();
     }
 

@@ -2,6 +2,8 @@
 @using Youbiquitous.Renoir.Application.Settings
 @inherits UserBoxComponent
 @inject RenoirSettings Settings
+@inject IWebHostEnvironment Environment
+
 
 <Dropdown Class="app-userbox">
     <DropdownToggleButton Color="ButtonColor.Dark">
@@ -16,7 +18,8 @@
                 <span class="ms-3 opacity-50">@Settings.Project.ReleaseDate</span>
             </div>
             <div class="text-center small">
-                @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription
+                <span>@System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription</span>
+                <span class="ms-2">@Environment.EnvironmentName</span>
             </div>
         </DropdownHeader>
         <DropdownItem To="/logout" Type="ButtonType.Link">

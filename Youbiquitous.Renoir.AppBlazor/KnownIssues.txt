@@ -17,4 +17,5 @@ The following are known issues at the time of the first deploy to the Github rep
 2) The title of the modal presenting the plain text version of the documents doesn't appear all the time.
    To be investigated.
 
+3) Change date of release deletes all
 

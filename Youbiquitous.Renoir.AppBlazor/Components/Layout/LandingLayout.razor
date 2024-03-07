@@ -1,19 +1,33 @@
-﻿@inherits LandingLayoutPage
+﻿@using Youbiquitous.Renoir.Resources
+@inherits LandingLayoutPage
 @inject IWebHostEnvironment Environment
-@using Youbiquitous.Renoir.Resources
 
 
 <PageTitle>@Settings.Project.Name</PageTitle>
 
-<div class="mt-5 lh-1 h1 text-center">Release Notes Instant Reporter</div>
-
-<div class="h5 lh-1 text-center text-uppercase">
-    CREATE <span class="opacity-75 small">RELEASE NOTES</span> AND 
-    <spa class="opacity-75 small">ROADMAP</spa> DOCS
-</div>
-
 
 <div class="container mt-2">
+    <!-- Header -->
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>
+                    <div class="fs-2 fw-bold lh-1">Release Notes Instant Reporter</div>
+                    <div>
+                        <span>@Settings.Project.Version</span>
+                        <span class="ms-2 small opacity-75">@Settings.Project.ReleaseDate</span>
+                    </div>
+                </div>
+
+                <div class="h5 lh-1 text-center text-uppercase">
+                    CREATE <span class="opacity-75 small">RELEASE NOTES</span> AND
+                    <spa class="opacity-75 small">ROADMAP</spa> DOCS
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder -->
     <div class="p-4 row app-tiffany-bg ">
         <div class="col-12 col-lg-7">
             <div>
@@ -24,7 +38,7 @@
                     <ErrorContent Context="ex">
                         <ErrorReport Icon="fa fa-exclamation-triangle"
                                      Exception="@ex"
-                                     ShowInternals="@(Environment.IsDevelopment())" />
+                                     ShowInternals="@(Environment.IsDevelopment())"/>
                     </ErrorContent>
                 </ErrorBoundary>
             </div>
@@ -37,7 +51,7 @@
                        target="_blank">
                         <img src="/images/clean-book.jpg"
                              class="img-fluid"
-                             style="width: 240px;" />
+                             style="width: 240px;"/>
                     </a>
                     <div class="bg-white p-2 mb-3">
                         <div class="fw-bold">Dino ESPOSITO</div>
@@ -54,7 +68,7 @@
                        target="_blank">
                         <img src="/images/llm-book.jpg"
                              class="img-fluid"
-                             style="width: 240px;" />
+                             style="width: 240px;"/>
                     </a>
                     <div class="bg-white p-2 mb-3">
                         <div class="fw-bold">Francesco ESPOSITO</div>
@@ -70,9 +84,17 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- YBQ business card -->
     <div class="row">
-        <div class="d-flex mt-3 justify-content-end align-items-center">
+        <div class="d-flex mt-3 justify-content-between align-items-top">
+            <div>
+                <a class="btn btn-outline-dark text-uppercase" 
+                   href="/stateart">
+                    <i class="fal fa-tasks opacity-50 me-1"></i>
+                    @AppStrings.Label_ReleaseNotes
+                </a>
+            </div>
             <div class="card mb-3 shadow" style="max-width: 600px;">
                 <div class="d-flex align-items-center">
                     <div class="px-2">
@@ -89,7 +111,7 @@
                                 We could use <b>fancy</b> words to describe how we spend our work hours here but,
                                 <b>at the very end of the day</b>, all we do is looking at how to make things simple.
                             </p>
-                            <p>As simple as possible. But <b>no simpler</b> than that.</p>
+                            <p>As simple as possible. But <b>never simpler</b>.</p>
                             <p class="card-text">
                                 <small class="opacity-50 text-body-secondary">
                                     Last updated <span>@(new Random().Next(1, 5))</span> mins ago

@@ -74,7 +74,7 @@
         var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
         var shouldProceed = await Confirmation.ShowAsync(
             title: $"{AppStrings.Label_Deleting} [{a.DisplayName}]",
-            message1: AppMessages.Info_ConfirmAction,
+            message1: AppMessages.Prompt_ConfirmAction,
             confirmDialogOptions: options);
 
         if (shouldProceed)

@@ -1,6 +1,8 @@
 ﻿@page "/rnotes"
+@using Youbiquitous.Renoir.AppBlazor.Common.Extensions
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Martlet.Core.Extensions
+@using Youbiquitous.Renoir.AppBlazor.Common.BlazorBootstrapExtensions
 @inherits ReleaseNoteEditorPage
 
 @{
@@ -17,104 +19,111 @@
 }
 
 <link href="/css/app-assets/renoir-docs.min.css" rel="stylesheet" />
-
-
 <PageTitle>@title</PageTitle>
- 
-<!-- PRODUCT HEADER -->
-<div class="d-flex justify-content-between align-items-center bg-info text-white p-1">
-    <div>
-        <button class="btn btn-info fs-4" @onclick="BackToProduct">
-            <span>@product.Name</span>
-            <span class="ms-2 opacity-50">@product.Version</span>
-        </button>
-    </div>
-    <div>
-        <div>
-            <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_ReleaseNote</span>
-            <span>@doc.Version</span>
-        </div>
-        <div class="text-xs italic opacity-50 text-end">
-            @doc.Notes
-        </div>
-    </div>
-</div>
 
-<!-- PRODUCT TIMESTAMP -->
-<div class="d-flex justify-content-between rn-timestamp">
-    <div>
-        <div class="lh-1">
-            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Created</span>
-            <span class="italic">@doc.Created.DateForDisplay()</span>
-            <i class="fal mx-1 fa-clock"></i>
-            <span class="italic">@doc.Created.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+<!-- STICKY AREA -->
+<div style="position: sticky; top: 65px; z-index: 130;">
+    <!-- PRODUCT HEADER -->
+    <div class="d-flex justify-content-between align-items-center bg-info text-white p-1">
+        <div>
+            <button class="btn btn-info fs-4" @onclick="BackToProduct">
+                <span>@product.Name</span>
+                <span class="ms-2 opacity-50">@product.Version</span>
+            </button>
         </div>
         <div>
-            <span class="italic opacity-50">@doc.Created.AuthorForDisplay()</span>
+            <div>
+                <span class="me-2 fw-bold text-uppercase">@AppStrings.Text_ReleaseNote</span>
+                <span>@doc.Version</span>
+            </div>
+            <div class="text-xs italic opacity-50 text-end">
+                @doc.Notes
+            </div>
         </div>
     </div>
-    <div class="text-end">
-        <div class="lh-1">
-            <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Modified</span>
-            <span class="italic">@doc.LastUpdated.DateForDisplay()</span>
-            <i class="fal mx-1 fa-clock"></i>
-            <span class="italic">@doc.LastUpdated.DateForDisplay("HH:mm") <sup>UTC</sup></span>
-        </div>
+
+    <!-- PRODUCT TIMESTAMP -->
+    <div class="d-flex justify-content-between rn-timestamp">
         <div>
-            <span class="italic opacity-50">@doc.LastUpdated.AuthorForDisplay()</span>
+            <div class="lh-1">
+                <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Created</span>
+                <span class="italic">@doc.Created.DateForDisplay()</span>
+                <i class="fal mx-1 fa-clock"></i>
+                <span class="italic">@doc.Created.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+            </div>
+            <div>
+                <span class="italic opacity-50">@doc.Created.AuthorForDisplay()</span>
+            </div>
+        </div>
+        <div class="text-end">
+            <div class="lh-1">
+                <span class="fw-bold text-uppercase me-2">@AppStrings.Label_Modified</span>
+                <span class="italic">@doc.LastUpdated.DateForDisplay()</span>
+                <i class="fal mx-1 fa-clock"></i>
+                <span class="italic">@doc.LastUpdated.DateForDisplay("HH:mm") <sup>UTC</sup></span>
+            </div>
+            <div>
+                <span class="italic opacity-50">@doc.LastUpdated.AuthorForDisplay()</span>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- FEEDBACK -->
-<StatusMessage @ref="Statusbar"
-               Message="@StatusMessage"
-               Delay="2500"
-               CssClassSuccess="text-success fw-bold"
-               CssClassError="text-danger fw-bold" />
-
-<!-- TOOLBAR -->
-<div class="d-flex justify-content-between my-3">
-    <div>
-        <button class="btn btn-primary" @onclick="() => AddNewItem()">
-            <i class="fa fa-plus me-1 opacity-50"></i>
-            @AppMenu.NewRow
-        </button>
-        <button class="btn btn-primary" @onclick="() => AddNewDivider()">
-            <i class="fa fa-horizontal-rule me-1 opacity-50"></i>
-            @AppMenu.NewDivider
-        </button>
+    <!-- FEEDBACK -->
+    <div class="bg-white text-center p-1">
+        <StatusMessage @ref="Statusbar"
+                       Message="@StatusMessage"
+                       Delay="2500"
+                       CssClassSuccess="text-success fs-5 fw-bold"
+                       CssClassError="text-danger fs-5 fw-bold" />
     </div>
+
+    <!-- TOOLBAR -->
+    <div class="d-flex justify-content-between py-3 bg-white">
+        <div>
+            <button class="btn btn-primary" @onclick="() => AddNewItem()">
+                <i class="fa fa-plus me-1 opacity-50"></i>
+                @AppMenu.NewRow
+            </button>
+            <button class="btn btn-primary" @onclick="() => AddNewDivider()">
+                <i class="fa fa-horizontal-rule me-1 opacity-50"></i>
+                @AppMenu.NewDivider
+            </button>
+        </div>
     
-    <div>
-        @if (items.Any() || InitialNumberOfItems > 0)
-        {
-            <button class="ms-3 btn btn-primary" @onclick="SaveChanges">
-                <i class="fa fa-upload me-1 opacity-50"></i>
-                @AppMenu.SaveChanges
-            </button>
-        }
-        @if (items.Any())
-        {
-            <Dropdown class="ms-1" >
-                <DropdownToggleButton Color="ButtonColor.Primary">
-                    <i class="fa fa-share-alt me-1 opacity-50"></i>
-                    @AppMenu.Share
-                    <i class="fa fa-chevron-down ms-3"></i>
-                </DropdownToggleButton>
-                <DropdownMenu>
-                    <DropdownItem Type="ButtonType.Button" @onclick="() => ShareAsText(doc)">
-                        @AppMenu.ShareAsPlainText 
-                    </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
+        <div>
+            @if (items.Any() || InitialNumberOfItems > 0)
+            {
+                <button class="ms-3 btn btn-primary" @onclick="SaveChanges">
+                    <i class="fa fa-upload me-1 opacity-50"></i>
+                    @AppMenu.SaveChanges
+                </button>
+            }
+            @if (items.Any())
+            {
+                <Dropdown class="ms-1" >
+                    <DropdownToggleButton Color="ButtonColor.Primary">
+                        <i class="fa fa-share-alt me-1 opacity-50"></i>
+                        @AppMenu.Share
+                        <i class="fa fa-chevron-down ms-3"></i>
+                    </DropdownToggleButton>
+                    <DropdownMenu>
+                        <DropdownItem Type="ButtonType.Button" @onclick="() => ShareAsText(doc)">
+                            @AppMenu.ShareAsPlainText 
+                        </DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
 
-            <button class="ms-3 btn btn-danger" @onclick="ClearAll">
-                <i class="fa fa-trash"></i>
-            </button>
-        }
+                <button class="ms-3 btn btn-danger" @onclick="ClearAll">
+                    <i class="fa fa-trash"></i>
+                </button>
+            }
+        </div>
     </div>
+
 </div>
+
+
+
 
 <!-- ITEMS -->
 @if (items.Empty())
@@ -123,7 +132,7 @@
     return;
 }
 
-<div class="mt-4 w-100">
+<div class="mt-2 w-100">
     @{ var index = 1; }
     @foreach (var item in items
         .OrderBy(i => i.Order))
@@ -135,22 +144,25 @@
         var canMoveDown = doc.CanMoveItemDown(item);
 
         <div class="d-flex w-100 align-items-center">
-            <div class="@css">
+            <div class="@css text-end" style="width: 20px;">
                 @(index++)
+            </div>
+            <div class="@css small opacity-50 text-end" style="width: 20px;">
                 (@item.Order)
             </div>
+
             <div class="ms-3">
                 <button class="bg-danger text-white" 
                         @onclick="() => RemoveItem(item)">
-                    <i class="fa fa-times"></i>
+                    <i class="fa fa-fw fa-times"></i>
                 </button> 
             </div>
             <div class="ms-1">
                 <button @onclick="() => MoveUp(item)" disabled="@(!canMoveUp)">
-                    <i class="fa fa-chevron-up"></i>
+                    <i class="fa fa-fw fa-chevron-up"></i>
                 </button>
                 <button @onclick="() => MoveDown(item)" disabled="@(!canMoveDown)">
-                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-fw fa-chevron-down"></i>
                 </button>
             </div>
             <div class="ms-3 flex-grow-1">
@@ -163,3 +175,5 @@
 
 <!-- Share box -->
 <ShareDocumentPopup @ref="Share" />
+
+<HtmlConfirmDialog @ref="Confirmation" />

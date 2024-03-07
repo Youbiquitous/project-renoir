@@ -11,6 +11,9 @@
 
 using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Martlet.Core.Types;
+using Youbiquitous.Renoir.DomainModel;
+using Youbiquitous.Renoir.DomainModel.Documents;
+using Youbiquitous.Renoir.DomainModel.Documents.Core;
 using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.AppBlazor.Models.Input;
@@ -36,6 +39,7 @@ public class DocRef : DtoBase
     public string Version { get; set; }
     public DateTime? ReleaseDate { get; set; }
     public string Notes { get; set; }
+    public TimeStamp LastUpdated { get; set; }
 
     /// <summary>
     /// Whether data is acceptable for a User reference
@@ -56,5 +60,27 @@ public class DocRef : DtoBase
             return CommandResponse.Fail().AddMessage(AppMessages.Err_MissingVersion);
 
         return CommandResponse.Ok();
+    }
+
+    /// <summary>
+    /// Static ctor for ReleaseNote and Roadmap
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <returns></returns>
+    public static DocRef Import(ReleaseNote doc)
+    {
+        var dr = new DocRef(doc.RefId, doc.Version, doc.ReleaseDate, doc.Notes)
+        {
+            LastUpdated = doc.LastUpdated
+        };
+        return dr;
+    }
+    public static DocRef Import(Roadmap doc)
+    {
+        var dr = new DocRef(doc.RefId, doc.Version, doc.ReleaseDate, doc.Notes)
+        {
+            LastUpdated = doc.LastUpdated
+        };
+        return dr;
     }
 }

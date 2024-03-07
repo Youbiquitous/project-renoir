@@ -5,9 +5,11 @@
 @using Youbiquitous.Renoir.AppBlazor.Common.UI
 @using Microsoft.AspNetCore.Components.Authorization
 @using Youbiquitous.Renoir.AppBlazor.Common.Extensions
+@using Youbiquitous.Renoir.Resources
 
 @{
-    var left = $"<div class='fw-bold'>{Settings.Project.Description}</div><div class='lh-1 '>{Environment.EnvironmentName}</div>";
+    var left = $"<div class='lh-1'>{Settings.Project.Description}</div>" +
+               $"<a class='text-sm text-decoration-none' href='/reportbug'><i class='me-1 fal fa-bug'></i>{AppMenu.BugReport}</a>";
 }
 
 <CascadingAuthenticationState>
@@ -26,7 +28,7 @@
 
         <div class="app-content-container">
             <TitleBar Left="@left"
-                      LeftClass="small opacity-50"
+                      LeftClass="fs-5 fw-bold lh-1"
                       Right="@Settings.Project.Version" 
                       RightClass="fw-bold" />
             <div class="px-3">

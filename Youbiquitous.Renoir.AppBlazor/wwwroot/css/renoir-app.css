@@ -6,8 +6,6 @@ html, body {
     font-family: 'roboto condensed';
     background-size: auto;
     background-repeat: no-repeat;
-    height: 100%;
-    overflow-y: hidden;
 }
 
 h1:focus {
@@ -56,8 +54,11 @@ h1:focus {
 }
 
 .app-sidebar {
+    position: fixed;
     background: var(--app-sidebar-bkgnd);
     width: var(--app-sidebar-width);
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .app-sidebar-bg {
@@ -86,6 +87,7 @@ h1:focus {
 
     .app-sidebar-header a {
         color: var(--app-color-light);
+
         text-decoration: none;
     }
 
@@ -101,6 +103,7 @@ h1:focus {
 
 .app-content-container {
     background: var(--app-content-bkgnd);
+    margin-left: var(--app-sidebar-width);
     flex-grow: 1 !important;
 }
 
@@ -108,6 +111,9 @@ h1:focus {
     background: var(--app-titlebar-bkgnd);
     padding: 10px;
     margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
 }
 
 .app-content {

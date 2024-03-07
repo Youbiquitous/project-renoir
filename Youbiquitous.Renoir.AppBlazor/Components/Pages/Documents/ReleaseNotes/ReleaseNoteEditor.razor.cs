@@ -8,6 +8,7 @@
 // Author: Dino Esposito
 // 
 
+using BlazorBootstrap;
 using Microsoft.AspNetCore.Components;
 using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Renoir.AppBlazor.Common.Extensions;
@@ -109,7 +110,6 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
         RelatedDocument.AddNewDivider(position);
     }
 
-
     /// <summary>
     /// Remove given item
     /// </summary>
@@ -121,9 +121,18 @@ public partial class ReleaseNoteEditorPage : MainLayoutPage
     /// <summary>
     /// Remove all current items
     /// </summary>
-    public void ClearAll()
+    protected async Task ClearAll()
     {
-        RelatedDocument.Items.RemoveAll(_ => true);
+        // Ask confirmation
+        var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
+        var shouldProceed = await Confirmation.ShowAsync(
+            title: AppStrings.Label_Deleting,
+            message1: $"{AppMessages.Msg_AboutToEmpty} <b class='text-primary'>{RelatedDocument.Version}</b>",
+            message2: AppMessages.Prompt_ConfirmAction,
+            confirmDialogOptions: options);
+
+        if (shouldProceed)
+            RelatedDocument.Items.RemoveAll(_ => true);
     }
 
     /// <summary>

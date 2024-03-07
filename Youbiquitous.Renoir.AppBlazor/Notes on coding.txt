@@ -1,0 +1,25 @@
+﻿///////////////////////////////////////////////////////////////////
+//
+// Project RENOIR
+// Release Notes Instant Reporter
+//
+// Reference application presented in
+// Clean Architecture with .NET (MS Press) 2024
+// Author: Dino Esposito
+// 
+//
+
+RESOURCES
+=====================================
+AppMenu  	
+	[resourceName]					=> Labels of menu items and call-to-action(s)
+
+AppString 
+	Label_[resourceName]			=> Visual labels (highly specific)
+	Text_[resourceName]				=> Common names to be used as (common) labels
+	Placeholder_[resourceName]		=> Input placeholders
+
+AppMessages
+	Err_[resourceName]				=> Errors 
+	Msg_[resourceName]				=> Messages not representing errors 
+	Question_[resourceName]			=> Prompts

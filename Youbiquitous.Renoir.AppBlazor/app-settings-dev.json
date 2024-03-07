@@ -14,8 +14,8 @@
 
   "Project": {
     "Name": "Project Renoir",
-    "Version": "1.1.0",
-    "ReleaseDate": "March 3, 2024",
+    "Version": "1.1.01",
+    "ReleaseDate": "March 7, 2024",
     "Description": "Release Notes Instant Reporter",
     "Copyright": "Dino Esposito",
     "Attribution": "Fork and love"

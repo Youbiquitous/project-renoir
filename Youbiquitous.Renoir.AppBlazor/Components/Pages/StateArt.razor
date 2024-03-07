@@ -1,0 +1,62 @@
+﻿@page "/stateart"
+@using Youbiquitous.Renoir.Resources
+@inherits StateArtPage
+
+<PageTitle>@AppMenu.StateOfArt</PageTitle>
+
+
+<div class="row mt-2">
+    <div class="col-12 col-lg-6">
+        <div class="h3 m-3">
+            <i class="fa fa-check-circle text-success me-2 opacity-75"></i>
+            <span class="text-uppercase">@AppStrings.Text_LastDone</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">RENOIR release notes page</li>
+            <li class="list-group-item">More UI cleanup</li>
+        </ul>
+        
+        <div class="h3 m-3 mt-5">
+            <i class="fa fa-bug text-danger me-2 opacity-75"></i>
+            <span class="text-uppercase">KNOWN BUGS</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">
+                Page scrolling
+                <span class="small fw-bold text-success">FIXED</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                Reordering items of documents screws up
+                <span class="small fw-bold text-success">FIXED</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                Deletion of doc items when changing date
+                <span class="small fw-bold text-success">FIXED</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                Share modal header doesnt appear at first
+                <span class="small fw-bold text-danger">PENDING</span>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="col-12 col-lg-6">
+        <div class="h3 m-3">
+            <i class="fa fa-clipboard-list text-primary me-2 opacity-75"></i>
+            <span class="text-uppercase">@AppStrings.Text_NextToDo</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Report a bug and related tables and UI</li>
+            <li class="list-group-item">Make password visible</li>
+            <li class="list-group-item">Reset password</li>
+            <li class="list-group-item">Confirm user signup</li>
+            <li class="list-group-item">Group product docs by year</li>
+            <li class="list-group-item">Introduce the concept of organization for products/users</li>
+            <li class="list-group-item">In Share => Open TXT in Outlook</li>
+            <li class="list-group-item">Import/Export docs as JSON</li>
+            <li class="list-group-item">Share as HTML/PDF/print</li>
+            <li class="list-group-item">Share as Word</li>
+        </ul>
+    </div>
+</div>
+ 

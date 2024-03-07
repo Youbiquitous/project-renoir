@@ -296,20 +296,20 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All documents related to the product will be permanently deleted..
+        ///   Looks up a localized string similar to You&apos;re about to empty .
         /// </summary>
-        public static string Info_AllDocsToDelete {
+        public static string Msg_AboutToEmpty {
             get {
-                return ResourceManager.GetString("Info_AllDocsToDelete", resourceCulture);
+                return ResourceManager.GetString("Msg_AboutToEmpty", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to proceed?.
+        ///   Looks up a localized string similar to All documents related to the product will be permanently deleted..
         /// </summary>
-        public static string Info_ConfirmAction {
+        public static string Msg_AllDocsToDelete {
             get {
-                return ResourceManager.GetString("Info_ConfirmAction", resourceCulture);
+                return ResourceManager.GetString("Msg_AllDocsToDelete", resourceCulture);
             }
         }
         
@@ -373,6 +373,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string Msg_SuccessfullyDone {
             get {
                 return ResourceManager.GetString("Msg_SuccessfullyDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to proceed?.
+        /// </summary>
+        public static string Prompt_ConfirmAction {
+            get {
+                return ResourceManager.GetString("Prompt_ConfirmAction", resourceCulture);
             }
         }
     }

@@ -79,6 +79,15 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report a bug.
+        /// </summary>
+        public static string BugReport {
+            get {
+                return ResourceManager.GetString("BugReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy.
         /// </summary>
         public static string Copy {
@@ -273,6 +282,15 @@ namespace Youbiquitous.Renoir.Resources {
         public static string ShareAsPlainText {
             get {
                 return ResourceManager.GetString("ShareAsPlainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State of the Art.
+        /// </summary>
+        public static string StateOfArt {
+            get {
+                return ResourceManager.GetString("StateOfArt", resourceCulture);
             }
         }
         

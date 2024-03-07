@@ -520,11 +520,29 @@ namespace Youbiquitous.Renoir.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last things done.
+        /// </summary>
+        public static string Text_LastDone {
+            get {
+                return ResourceManager.GetString("Text_LastDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to N/A.
         /// </summary>
         public static string Text_NA {
             get {
                 return ResourceManager.GetString("Text_NA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next to do.
+        /// </summary>
+        public static string Text_NextToDo {
+            get {
+                return ResourceManager.GetString("Text_NextToDo", resourceCulture);
             }
         }
         

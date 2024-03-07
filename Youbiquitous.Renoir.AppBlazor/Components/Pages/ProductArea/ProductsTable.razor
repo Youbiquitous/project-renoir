@@ -101,8 +101,8 @@
         var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
         var shouldProceed = await Confirmation.ShowAsync(
             title: $"{AppStrings.Label_Deleting}   [{p.Name}] ",
-            message1: $"{AppMessages.Info_AllDocsToDelete}",
-            message2: $"{AppMessages.Info_ConfirmAction}",
+            message1: $"{AppMessages.Msg_AllDocsToDelete}",
+            message2: $"{AppMessages.Prompt_ConfirmAction}",
             confirmDialogOptions: options);
 
         if (shouldProceed)

@@ -97,7 +97,7 @@ public partial class RoadmapPage : ViewModelBase
     protected async Task EditDocumentEditor(Roadmap document)
     {
         DocumentEditor.SetTitle(AppStrings.Label_EditRoadmap);
-        DocumentEditor.SetUserData(new DocRef(document.RefId, document.Version, document.ReleaseDate, document.Notes));
+        DocumentEditor.SetUserData(DocRef.Import(document));
         await DocumentEditor.Window.ShowAsync();
     }
 

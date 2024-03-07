@@ -196,11 +196,11 @@ and we will work hard to get a fix out as soon as possible.</value>
   <data name="Err_VersionNotFound" xml:space="preserve">
     <value>Could not find present version of the release note</value>
   </data>
-  <data name="Info_AllDocsToDelete" xml:space="preserve">
-    <value>All documents related to the product will be permanently deleted.</value>
+  <data name="Msg_AboutToEmpty" xml:space="preserve">
+    <value>You're about to empty </value>
   </data>
-  <data name="Info_ConfirmAction" xml:space="preserve">
-    <value>Do you want to proceed?</value>
+  <data name="Msg_AllDocsToDelete" xml:space="preserve">
+    <value>All documents related to the product will be permanently deleted.</value>
   </data>
   <data name="Msg_Copied" xml:space="preserve">
     <value>Copied!</value>
@@ -222,5 +222,8 @@ and we will work hard to get a fix out as soon as possible.</value>
   </data>
   <data name="Msg_SuccessfullyDone" xml:space="preserve">
     <value>Successfully done</value>
+  </data>
+  <data name="Prompt_ConfirmAction" xml:space="preserve">
+    <value>Do you want to proceed?</value>
   </data>
 </root>

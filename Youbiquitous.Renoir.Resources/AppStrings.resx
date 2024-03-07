@@ -271,8 +271,14 @@
   <data name="Text_AuthorizedToWork" xml:space="preserve">
     <value>Products and documents you're allowed to work on</value>
   </data>
+  <data name="Text_LastDone" xml:space="preserve">
+    <value>Last things done</value>
+  </data>
   <data name="Text_NA" xml:space="preserve">
     <value>N/A</value>
+  </data>
+  <data name="Text_NextToDo" xml:space="preserve">
+    <value>Next to do</value>
   </data>
   <data name="Text_NoProductsToWork" xml:space="preserve">
     <value>You're not enabled to work on any products</value>

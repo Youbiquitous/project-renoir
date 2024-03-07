@@ -10,6 +10,7 @@
 //
 
 
+using Youbiquitous.Martlet.Core.Extensions;
 using Youbiquitous.Renoir.DomainModel.Utils;
 
 namespace Youbiquitous.Renoir.DomainModel.Documents.Core;
@@ -34,6 +35,10 @@ public partial class CoreDocument<TDocumentItem> : BaseEntity
         Version = doc.Version;
         Notes = doc.Notes;
 
+        // Stop here if no changes made to items
+        if (doc.Items.Empty())
+            return;
+
         // Mark all items as deleted
         foreach (var i in Items)
             i.SoftDelete();
@@ -49,8 +54,9 @@ public partial class CoreDocument<TDocumentItem> : BaseEntity
             {
                 i.Mark(doc.LastUpdated.By);
                 Items.Add(i);
+                continue;
             }
-
+            
             var matching = Items.FirstOrDefault(x => x.RefId == i.RefId);
             if (matching == null)
                 continue;

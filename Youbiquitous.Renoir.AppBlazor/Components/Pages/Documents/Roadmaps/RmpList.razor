@@ -2,6 +2,7 @@
 @using Youbiquitous.Renoir.Resources
 @using Youbiquitous.Renoir.DomainModel.Documents
 @using Youbiquitous.Martlet.Core.Extensions
+@using Youbiquitous.Renoir.AppBlazor.Common.BlazorBootstrapExtensions
 @inject NavigationManager NavManager
 
 <!-- List documents -->
@@ -11,7 +12,7 @@
         <th class="col-button"></th>
         <th>@AppStrings.Label_Version</th>
         <th>@AppStrings.Label_Date</th>
-        <th>@AppStrings.Label_Modified</th>
+        @* <th>@AppStrings.Label_Modified</th> *@
         <th>@AppStrings.Label_Notes</th>
     </tr>
     </thead>
@@ -33,11 +34,11 @@
                 </button>
             </td>
             <td style="width: 120px;">@d.Version</td>
-            <td style="width: 120px;">@d.ReleaseDate.ToString("d MMM yyyy")</td>
-            <td style="width: 200px;">
+            <td style="width: 160px;">@d.ReleaseDate.ToString("d MMM yyyy")</td>
+@*             <td style="width: 200px;">
                 <div class="small">@d.LastUpdated.When.ToStringOrEmpty("d MMM yyyy  -  HH:mm")<sup>UTC</sup></div>
                 <div class="italic opacity-50 text-xs">@d.LastUpdated.By</div>
-            </td>
+            </td> *@
             <td>
                 <div class="italic text-xs">
                     @d.Notes
@@ -49,7 +50,7 @@
 </table>
 
 
-<ConfirmDialog @ref="Confirmation" />
+<HtmlConfirmDialog @ref="Confirmation" />
 
 @code
 {
@@ -68,7 +69,7 @@
     /// <summary>
     /// Reference to the Confirm modal dialog
     /// </summary>
-    private ConfirmDialog Confirmation { get; set; }
+    private HtmlConfirmDialog Confirmation { get; set; }
 
     /// <summary>
     /// Used to trigger the UserDeleted custom event
@@ -82,8 +83,8 @@
         // Ask confirmation
         var options = new ConfirmDialogOptions { IsVerticallyCentered = true };
         var shouldProceed = await Confirmation.ShowAsync(
-            title: $"{AppStrings.Label_Deleting} [{rmp.Version}]",
-            message1: AppMessages.Info_ConfirmAction,
+            title: $"{AppStrings.Label_Deleting} <span class='text-primary'>[{rmp.Version}]</span>",
+            message1: AppMessages.Prompt_ConfirmAction,
             confirmDialogOptions: options);
 
         if (shouldProceed)

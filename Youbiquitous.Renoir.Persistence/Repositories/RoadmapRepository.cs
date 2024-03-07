@@ -11,9 +11,7 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using Youbiquitous.Martlet.Core.Types;
 using Youbiquitous.Renoir.DomainModel.Documents;
-using Youbiquitous.Renoir.Resources;
 
 namespace Youbiquitous.Renoir.Persistence.Repositories;
 

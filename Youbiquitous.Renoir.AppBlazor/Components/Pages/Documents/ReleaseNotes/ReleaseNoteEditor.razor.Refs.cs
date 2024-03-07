@@ -9,10 +9,14 @@
 // 
 
 
+using Youbiquitous.Renoir.AppBlazor.Common.BlazorBootstrapExtensions;
+
 namespace Youbiquitous.Renoir.AppBlazor.Components.Pages.Documents.ReleaseNotes;
 
 public partial class ReleaseNoteEditorPage 
 {
     protected ShareDocumentPopup Share;
+    protected HtmlConfirmDialog Confirmation;
+    //protected ConfirmDialog Confirmation;
 }
 

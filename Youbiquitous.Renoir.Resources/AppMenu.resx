@@ -123,6 +123,9 @@
   <data name="Approve" xml:space="preserve">
     <value>Approve</value>
   </data>
+  <data name="BugReport" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
   <data name="Copy" xml:space="preserve">
     <value>Copy</value>
   </data>
@@ -188,6 +191,9 @@
   </data>
   <data name="ShareAsPlainText" xml:space="preserve">
     <value>As Plain Text</value>
+  </data>
+  <data name="StateOfArt" xml:space="preserve">
+    <value>State of the Art</value>
   </data>
   <data name="SwitchToNotes" xml:space="preserve">
     <value>Switch to Release Notes</value>
